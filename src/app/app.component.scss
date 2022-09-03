@@ -1,5 +1,18 @@
+// $BgPrimery: #FAFAFA;
+$BgPrimery: purple;
+$BgHeader: darkslategrey;
+// $BgHoverPrimery: #F0F0F0;
+$BgHoverPrimery: rgba($color: #000000, $alpha: 0.03);
+$white: #FFF;
+$filterWhite: invert(100%) sepia(9%) saturate(129%) hue-rotate(99deg) brightness(116%) contrast(100%);
 
-.left_header{
+
+
+.mat-toolbar.mat-primary {
+  background: $BgHeader;
+}
+
+.left_header {
   width: calc(280px - 16px);
 }
 
@@ -15,20 +28,99 @@
   border: 1px solid #555;
 }
 
-.example-container {
+h2 {
+  padding: 8px 16px;
+  background: $BgPrimery;
+  margin: 0;
+  width: 280px;
+  box-sizing: border-box;
+  color: $white;
+}
+
+.side-container {
   width: 280px;
   height: calc(100vh - 64px);
-  // background: aqua;
-  h2{
+  color: $white;
+
+  background: $BgPrimery;
+
+  h2 {
     margin: 0;
   }
 }
 
-// .example-headers-align .mat-expansion-panel-header-description {
-//   justify-content: space-between;
-//   align-items: center;
-// }
 
-// .example-headers-align .mat-form-field + .mat-form-field {
-//   margin-left: 8px;
-// }
+.hoverBg {
+  color: $white;
+
+  &:hover {
+    background-color: $BgHoverPrimery;
+  }
+}
+
+.mat-list-base {
+  padding-top: 0;
+
+}
+
+.mat-expansion-panel-header {
+  flex-direction: row-reverse;
+  padding: 0 16px;
+  background-color: $BgPrimery;
+
+}
+
+
+::ng-deep .mat-expansion-indicator, .mat-expansion-indicator:after {
+  filter: $filterWhite;
+}
+
+
+
+.mat-expansion-panel-header-title {
+  flex-grow: 0;
+  margin-left: 16px;
+  white-space: nowrap;
+  color: $white;
+
+}
+
+.mat-expansion-panel {
+  box-shadow: none;
+  background-color: $BgPrimery;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 5px 10px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  color: $white;
+
+  &:hover {
+    background-color: $BgHoverPrimery;
+  }
+
+  &:last-child {
+    margin-bottom: -10px;
+  }
+}
+
+li::before {
+  content: '';
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  margin-right: 10px;
+  background-image: url('../assets/img/tag.png');
+  background-position: center;
+  background-size: cover;
+  filter: $filterWhite;
+}

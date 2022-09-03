@@ -8,25 +8,67 @@
 
 </mat-toolbar>
 
-
-<mat-drawer-container class="example-container" autosize>
+<h2>WorkSpace</h2>
+<mat-drawer-container class="side-container" autosize>
 
   <mat-list>
-    <mat-list-item>
+    <!-- <mat-list-item>
       <h2>WorkSpace</h2>
-    </mat-list-item>
+    </mat-list-item> -->
     <mat-divider></mat-divider>
-    <mat-list-item>Threads</mat-list-item>
-    <mat-list-item>Direct messages</mat-list-item>
-    <mat-list-item>Mentions & Reactions</mat-list-item>
-    <mat-list-item>Drafts</mat-list-item>
+    <mat-list-item class="hoverBg">Threads</mat-list-item>
+    <mat-list-item class="hoverBg">Direct messages</mat-list-item>
+    <mat-list-item class="hoverBg">Mentions & Reactions</mat-list-item>
+    <mat-list-item class="hoverBg">Drafts</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>
-      Favoritens
 
-    </mat-list-item>
-    <mat-list-item>Channels</mat-list-item>
-    <mat-list-item>Direct messages</mat-list-item>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div>
+            <span>Favorites</span>
+          </div>
+
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul>
+        <li>group work</li>
+      </ul>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Channels
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul>
+        <li>general</li>
+        <li>application</li>
+        <li>news</li>
+      </ul>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Direct messages
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul>
+        <li>Tony</li>
+        <li>Jürgen</li>
+      </ul>
+
+    </mat-expansion-panel>
+
+
   </mat-list>
 
 </mat-drawer-container>
