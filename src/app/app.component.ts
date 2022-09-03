@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  displayAddPanle1 = false;
+  displayAddPanle2 = false;
+  displayAddPanle3 = false;
   panelOpenState = false;
   step = 0;
 

@@ -49,6 +49,15 @@ h2 {
   }
 }
 
+.opacity1{
+  opacity: 1 !important;
+  transition: 225ms;
+}
+
+.add_panel{
+  opacity: 0;
+  transition: 225ms;
+}
 
 .hoverBg {
   color: $white;
@@ -75,7 +84,12 @@ h2 {
   filter: $filterWhite;
 }
 
-
+.expansion_panel{
+  display: flex;
+  width: 220px;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .mat-expansion-panel-header-title {
   flex-grow: 0;
