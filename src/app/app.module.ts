@@ -18,8 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LeftContainerComponent } from './left-container/left-container.component';
 import { RightContainerComponent } from './right-container/right-container.component';
 import { MainContainerComponent } from './main-container/main-container.component';
-
-
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -45,7 +44,8 @@ import { MainContainerComponent } from './main-container/main-container.componen
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
