@@ -1,94 +1,44 @@
-<mat-toolbar color="primary">
-  <div class="left_header">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+<mat-toolbar class="header" color="primary">
+
+  <div class="button_left_sidenav">
+    <button type="button" mat-button (click)="drawerLeft.toggle()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
     </button>
   </div>
 
+  <div class="search_container">
+    <input class="search_input" matInput [(ngModel)]="serachThing" placeholder="search workspace" type="search"
+      (keydown.enter)="onKeyDownEvent($event)" />
+    <!-- <button (click)="searchSamething()" mat-stroked-button>search</button>s -->
+  </div>
+
+  <div class="button_right_sidenav">
+    <button type="button" mat-button (click)="drawerRight.toggle()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
+    </button>
+  </div>
 
 </mat-toolbar>
 
-<h2>WorkSpace</h2>
-<mat-drawer-container class="side-container" autosize>
+<mat-drawer-container class="main_container" autosize>
+  <mat-drawer #drawerLeft class="left_sidenav" position="start" opened="true" mode="side">
 
-  <mat-list>
-    <!-- <mat-list-item>
-      <h2>WorkSpace</h2>
-    </mat-list-item> -->
-    <mat-divider></mat-divider>
-    <mat-list-item class="hoverBg">Threads</mat-list-item>
-    <mat-list-item class="hoverBg">Direct messages</mat-list-item>
-    <mat-list-item class="hoverBg">Mentions & Reactions</mat-list-item>
-    <mat-list-item class="hoverBg">Drafts</mat-list-item>
-    <mat-divider></mat-divider>
+    <app-left-container></app-left-container>
 
+  </mat-drawer>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <div (mouseover)='displayAddPanle1 = true' (mouseout)='displayAddPanle1 = false' class="expansion_panel">
-            <span>Favorites</span>
-            <div [class.opacity1]="displayAddPanle1" class="add_panel">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
-            </div>
-          </div>
+  <div class="content">
 
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+    <app-main-container></app-main-container>
 
-      <ul>
-        <li>group work</li>
-      </ul>
+  </div>
 
-    </mat-expansion-panel>
+  <mat-drawer #drawerRight class="right_sidenav" position="end" opened="true" mode="side">
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
+    <app-right-container></app-right-container>
 
-          <div (mouseover)='displayAddPanle2 = true' (mouseout)='displayAddPanle2 = false' class="expansion_panel">
-            <span>Channels</span>
-            <div [class.opacity1]="displayAddPanle2" class="add_panel">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
-            </div>
-          </div>
-
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <ul>
-        <li>general</li>
-        <li>application</li>
-        <li>news</li>
-      </ul>
-
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-
-          <div (mouseover)='displayAddPanle3 = true' (mouseout)='displayAddPanle3 = false' class="expansion_panel">
-            <span>Direct messages</span>
-            <div [class.opacity1]="displayAddPanle3" class="add_panel">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
-            </div>
-          </div>
-
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <ul>
-        <li>Tony</li>
-        <li>Jürgen</li>
-      </ul>
-
-    </mat-expansion-panel>
-
-
-  </mat-list>
+  </mat-drawer>
 
 </mat-drawer-container>
+
+

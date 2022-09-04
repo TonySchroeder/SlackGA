@@ -1,0 +1,25 @@
+.width280{
+  width: 280px;
+
+}
+.thread_name{
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.thread_name::before {
+  content: '';
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  margin-right: 5px;
+  background-image: url('../../assets/img/tag.png');
+  background-position: center;
+  background-size: cover;
+  // filter: $filterWhite;
+}
+
+// .message_container{
+
+// }

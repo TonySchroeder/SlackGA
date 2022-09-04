@@ -15,6 +15,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { LeftContainerComponent } from './left-container/left-container.component';
+import { RightContainerComponent } from './right-container/right-container.component';
+import { MainContainerComponent } from './main-container/main-container.component';
+
 
 
 
@@ -22,7 +26,10 @@ import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LeftContainerComponent,
+    RightContainerComponent,
+    MainContainerComponent
   ],
   imports: [
     BrowserModule,

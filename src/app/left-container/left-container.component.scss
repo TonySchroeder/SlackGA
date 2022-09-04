@@ -1,0 +1,105 @@
+$BgPrimery: #FAFAFA;
+// $BgPrimery: purple;
+$BgHeader: #673AB7;
+// $BgHeader: darkslategrey;
+$BgHoverPrimery: rgba($color: #000000, $alpha: 0.03);
+$forColor: #000;
+// $forColor: #FFF;
+$filterWhite: invert(0%) sepia(0%) saturate(7479%) hue-rotate(251deg) brightness(81%) contrast(100%);
+// $filterWhite: invert(100%) sepia(9%) saturate(129%) hue-rotate(99deg) brightness(116%) contrast(100%);
+
+.mat-list-base {
+  padding-top: 0;
+}
+
+.mat-expansion-panel-header {
+  flex-direction: row-reverse;
+  padding: 0 16px;
+}
+
+.d-none {
+  display: none;
+}
+
+.header_spacer {
+  flex: 1 1 auto;
+}
+
+.width280 {
+  width: 280px;
+}
+
+.opacity1 {
+  opacity: 1 !important;
+  transition: 225ms;
+}
+
+.add_panel {
+  opacity: 0;
+  transition: 225ms;
+}
+
+.hoverBg {
+
+  &:hover {
+    background-color: $BgHoverPrimery;
+  }
+}
+
+// ::ng-deep .mat-expansion-indicator,
+// .mat-expansion-indicator:after {
+//   filter: $filterWhite;
+// }
+
+.expansion_panel {
+  display: flex;
+  width: 220px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-expansion-panel-header-title {
+  flex-grow: 0;
+  margin-left: 16px;
+  white-space: nowrap;
+
+}
+
+.mat-expansion-panel {
+  box-shadow: none;
+  background-color: #FAFAFA;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 5px 10px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: $BgHoverPrimery;
+  }
+
+  &:last-child {
+    margin-bottom: -10px;
+  }
+}
+
+li::before {
+  content: '';
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  margin-right: 10px;
+  background-image: url('../../assets/img/tag.png');
+  background-position: center;
+  background-size: cover;
+  // filter: $filterWhite;
+}
