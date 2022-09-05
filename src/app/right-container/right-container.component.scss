@@ -1,5 +1,5 @@
 .width280 {
-  width: 280px;
+  max-width: 400px;
 
 }
 
@@ -9,46 +9,14 @@
   align-items: center;
 }
 
-.thread_name::before {
-  content: '';
-  display: inline-block;
-  height: 14px;
-  width: 14px;
-  margin-right: 5px;
-  background-image: url('../../assets/img/tag.png');
-  background-position: center;
-  background-size: cover;
-  // filter: $filterWhite;
-}
-
-.mat-list-base {
-  padding-top: 0;
-}
-
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-.mat-list-base .mat-list-item,
-.mat-list-base .mat-list-option {
-  height: auto;
-}
-
-.message_card {
-  border: none;
-  box-shadow: none;
-  background-color: #FAFAFA;
-  padding: 0;
-  padding-top: 16px;
-  margin: 0;
-
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-
-
-}
-
-
+// .thread_name::before {
+//   content: '';
+//   display: inline-block;
+//   height: 14px;
+//   width: 14px;
+//   margin-right: 5px;
+//   background-image: url('../../assets/img/tag.png');
+//   background-position: center;
+//   background-size: cover;
+//   // filter: $filterWhite;
+// }

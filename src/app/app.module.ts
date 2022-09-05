@@ -19,6 +19,8 @@ import { LeftContainerComponent } from './left-container/left-container.componen
 import { RightContainerComponent } from './right-container/right-container.component';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { MatCardModule } from '@angular/material/card';
+import { MessageContainerComponent } from './message-container/message-container.component';
+import { ChannelContainerComponent } from './channel-container/channel-container.component';
 
 
 
@@ -28,7 +30,9 @@ import { MatCardModule } from '@angular/material/card';
     AppComponent,
     LeftContainerComponent,
     RightContainerComponent,
-    MainContainerComponent
+    MainContainerComponent,
+    MessageContainerComponent,
+    ChannelContainerComponent
   ],
   imports: [
     BrowserModule,

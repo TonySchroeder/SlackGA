@@ -14,7 +14,7 @@ $filterWhite: invert(0%) sepia(0%) saturate(7479%) hue-rotate(251deg) brightness
 
 .mat-expansion-panel-header {
   flex-direction: row-reverse;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
 .d-none {
@@ -67,7 +67,7 @@ $filterWhite: invert(0%) sepia(0%) saturate(7479%) hue-rotate(251deg) brightness
 
 .mat-expansion-panel {
   box-shadow: none;
-  background-color: #FAFAFA;
+  background-color: transparent;
 }
 
 ul {
@@ -76,9 +76,9 @@ ul {
 }
 
 li {
-  margin-left: -20px;
-  margin-right: -20px;
-  padding: 5px 10px;
+  margin-left: -24px;
+  margin-right: -24px;
+  padding: 5px 20px;
   list-style: none;
   display: flex;
   align-items: center;
@@ -92,14 +92,14 @@ li {
   }
 }
 
-li::before {
-  content: '';
-  display: inline-block;
-  height: 14px;
-  width: 14px;
-  margin-right: 10px;
-  background-image: url('../../assets/img/tag.png');
-  background-position: center;
-  background-size: cover;
-  // filter: $filterWhite;
-}
+// li::before {
+//   content: '';
+//   display: inline-block;
+//   height: 14px;
+//   width: 14px;
+//   margin-right: 10px;
+//   background-image: url('../../assets/img/tag.png');
+//   background-position: center;
+//   background-size: cover;
+//   // filter: $filterWhite;
+// }
