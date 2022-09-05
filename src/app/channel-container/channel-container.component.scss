@@ -2,24 +2,45 @@
   padding-top: 0;
 }
 
+.thread_name {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
 
-mat-card-title{
+.headline {
+  button {
+    position: absolute;
+    right: 16px;
+    // height: 24px;
+    // width: 24px;
+  }
+}
+
+.mat-button{
+padding: 0;
+min-width: 24px;
+}
+
+mat-card-title {
   display: flex;
   align-items: center;
   gap: 10px;
-  h3{
+
+  h3 {
     margin: 0;
-  font-weight: 500;
-  font-size: 14px;
+    font-weight: 500;
+    font-size: 14px;
   }
-  span{
+
+  span {
     font-size: 12px;
-    color: rgba(0,0,0,.4);
+    color: rgba(0, 0, 0, .4);
   }
 }
 
 
-.mat-card-avatar{
+.mat-card-avatar {
   border-radius: 5px;
 
 }

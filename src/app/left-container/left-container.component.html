@@ -1,88 +1,98 @@
 <div class="width280">
-<div class="headline">
-  <h2>WorkSpace</h2>
-</div>
-<mat-divider></mat-divider>
+  <div class="headline">
+    <h2>WorkSpace</h2>
+  </div>
+  <mat-divider></mat-divider>
 
   <div class="side-container">
 
     <mat-list>
 
-        <mat-list-item class="hoverBg">Threads</mat-list-item>
-        <mat-list-item class="hoverBg">Direct messages</mat-list-item>
-        <mat-list-item class="hoverBg">Mentions & Reactions</mat-list-item>
-        <mat-list-item class="hoverBg">Drafts</mat-list-item>
-        <mat-divider></mat-divider>
+      <mat-list-item class="hoverBg">Threads</mat-list-item>
+      <mat-list-item class="hoverBg">Direct messages</mat-list-item>
+      <mat-list-item class="hoverBg">Mentions & Reactions</mat-list-item>
+      <mat-list-item class="hoverBg">Drafts</mat-list-item>
+      <mat-divider></mat-divider>
 
 
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <div (mouseover)='displayAddPanle1 = true' (mouseout)='displayAddPanle1 = false' class="expansion_panel">
-                <span>Favorites</span>
-                <div [class.opacity1]="displayAddPanle1" class="add_panel">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
-                </div>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div (mouseover)='displayAddPanle1 = true' (mouseout)='displayAddPanle1 = false' class="expansion_panel">
+              <span>Favorites</span>
+              <div [class.opacity1]="displayAddPanle1" class="add_panel">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
               </div>
+            </div>
 
-            </mat-panel-title>
-          </mat-expansion-panel-header>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
 
-          <ul>
-            <li>group work</li>
-          </ul>
+        <ul>
+          <li>group work</li>
+        </ul>
 
-        </mat-expansion-panel>
+      </mat-expansion-panel>
 
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
 
-              <div (mouseover)='displayAddPanle2 = true' (mouseout)='displayAddPanle2 = false' class="expansion_panel">
-                <span>Channels</span>
-                <div [class.opacity1]="displayAddPanle2" class="add_panel">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
-                </div>
+            <div (mouseover)='displayAddPanle2 = true' (mouseout)='displayAddPanle2 = false' class="expansion_panel">
+              <span>Channels</span>
+              <div [class.opacity1]="displayAddPanle2" class="add_panel">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
               </div>
+            </div>
 
-            </mat-panel-title>
-          </mat-expansion-panel-header>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
 
-          <ul>
-            <li># general</li>
-            <li># application</li>
-            <li># news</li>
-          </ul>
+        <ul>
+          <li># general</li>
+          <li># application</li>
+          <li># news</li>
+        </ul>
 
-        </mat-expansion-panel>
+      </mat-expansion-panel>
 
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
 
-              <div (mouseover)='displayAddPanle3 = true' (mouseout)='displayAddPanle3 = false' class="expansion_panel">
-                <span>Direct messages</span>
-                <div [class.opacity1]="displayAddPanle3" class="add_panel">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
-                </div>
+            <div (mouseover)='displayAddPanle3 = true' (mouseout)='displayAddPanle3 = false' class="expansion_panel">
+              <span>Direct messages</span>
+              <div [class.opacity1]="displayAddPanle3" class="add_panel">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
               </div>
+            </div>
 
-            </mat-panel-title>
-          </mat-expansion-panel-header>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
 
-          <ul>
-            <li>Tony</li>
-            <li>Jürgen</li>
-          </ul>
+        <ul>
 
-        </mat-expansion-panel>
+          <li>
+
+            <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
+            <span>Tony</span>
+          </li>
+
+          <li>
+            <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
+            <span>Jürgen</span>
+          </li>
+
+        </ul>
+
+      </mat-expansion-panel>
 
 
-      </mat-list>
-
-    </div>
+    </mat-list>
 
   </div>
+
+</div>
