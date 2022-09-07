@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Component, OnInit } from '@angular/core';
+import { collectionData } from '@angular/fire/firestore';
+import { collection, Firestore } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-slack',
+  templateUrl: './slack.component.html',
+  styleUrls: ['./slack.component.scss']
 })
-export class AppComponent {
+export class SlackComponent implements OnInit {
+
 
   serachThing = '';
   coll$: Observable<any>;
@@ -20,14 +22,15 @@ export class AppComponent {
     const coll = collection(firestore, 'user');
     this.coll$ = collectionData(coll);
 
-
     this.coll$.subscribe((newMessage) => {
       this.message = newMessage;
       console.log(this.message);
     });
-
-
   }
+
+  ngOnInit(): void {
+  }
+
 
 
 
@@ -38,4 +41,5 @@ export class AppComponent {
   searchSamething() {
 
   }
+
 }

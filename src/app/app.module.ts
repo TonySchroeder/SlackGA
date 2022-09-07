@@ -21,6 +21,13 @@ import { MainContainerComponent } from './main-container/main-container.componen
 import { MatCardModule } from '@angular/material/card';
 import { MessageContainerComponent } from './message-container/message-container.component';
 import { ChannelContainerComponent } from './channel-container/channel-container.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { LoginComponent } from './login/login.component';
+import { SlackComponent } from './slack/slack.component';
 
 
 
@@ -32,7 +39,9 @@ import { ChannelContainerComponent } from './channel-container/channel-container
     RightContainerComponent,
     MainContainerComponent,
     MessageContainerComponent,
-    ChannelContainerComponent
+    ChannelContainerComponent,
+    LoginComponent,
+    SlackComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +58,11 @@ import { ChannelContainerComponent } from './channel-container/channel-container
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

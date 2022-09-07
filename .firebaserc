@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ts-slack-e5a6b": {
+      "hosting": {
+        "slack": [
+          "ts-slack-e5a6b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ts-slack-e5a6b"
+  }
+}
