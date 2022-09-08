@@ -5,8 +5,12 @@ $BgHeader: #673AB7;
 $BgHoverPrimery: rgba($color: #000000, $alpha: 0.03);
 $forColor: #000;
 // $forColor: #FFF;
-$filterWhite: invert(0%) sepia(0%) saturate(7479%) hue-rotate(251deg) brightness(81%) contrast(100%);
-// $filterWhite: invert(100%) sepia(9%) saturate(129%) hue-rotate(99deg) brightness(116%) contrast(100%);
+// $filterWhite: invert(0%) sepia(0%) saturate(7479%) hue-rotate(251deg) brightness(81%) contrast(100%);
+$filterWhite: invert(100%) sepia(9%) saturate(129%) hue-rotate(99deg) brightness(116%) contrast(100%);
+
+mat-panel-title {
+  color: #FFF;
+}
 
 .mat-list-base {
   padding-top: 0;
@@ -40,16 +44,17 @@ $filterWhite: invert(0%) sepia(0%) saturate(7479%) hue-rotate(251deg) brightness
 }
 
 .hoverBg {
+  color: #FFF;
 
   &:hover {
     background-color: $BgHoverPrimery;
   }
 }
 
-// ::ng-deep .mat-expansion-indicator,
-// .mat-expansion-indicator:after {
-//   filter: $filterWhite;
-// }
+::ng-deep .mat-expansion-indicator,
+.mat-expansion-indicator:after {
+  filter: $filterWhite;
+}
 
 .expansion_panel {
   display: flex;
@@ -73,6 +78,7 @@ $filterWhite: invert(0%) sepia(0%) saturate(7479%) hue-rotate(251deg) brightness
 ul {
   margin: 0;
   padding: 0;
+  color: #FFF;
 }
 
 li {

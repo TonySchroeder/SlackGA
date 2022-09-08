@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../servis/firebase.service';
 
 @Component({
   selector: 'app-message-container',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public store: FirebaseService) {
+    store.loadFirebase();
+  }
 
   ngOnInit(): void {
   }
