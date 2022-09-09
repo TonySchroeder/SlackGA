@@ -21,13 +21,15 @@ import { MainContainerComponent } from './main-container/main-container.componen
 import { MatCardModule } from '@angular/material/card';
 import { MessageContainerComponent } from './message-container/message-container.component';
 import { ChannelContainerComponent } from './channel-container/channel-container.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { LoginComponent } from './login/login.component';
 import { SlackComponent } from './slack/slack.component';
+import { WriteMessageComponent } from './write-message/write-message.component';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 
 
@@ -41,7 +43,8 @@ import { SlackComponent } from './slack/slack.component';
     MessageContainerComponent,
     ChannelContainerComponent,
     LoginComponent,
-    SlackComponent
+    SlackComponent,
+    WriteMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { SlackComponent } from './slack/slack.component';
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
+    TextFieldModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

@@ -4,17 +4,13 @@
   align-items: center;
 }
 
-// .thread_name::before {
-//   content: '';
-//   display: inline-block;
-//   height: 14px;
-//   width: 14px;
-//   margin-right: 5px;
-//   background-image: url('../../assets/img/tag.png');
-//   background-position: center;
-//   background-size: cover;
-//   // filter: $filterWhite;
-// }
+.stickyBg{
+  background-color: #FFFFFF;
+  z-index: 2;
+  position: sticky;
+  border-bottom: 0.5px solid #DCDCDC;
+  top: 0;
+}
 
 mat-card-title{
   display: flex;
