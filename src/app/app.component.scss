@@ -78,20 +78,22 @@
 }
 
 
-.content{
+.content {
 
 
-.message_container{
-  height: calc(100vh - (64px + 130px));
-  overflow-y: auto;
-}
-
-.write_message_container {
-  position: fixed;
-  bottom: 0;
-  // height: 130px;
-
+  .message_container {
+    height: calc(100vh - (64px));
+    overflow-y: auto;
   }
+
+  // .write_message_container {
+  //   position: fixed;
+  //   bottom: 0;
+  //   // max-width: 600px;
+  //   // width: 100%;
+  //   // height: 130px;
+
+  // }
 }
 
 

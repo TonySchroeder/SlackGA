@@ -2,7 +2,6 @@
   // max-width: 100vw;
   // width: 100%;
   padding: 0 16px 16px 16px;
-  background-color: aqua;
 
 }
 
@@ -12,11 +11,8 @@ mat-card{
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  .textfield{
-    background: aqua;
-    // max-width: 100vw;
-    // width: 100%;
-    background: transparent;
+  textarea{
+       background: aqua;
   }
 }
 

@@ -11,5 +11,9 @@
 
 .message_content{
 
-  background-color: purple;
+  .write_message_container {
+    position: fixed;
+    bottom: 0;
+    }
+
 }

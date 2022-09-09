@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../servis/firebase.service';
 
 @Component({
   selector: 'app-write-message',
@@ -7,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WriteMessageComponent implements OnInit {
 
-messageValue = '';
 
-  constructor() {
-    console.log(this.messageValue);
+
+  constructor(public store: FirebaseService) {
 
   }
 

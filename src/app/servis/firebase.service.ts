@@ -10,6 +10,8 @@ export class FirebaseService {
 
   coll$: Observable<any>;
   message: any = '';
+  messageValue = '';
+
 
   constructor(firestore: Firestore) {
     const coll = collection(firestore, 'user');
