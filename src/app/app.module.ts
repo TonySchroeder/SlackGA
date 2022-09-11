@@ -33,6 +33,8 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { DialogAddChannelComponent } from './dialog/dialog-add-channel/dialog-add-channel.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SignupComponent } from './signup/signup.component';
+import { LoginScreenComponent } from './login-screen/login-screen.component';
 
 
 
@@ -47,7 +49,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     LoginComponent,
     SlackComponent,
     WriteMessageComponent,
-    DialogAddChannelComponent
+    DialogAddChannelComponent,
+    SignupComponent,
+    LoginScreenComponent
   ],
   imports: [
     BrowserModule,
