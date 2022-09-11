@@ -46,7 +46,7 @@
               <span>Channels</span>
               <div [class.opacity1]="displayAddPanle2" class="add_panel">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
+                <mat-icon (click)="openDialog()" aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
               </div>
             </div>
 
@@ -54,9 +54,8 @@
         </mat-expansion-panel-header>
 
         <ul>
-          <li># general</li>
-          <li># application</li>
-          <li># news</li>
+          <li *ngFor="let fire of firebase.channels">{{ fire.channel.channelName }}</li>
+
         </ul>
 
       </mat-expansion-panel>

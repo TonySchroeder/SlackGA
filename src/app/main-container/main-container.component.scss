@@ -1,19 +1,19 @@
-.center{
+.center {
   display: flex;
   justify-content: center;
 }
 
-.widht3000{
+.widht3000 {
   // width: 5000px;
   width: 100vw;
   // background: aqua;
 }
 
-.message_content{
+.message_content {
+  // height: calc(100vh - (64px + 150px));
+  overflow-y: scroll;
+}
 
-  .write_message_container {
-    position: fixed;
-    bottom: 0;
-    }
-
+.write_message_container {
+height: 150px;
 }

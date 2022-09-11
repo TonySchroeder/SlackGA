@@ -1,7 +1,7 @@
 <div class="center">
   <div class="widht3000">
 
-      <div class="message_content">
+      <div [ngStyle]="{'height': 'calc(100vh - (64px + 150px))'}" class="message_content">
 
         <mat-divider></mat-divider>
 
@@ -11,7 +11,7 @@
 
       </div>
 
-      <div class="write_message_container">
+      <div #myIdentifier class="write_message_container">
         <app-write-message></app-write-message>
       </div>
 

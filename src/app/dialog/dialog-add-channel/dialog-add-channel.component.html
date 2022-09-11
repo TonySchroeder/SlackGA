@@ -1,0 +1,21 @@
+<div class="add_content">
+  <mat-progress-bar *ngIf="displayProzessBar" class="prozessBarTop" mode="indeterminate"></mat-progress-bar>
+  <div>
+    <button (click)="closeDialog()" class="closeBtn">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
+    </button>
+  </div>
+  <h2>Create channels</h2>
+  <p>Channels are used by your team to communicate. Ideally, they should be topic-related - #marketing, for example.</p>
+  <p><b>Name</b></p>
+  <input [(ngModel)]="channelName" class="tagBg" #message maxlength="80" type="text" placeholder="e.g. budget planning">
+  <mat-hint align="end">{{message.value.length}} / 80</mat-hint>
+  <p><b>Description</b> (optional)</p>
+  <input [(ngModel)]="ChannelDescription" type="text">
+  <span>What is this channel about?</span>
+
+  <button (click)="savechannel()" class="createBtn" mat-button [disabled]="!channelName" [class.activButton]="channelName"
+    [class.disableButton]="!channelName">Create</button>
+
+  <mat-progress-bar *ngIf="displayProzessBar" class="prozessBarBottom" mode="query"></mat-progress-bar>
+</div>

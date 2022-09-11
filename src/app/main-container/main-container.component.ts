@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-main-container',
@@ -12,6 +12,15 @@ export class MainContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    var width = this.myIdentifier.nativeElement.offsetWidth;
+    var height = this.myIdentifier.nativeElement.offsetHeight;
 
+    console.log('Width:' + width);
+    console.log('Height: ' + height);
+  }
+
+  @ViewChild('myIdentifier')
+  myIdentifier: ElementRef;
 
 }

@@ -1,0 +1,97 @@
+.add_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+
+  .closeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 125ms;
+
+    &:hover {
+      background-color: #DDDDDD;
+      transition: 125ms;
+    }
+  }
+
+  h2 {
+    font-weight: 550;
+    font-size: 32px;
+  }
+
+  b {
+
+    font-weight: 550;
+  }
+
+  .tagBg {
+    background: url("tag.png") no-repeat left;
+    background-size: 20px;
+    background-position: 8px;
+    padding-left: 36px;
+  }
+
+  input {
+    font-size: 20px;
+    height: 40px;
+    margin-bottom: 5px;
+    padding-left: 8px;
+
+    &:focus {
+      box-shadow: 0px 0px 5px 5px rgba(0, 255, 255, 1);
+    }
+  }
+
+  p {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  span {
+    margin-bottom: 16px;
+  }
+
+  .createBtn {
+    margin-left: auto;
+    margin-right: 0;
+    padding: 4px 16px;
+    font-weight: 700;
+
+    width: min-content;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .disableButton {
+    background-color: #DDDDDD;
+    color: #4D4C4D;
+  }
+
+  .activButton {
+    background-color: #007A5A;
+    color: #FFFFFF;
+  }
+
+  .prozessBarTop {
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    right: 0px;
+  }
+
+  .prozessBarBottom {
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+    right: 0px;
+  }
+
+}

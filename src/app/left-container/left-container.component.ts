@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddChannelComponent } from '../dialog/dialog-add-channel/dialog-add-channel.component';
+import { FirebaseService } from '../servis/firebase.service';
 
 @Component({
   selector: 'app-left-container',
@@ -7,39 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftContainerComponent implements OnInit {
 
-  showFiller = true;
   displayAddPanle1 = false;
   displayAddPanle2 = false;
   displayAddPanle3 = false;
-  panelOpenState = false;
-  step = 0;
-  serachThing = '';
 
 
-  constructor() { }
+  animal: string;
+  name: string;
+
+  constructor(public dialog: MatDialog, public firebase : FirebaseService) { }
 
   ngOnInit(): void {
+  this.firebase.loadChannels();
   }
 
+  openDialog(): void {
+    event.stopPropagation();
+    const dialogRef = this.dialog.open(DialogAddChannelComponent, {
+      maxWidth: '520px',
 
-  setStep(index: number) {
-    this.step = index;
+      // data: { name: this.name, animal: this.animal },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
-
-  onKeyDownEvent(event: any) {
-    this.searchSamething();
-  }
-
-  searchSamething(){
-
-  }
-
 }
+

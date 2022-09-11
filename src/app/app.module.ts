@@ -30,7 +30,9 @@ import { LoginComponent } from './login/login.component';
 import { SlackComponent } from './slack/slack.component';
 import { WriteMessageComponent } from './write-message/write-message.component';
 import { TextFieldModule } from '@angular/cdk/text-field';
-
+import { DialogAddChannelComponent } from './dialog/dialog-add-channel/dialog-add-channel.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -44,7 +46,8 @@ import { TextFieldModule } from '@angular/cdk/text-field';
     ChannelContainerComponent,
     LoginComponent,
     SlackComponent,
-    WriteMessageComponent
+    WriteMessageComponent,
+    DialogAddChannelComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,9 @@ import { TextFieldModule } from '@angular/cdk/text-field';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatProgressBarModule,
     MatCardModule,
+    MatDialogModule,
     TextFieldModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
