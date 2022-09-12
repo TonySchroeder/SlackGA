@@ -9,7 +9,7 @@ import { FirebaseService } from '../servis/firebase.service';
 export class MessageContainerComponent implements OnInit {
 
   constructor(public store: FirebaseService) {
-    store.loadFirebase();
+    store.loadUser();
   }
 
   ngOnInit(): void {

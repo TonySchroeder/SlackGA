@@ -26,7 +26,7 @@ export class FirebaseService {
     this.channel$ = collectionData(this.collChannel);
   }
 
-  loadFirebase() {
+  loadUser() {
     this.user$.subscribe((newMessage) => {
       this.message = newMessage;
       console.log(this.message);
