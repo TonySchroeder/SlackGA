@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SignupComponent } from './signup/signup.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
+import { DirectMessageChannelComponent } from './direct-message-channel/direct-message-channel.component';
 
 
 
@@ -51,7 +52,8 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
     WriteMessageComponent,
     DialogAddChannelComponent,
     SignupComponent,
-    LoginScreenComponent
+    LoginScreenComponent,
+    DirectMessageChannelComponent
   ],
   imports: [
     BrowserModule,

@@ -105,6 +105,11 @@ width: 20px;
 margin-right: 5px;
 }
 
+.user-row {
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 
 // li::before {
