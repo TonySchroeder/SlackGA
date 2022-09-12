@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddChannelComponent } from '../dialog/dialog-add-channel/dialog-add-channel.component';
-import { FirebaseService } from '../servis/firebase.service';
+import { FirebaseService } from '../service/firebase.service';
 
 @Component({
   selector: 'app-left-container',

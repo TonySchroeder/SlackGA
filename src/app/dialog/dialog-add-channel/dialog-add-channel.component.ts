@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { addDoc } from 'firebase/firestore';
 import { Channel } from 'src/app/models/channel.class';
-import { FirebaseService } from 'src/app/servis/firebase.service';
+import { FirebaseService } from 'src/app/service/firebase.service';
 
 @Component({
   selector: 'app-dialog-add-channel',

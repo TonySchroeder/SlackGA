@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../servis/firebase.service';
+import { FirebaseService } from '../service/firebase.service';
 
 @Component({
   selector: 'app-message-container',
