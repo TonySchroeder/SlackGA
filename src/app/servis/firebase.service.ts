@@ -9,13 +9,13 @@ import { Observable } from 'rxjs';
 export class FirebaseService {
 
   loggedInUserId: string = 'TonyID';
-  collUser:any;
+  collUser: any;
   user$: Observable<any>;
   channel$: Observable<any>;
-  collChannel:any;
+  collChannel: any;
   message: any;
   messageValue = '';
-  channels:any;
+  channels: any;
 
 
   constructor(firestore: Firestore) {
@@ -26,7 +26,7 @@ export class FirebaseService {
     this.channel$ = collectionData(this.collChannel);
   }
 
-  loadFirebase() {
+  loadUser() {
     this.user$.subscribe((newMessage) => {
       this.message = newMessage;
       console.log(this.message);

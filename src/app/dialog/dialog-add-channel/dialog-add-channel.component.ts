@@ -17,27 +17,29 @@ export class DialogAddChannelComponent implements OnInit {
   ChannelDescription: string = '';
   displayProzessBar: boolean = false;
 
-  constructor(
-    public firebase : FirebaseService,
-    public dialogRef: MatDialogRef<DialogAddChannelComponent>
-    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) { }
 
+  constructor(
+    public firebase: FirebaseService,
+    public dialogRef: MatDialogRef<DialogAddChannelComponent>
+  ) { }
 
 
   ngOnInit(): void {
 
   }
 
+
   async savechannel() {
     this.displayProzessBar = true;
     this.channel.channelName = '# ' + this.channelName;
     this.channel.ChannelDescription = this.ChannelDescription;
+    this.channel.creatorUser = this.firebase.loggedInUserId;
     let docRef = await addDoc(this.firebase.collChannel, { channel: this.channel.toJson() })
     this.displayProzessBar = false;
     console.log("Document written with ID: ", docRef.id);
     this.closeDialog();
   }
+
 
   closeDialog() {
     this.dialogRef.close();
