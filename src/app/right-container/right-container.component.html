@@ -2,10 +2,22 @@
 
   <div class="message_container">
 
-    <mat-divider></mat-divider>
 
-    <app-channel-container></app-channel-container>
+    <div [ngStyle]="{'height': 'calc(100vh - (64px + 150px))'}" class="message_content">
 
+      <mat-divider></mat-divider>
+
+      <app-message-container></app-message-container>
+
+      <!-- <app-channel-container></app-channel-container> -->
+
+    </div>
+
+
+
+    <div #myIdentifier class="write_message_container">
+      <app-write-message></app-write-message>
+    </div>
   </div>
 
 </div>

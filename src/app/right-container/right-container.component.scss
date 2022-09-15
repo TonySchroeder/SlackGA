@@ -9,14 +9,12 @@
   align-items: center;
 }
 
-// .thread_name::before {
-//   content: '';
-//   display: inline-block;
-//   height: 14px;
-//   width: 14px;
-//   margin-right: 5px;
-//   background-image: url('../../assets/img/tag.png');
-//   background-position: center;
-//   background-size: cover;
-//   // filter: $filterWhite;
-// }
+
+.message_content {
+  // height: calc(100vh - (64px + 150px));
+  overflow-y: scroll;
+}
+
+.write_message_container {
+height: 150px;
+}
