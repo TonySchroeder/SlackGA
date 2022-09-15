@@ -20,7 +20,7 @@ import { RightContainerComponent } from './right-container/right-container.compo
 import { MainContainerComponent } from './main-container/main-container.component';
 import { MatCardModule } from '@angular/material/card';
 import { MessageContainerComponent } from './message-container/message-container.component';
-import { ChannelContainerComponent } from './channel-container/channel-container.component';
+
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -36,6 +36,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SignupComponent } from './signup/signup.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { DirectMessageChannelComponent } from './direct-message-channel/direct-message-channel.component';
+import { WriteThreadComponent } from './write-thread/write-thread.component';
+import { ThreadContainerComponent } from './thread-container/thread-container.component';
 
 
 
@@ -46,14 +48,15 @@ import { DirectMessageChannelComponent } from './direct-message-channel/direct-m
     RightContainerComponent,
     MainContainerComponent,
     MessageContainerComponent,
-    ChannelContainerComponent,
     LoginComponent,
     SlackComponent,
     WriteMessageComponent,
     DialogAddChannelComponent,
     SignupComponent,
     LoginScreenComponent,
-    DirectMessageChannelComponent
+    DirectMessageChannelComponent,
+    WriteThreadComponent,
+    ThreadContainerComponent
   ],
   imports: [
     BrowserModule,

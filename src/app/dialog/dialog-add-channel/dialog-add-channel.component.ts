@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { addDoc } from 'firebase/firestore';
+import { addDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { Channel } from 'src/app/models/channel.class';
 import { FirebaseService } from 'src/app/service/firebase.service';
 
@@ -37,6 +37,7 @@ export class DialogAddChannelComponent implements OnInit {
     let docRef = await addDoc(this.firebase.collChannel, { channel: this.channel.toJson() })
     this.displayProzessBar = false;
     console.log("Document written with ID: ", docRef.id);
+    await updateDoc(doc(this.firebase.collChannel, docRef.id), { channel: docRef.id });
     this.closeDialog();
   }
 
