@@ -37,7 +37,7 @@ export class DialogAddChannelComponent implements OnInit {
     let docRef = await addDoc(this.firebase.collChannel, { channel: this.channel.toJson() })
     this.displayProzessBar = false;
     console.log("Document written with ID: ", docRef.id);
-    await updateDoc(doc(this.firebase.collChannel, docRef.id), { channel: docRef.id });
+    await updateDoc(doc(this.firebase.collChannel, docRef.id), { channelId: docRef.id });
     this.closeDialog();
   }
 
