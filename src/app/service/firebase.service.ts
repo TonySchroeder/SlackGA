@@ -13,7 +13,7 @@ export class FirebaseService {
   user$: Observable<any>;
   channel$: Observable<any>;
   collChannel: any;
-  message: any;
+  users: any;
   messageValue = '';
   threadValue = '';
   channels: any;
@@ -28,9 +28,9 @@ export class FirebaseService {
   }
 
   loadUser() {
-    this.user$.subscribe((newMessage) => {
-      this.message = newMessage;
-      console.log(this.message);
+    this.user$.subscribe((newUser) => {
+      this.users = newUser;
+      console.log(this.users);
     });
   }
 
