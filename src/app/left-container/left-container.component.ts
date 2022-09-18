@@ -15,10 +15,13 @@ export class LeftContainerComponent implements OnInit {
   displayDirectMessage = false;
 
 
-  constructor(public dialog: MatDialog, public firestore: FirebaseService) { }
+  constructor(public dialog: MatDialog, public firestore: FirebaseService) {
+
+  }
 
   ngOnInit(): void {
     this.firestore.loadChannels();
+    this.firestore.loadUser();
   }
 
   openDialog(): void {
@@ -28,14 +31,16 @@ export class LeftContainerComponent implements OnInit {
     });
   }
 
-  setChannelId(channelId) {
+  setChannelId(channelId: string, channelName) {
     this.firestore.currentChannelId = channelId;
+    this.firestore.currentChannelName = channelName;
     this.firestore.currentUserMessageId = undefined;
+    this.firestore.loadCurrentChannel();
   }
 
-  setUserlId(channelId) {
-    this.firestore.currentChannelId = channelId;
-    this.firestore.currentUserMessageId = undefined;
+  setUserlId(userId: string) {
+    this.firestore.currentUserMessageId = userId;
+    this.firestore.currentChannelId = undefined;
   }
 
 }

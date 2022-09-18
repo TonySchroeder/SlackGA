@@ -20,7 +20,7 @@ import { RightContainerComponent } from './right-container/right-container.compo
 import { MainContainerComponent } from './main-container/main-container.component';
 import { MatCardModule } from '@angular/material/card';
 import { MessageContainerComponent } from './displaydata/message-container/message-container.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -79,6 +79,7 @@ import { AllChannelContainerComponent } from './displaydata/all-channel-containe
     MatInputModule,
     MatProgressBarModule,
     MatCardModule,
+    HttpClientModule,
     MatDialogModule,
     TextFieldModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -86,7 +87,9 @@ import { AllChannelContainerComponent } from './displaydata/all-channel-containe
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

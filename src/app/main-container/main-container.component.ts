@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { collectionData, Firestore } from '@angular/fire/firestore';
 import { FirebaseService } from '../service/firebase.service';
+import { collection, doc, getDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-main-container',
@@ -9,33 +12,58 @@ import { FirebaseService } from '../service/firebase.service';
 export class MainContainerComponent implements OnInit {
 
   writeContainerHeight: number;
+  collChannel: any;
+  channel$: Observable<any>;
+  channels: any;
 
 
-  constructor(public firestore: FirebaseService) { }
+
+
+
+  constructor(public firestore: FirebaseService, public firebase: Firestore) { }
+
 
   ngOnInit(): void {
-  }
+    // this.collChannel = collection(this.firebase, `channel`, `${this.firestore.currentChannelId}`);
+    // this.channel$ = collectionData(this.collChannel);
+    // this.loadChannels();
 
-  ngAfterViewInit() {
-    // let width = this.myIdentifier.nativeElement.offsetWidth;
-    this.writeContainerHeight = this.myIdentifier.nativeElement.offsetHeight;
+    // console.log('id', this.firestore.currentChannelId);
 
-
-
-    // console.log('Width:' + width);
-    console.log('Height: ' + this.writeContainerHeight);
   }
 
 
-  setHeight() {
-    let heightStyle = { 'height': `calc(100vh - (64px + 48px + ${this.writeContainerHeight}px))` };
+  async loadChannels() {
+    // this.channel$.subscribe((newChannel) => {
+    //   this.channels = newChannel;
+    // });
 
-    return heightStyle;
+
+    // if (this.firestore.currentChannelId) {
+
+    //   const docRef = doc(this.firebase, `channel/${this.firestore.currentChannelId}`);
+    //   const querySnapshot = await getDoc(docRef);
+    //   this.channels = querySnapshot.data();
+
+    //   console.log(this.channels);
+    // }
+
   }
 
 
+  // ngAfterViewInit() {
+  //   this.writeContainerHeight = this.myIdentifier.nativeElement.offsetHeight;
+  //   console.log('Height: ' + this.writeContainerHeight);
+  // }
 
-  @ViewChild('myIdentifier')
-  myIdentifier: ElementRef;
+
+  // setHeight() {
+  //   let heightStyle = { 'height': `calc(100vh - (64px + 48px + ${this.writeContainerHeight}px))` };
+  //   return heightStyle;
+  // }
+
+
+  // @ViewChild('myIdentifier')
+  // myIdentifier: ElementRef;
 
 }

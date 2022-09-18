@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/service/firebase.service';
 
 @Component({
   selector: 'app-channel-container',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChannelContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public firestore: FirebaseService,) { }
 
   ngOnInit(): void {
   }

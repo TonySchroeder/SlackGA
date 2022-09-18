@@ -5,6 +5,7 @@
   <div class="headline">
     <h2>WorkSpace</h2>
   </div>
+
   <mat-divider></mat-divider>
 
   <div class="side-container">
@@ -15,8 +16,10 @@
       <mat-list-item class="hoverBg">Direct messages</mat-list-item>
       <mat-list-item class="hoverBg">Mentions & Reactions</mat-list-item>
       <mat-list-item class="hoverBg">Drafts</mat-list-item>
+
       <mat-divider></mat-divider>
 
+      <!-- Favorites -->
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -38,6 +41,8 @@
 
       </mat-expansion-panel>
 
+      <!-- Channels -->
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -46,7 +51,8 @@
               <span>Channels</span>
               <div [class.opacity1]="displayChannels" class="add_panel">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-                <mat-icon (click)="openDialog()" aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
+                <mat-icon (click)="openDialog()" aria-hidden="false" aria-label="Example home icon" fontIcon="add">
+                </mat-icon>
               </div>
             </div>
 
@@ -54,18 +60,21 @@
         </mat-expansion-panel-header>
 
         <ul>
-          <li *ngFor="let fire of firestore.channels" (click)="setChannelId( fire.channelId )">
+          <li *ngFor="let fire of firestore.channels" (click)="setChannelId( fire.channelId, fire.channel.channelName )">
             {{ fire.channel.channelName }}
           </li>
         </ul>
 
       </mat-expansion-panel>
 
+      <!-- Direct messages -->
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
 
-            <div (mouseover)='displayDirectMessage = true' (mouseout)='displayDirectMessage = false' class="expansion_panel">
+            <div (mouseover)='displayDirectMessage = true' (mouseout)='displayDirectMessage = false'
+              class="expansion_panel">
               <span>Direct messages</span>
               <div [class.opacity1]="displayDirectMessage" class="add_panel">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
@@ -78,16 +87,11 @@
 
         <ul>
 
-          <li *ngFor="let user of firestore.users" class="user-row">
+          <li *ngFor="let user of firestore.users" (click)="setUserlId( user.userId )" class="user-row">
 
             <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
             <span>{{ user.username }}</span>
           </li>
-<!--
-          <li class="user-row">
-            <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
-            <span>Jürgen</span>
-          </li> -->
 
         </ul>
 

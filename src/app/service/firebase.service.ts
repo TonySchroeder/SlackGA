@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,8 +17,12 @@ export class FirebaseService {
   channels: any;
 
   currentChannelId: string = '';
+  currentChannelName: string = '';
+
+
   currentUserMessageId: string = '';
 
+  currentChannel: any;
 
   messageValue = '';
 
@@ -38,7 +42,7 @@ export class FirebaseService {
   loadUser() {
     this.user$.subscribe((newUser) => {
       this.users = newUser;
-      console.log(this.users);
+      // console.log(this.users);
     });
   }
 
@@ -46,8 +50,25 @@ export class FirebaseService {
   loadChannels() {
     this.channel$.subscribe((newChannel) => {
       this.channels = newChannel;
-      console.log(this.channels);
+      // console.log(this.channels);
     });
+  }
+
+
+  async loadCurrentChannel() {
+
+
+    if (this.currentChannelId) {
+
+      let collChannel = collection(this.firestore, `channel/${this.currentChannelId}/thread`);
+      let channel$ = collectionData(collChannel);
+
+      channel$.subscribe((newChannel) => {
+        this.currentChannel = newChannel;
+        console.log(this.currentChannel);
+      });
+    }
+
   }
 
 }

@@ -3,25 +3,35 @@
 
     <div *ngIf="firestore.currentChannelId" class="headline">
       <mat-divider></mat-divider>
-      <h2 class="thread_name"># angular</h2>
+      <h2 class="thread_name">{{ firestore.currentChannelName }}</h2>
     </div>
 
-    <div [ngStyle]="setHeight()" style="overflow: scroll; height: 0px;" #scrollMe [scrollTop]="scrollMe.scrollHeight"
-      class="message_content">
+ <app-all-channel-container *ngIf="!firestore.currentChannelId && !firestore.currentUserMessageId">
+    </app-all-channel-container>
+
+    <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 150px))' }" class="message_content">
 
       <mat-divider></mat-divider>
 
-      <app-message-container *ngIf="firestore.currentUserMessageId"></app-message-container>
+      <div *ngIf="firestore.currentUserMessageId">
+      <app-message-container></app-message-container>
+      </div>
 
-      <app-channel-container *ngIf="firestore.currentChannelId"></app-channel-container>
+      <div *ngIf="firestore.currentChannelId">
+        <app-channel-container></app-channel-container>
+      </div>
 
 
     </div>
-    <app-all-channel-container *ngIf="!firestore.currentChannelId && !firestore.currentUserMessageId">
-    </app-all-channel-container>
 
-    <div  *ngIf="firestore.currentChannelId" #myIdentifier class="write_message_container">
+
+
+    <div *ngIf="firestore.currentChannelId" #myIdentifier class="write_message_container">
       <app-write-thread></app-write-thread>
+    </div>
+
+    <div *ngIf="firestore.currentUserMessageId" #myIdentifier class="write_message_container">
+      <app-write-message></app-write-message>
     </div>
 
   </div>
