@@ -21,9 +21,9 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div (mouseover)='displayAddPanle1 = true' (mouseout)='displayAddPanle1 = false' class="expansion_panel">
+            <div (mouseover)='displayFavorites = true' (mouseout)='displayFavorites = false' class="expansion_panel">
               <span>Favorites</span>
-              <div [class.opacity1]="displayAddPanle1" class="add_panel">
+              <div [class.opacity1]="displayFavorites" class="add_panel">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
               </div>
@@ -42,9 +42,9 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
 
-            <div (mouseover)='displayAddPanle2 = true' (mouseout)='displayAddPanle2 = false' class="expansion_panel">
+            <div (mouseover)='displayChannels = true' (mouseout)='displayChannels = false' class="expansion_panel">
               <span>Channels</span>
-              <div [class.opacity1]="displayAddPanle2" class="add_panel">
+              <div [class.opacity1]="displayChannels" class="add_panel">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
                 <mat-icon (click)="openDialog()" aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
               </div>
@@ -54,7 +54,9 @@
         </mat-expansion-panel-header>
 
         <ul>
-          <li *ngFor="let fire of firebase.channels">{{ fire.channel.channelName }}</li>
+          <li *ngFor="let fire of firestore.channels" (click)="setChannelId( fire.channelId )">
+            {{ fire.channel.channelName }}
+          </li>
         </ul>
 
       </mat-expansion-panel>
@@ -63,9 +65,9 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
 
-            <div (mouseover)='displayAddPanle3 = true' (mouseout)='displayAddPanle3 = false' class="expansion_panel">
+            <div (mouseover)='displayDirectMessage = true' (mouseout)='displayDirectMessage = false' class="expansion_panel">
               <span>Direct messages</span>
-              <div [class.opacity1]="displayAddPanle3" class="add_panel">
+              <div [class.opacity1]="displayDirectMessage" class="add_panel">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
               </div>
@@ -76,16 +78,16 @@
 
         <ul>
 
-          <li class="user-row">
+          <li *ngFor="let user of firestore.users" class="user-row">
 
             <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
-            <span>Tony</span>
+            <span>{{ user.username }}</span>
           </li>
-
+<!--
           <li class="user-row">
             <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
             <span>Jürgen</span>
-          </li>
+          </li> -->
 
         </ul>
 

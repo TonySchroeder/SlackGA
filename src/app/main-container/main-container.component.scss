@@ -15,5 +15,15 @@
 }
 
 .write_message_container {
-height: 150px;
+margin-top: auto;
+min-height: 150px;
+box-sizing: border-box;
 }
+
+.headline {
+  // background-color: #FFF;
+  // z-index: 2;
+  border-bottom: 0.05px solid #DFDFDF;
+  }
+
+

@@ -19,7 +19,7 @@ import { LeftContainerComponent } from './left-container/left-container.componen
 import { RightContainerComponent } from './right-container/right-container.component';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { MatCardModule } from '@angular/material/card';
-import { MessageContainerComponent } from './message-container/message-container.component';
+import { MessageContainerComponent } from './displaydata/message-container/message-container.component';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -28,7 +28,7 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { LoginComponent } from './login/login.component';
 import { SlackComponent } from './slack/slack.component';
-import { WriteMessageComponent } from './write-message/write-message.component';
+import { WriteMessageComponent } from './write/write-message/write-message.component';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { DialogAddChannelComponent } from './dialog/dialog-add-channel/dialog-add-channel.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -36,8 +36,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SignupComponent } from './signup/signup.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { DirectMessageChannelComponent } from './direct-message-channel/direct-message-channel.component';
-import { WriteThreadComponent } from './write-thread/write-thread.component';
-import { ThreadContainerComponent } from './thread-container/thread-container.component';
+import { WriteThreadComponent } from './write/write-thread/write-thread.component';
+import { ThreadContainerComponent } from './displaydata/thread-container/thread-container.component';
+import { ChannelContainerComponent } from './displaydata/channel-container/channel-container.component';
+import { AllChannelContainerComponent } from './displaydata/all-channel-container/all-channel-container.component';
 
 
 
@@ -56,7 +58,9 @@ import { ThreadContainerComponent } from './thread-container/thread-container.co
     LoginScreenComponent,
     DirectMessageChannelComponent,
     WriteThreadComponent,
-    ThreadContainerComponent
+    ThreadContainerComponent,
+    ChannelContainerComponent,
+    AllChannelContainerComponent,
   ],
   imports: [
     BrowserModule,

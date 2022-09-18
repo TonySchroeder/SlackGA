@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,21 +11,29 @@ export class FirebaseService {
   loggedInUserId: string = 'e1ryqoWxpbFiYNHAyvZ9';
   collUser: any;
   user$: Observable<any>;
-  channel$: Observable<any>;
-  collChannel: any;
   users: any;
-  messageValue = '';
-  threadValue = '';
+  collChannel: any;
+  channel$: Observable<any>;
   channels: any;
 
+  currentChannelId: string = '';
+  currentUserMessageId: string = '';
 
-  constructor(firestore: Firestore) {
-    this.collUser = collection(firestore, 'user'), { idField: 'id' };
+
+  messageValue = '';
+
+
+
+
+  constructor(public firestore: Firestore) {
+    this.collUser = collection(firestore, 'users'), { idField: 'id' };
     this.user$ = collectionData(this.collUser);
 
     this.collChannel = collection(firestore, 'channel');
     this.channel$ = collectionData(this.collChannel);
+
   }
+
 
   loadUser() {
     this.user$.subscribe((newUser) => {
@@ -33,6 +41,7 @@ export class FirebaseService {
       console.log(this.users);
     });
   }
+
 
   loadChannels() {
     this.channel$.subscribe((newChannel) => {

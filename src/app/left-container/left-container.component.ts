@@ -10,32 +10,33 @@ import { FirebaseService } from '../service/firebase.service';
 })
 export class LeftContainerComponent implements OnInit {
 
-  displayAddPanle1 = false;
-  displayAddPanle2 = false;
-  displayAddPanle3 = false;
+  displayFavorites = false;
+  displayChannels = false;
+  displayDirectMessage = false;
 
 
-  animal: string;
-  name: string;
-
-  constructor(public dialog: MatDialog, public firebase : FirebaseService) { }
+  constructor(public dialog: MatDialog, public firestore: FirebaseService) { }
 
   ngOnInit(): void {
-  this.firebase.loadChannels();
+    this.firestore.loadChannels();
   }
 
   openDialog(): void {
     event.stopPropagation();
     const dialogRef = this.dialog.open(DialogAddChannelComponent, {
       maxWidth: '520px',
-
-      // data: { name: this.name, animal: this.animal },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
     });
   }
+
+  setChannelId(channelId) {
+    this.firestore.currentChannelId = channelId;
+    this.firestore.currentUserMessageId = undefined;
+  }
+
+  setUserlId(channelId) {
+    this.firestore.currentChannelId = channelId;
+    this.firestore.currentUserMessageId = undefined;
+  }
+
 }
 

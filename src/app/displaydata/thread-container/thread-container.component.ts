@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../../service/firebase.service';
 
 @Component({
   selector: 'app-thread-container',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThreadContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public firestore: FirebaseService) { }
 
   ngOnInit(): void {
+
   }
 
 }

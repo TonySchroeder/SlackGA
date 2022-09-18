@@ -80,10 +80,11 @@
 
 .content {
 
-
-  .message_container {
-    height: calc(100vh - (64px));
-    overflow-y: auto;
+box-sizing: border-box;
+.message_container {
+  height: calc(100vh - (64px));
+  overflow-y: auto;
+  box-sizing: border-box;
   }
 
   // .write_message_container {

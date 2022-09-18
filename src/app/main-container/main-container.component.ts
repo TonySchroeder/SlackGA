@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FirebaseService } from '../service/firebase.service';
 
 @Component({
   selector: 'app-main-container',
@@ -7,18 +8,32 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class MainContainerComponent implements OnInit {
 
-  constructor() { }
+  writeContainerHeight: number;
+
+
+  constructor(public firestore: FirebaseService) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    var width = this.myIdentifier.nativeElement.offsetWidth;
-    var height = this.myIdentifier.nativeElement.offsetHeight;
+    // let width = this.myIdentifier.nativeElement.offsetWidth;
+    this.writeContainerHeight = this.myIdentifier.nativeElement.offsetHeight;
 
-    console.log('Width:' + width);
-    console.log('Height: ' + height);
+
+
+    // console.log('Width:' + width);
+    console.log('Height: ' + this.writeContainerHeight);
   }
+
+
+  setHeight() {
+    let heightStyle = { 'height': `calc(100vh - (64px + 48px + ${this.writeContainerHeight}px))` };
+
+    return heightStyle;
+  }
+
+
 
   @ViewChild('myIdentifier')
   myIdentifier: ElementRef;
