@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { collectionData, Firestore } from '@angular/fire/firestore';
+import { collection, doc, getDoc } from 'firebase/firestore';
 import { FirebaseService } from 'src/app/service/firebase.service';
 
 @Component({
@@ -8,9 +10,38 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class ChannelContainerComponent implements OnInit {
 
-  constructor(public firestore: FirebaseService,) { }
+  threadUser: string;
+
+
+  constructor(public firestore: FirebaseService, public firebase: Firestore) {
+
+  }
 
   ngOnInit(): void {
+
   }
+
+  loadThreadUser(userId: string) {
+
+    // let userName: any;
+    // const docRef = doc(this.firebase, `users/${userId}`);
+    // const docSnap = await getDoc(docRef);
+    // userName = docSnap.data();
+
+    // console.log(userName);
+
+
+    return userId;
+
+    // const querySnapshot = await getDoc(docRef);
+    // this.selectedUser = querySnapshot.data();
+    // this.user = new User(this.selectedUser.user);
+
+
+
+  }
+
+
+
 
 }

@@ -14,7 +14,7 @@ export class Message {
     this.textStyle = obj ? obj.textStyle : '';
   }
 
-  public toJSON(): any {
+  public toJson(): any {
     return {
       messagetext: this.messagetext,
       timestamp: this.timestamp,

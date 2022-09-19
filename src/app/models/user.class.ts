@@ -11,7 +11,7 @@ export class User {
         this.password = obj ? obj.password : '';
     }
 
-    public toJSON() {
+    public toJson() {
         return {
             firstName: this.firstName,
             lastName: this.lastName,

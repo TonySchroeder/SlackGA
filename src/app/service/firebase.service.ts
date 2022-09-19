@@ -9,9 +9,12 @@ import { Observable } from 'rxjs';
 export class FirebaseService {
 
   loggedInUserId: string = 'e1ryqoWxpbFiYNHAyvZ9';
+  loggedInUser:any;
+
   collUser: any;
   user$: Observable<any>;
   users: any;
+
   collChannel: any;
   channel$: Observable<any>;
   channels: any;
@@ -29,27 +32,27 @@ export class FirebaseService {
 
 
 
-  constructor(public firestore: Firestore) {
-    this.collUser = collection(firestore, 'users'), { idField: 'id' };
+  constructor(public firebase: Firestore) {
+    this.collUser = collection(firebase, 'users'), { idField: 'id' };
     this.user$ = collectionData(this.collUser);
 
-    this.collChannel = collection(firestore, 'channel');
+    this.collChannel = collection(firebase, 'channel');
     this.channel$ = collectionData(this.collChannel);
 
   }
 
 
   loadUser() {
-    this.user$.subscribe((newUser) => {
-      this.users = newUser;
+    this.user$.subscribe((loadUser) => {
+      this.users = loadUser;
       // console.log(this.users);
     });
   }
 
 
   loadChannels() {
-    this.channel$.subscribe((newChannel) => {
-      this.channels = newChannel;
+    this.channel$.subscribe((loadChannel) => {
+      this.channels = loadChannel;
       // console.log(this.channels);
     });
   }
@@ -60,14 +63,33 @@ export class FirebaseService {
 
     if (this.currentChannelId) {
 
-      let collChannel = collection(this.firestore, `channel/${this.currentChannelId}/thread`);
+      let collChannel = collection(this.firebase, `channel/${this.currentChannelId}/thread`);
       let channel$ = collectionData(collChannel);
 
-      channel$.subscribe((newChannel) => {
-        this.currentChannel = newChannel;
-        console.log(this.currentChannel);
+      channel$.subscribe((loadChannel) => {
+        this.currentChannel = loadChannel;
+        // console.log(this.currentChannel);
       });
     }
+
+  }
+
+  async loadloggedInUser() {
+
+    const docRef = doc(this.firebase, `users/${this.loggedInUserId}`);
+    const docSnap = await getDoc(docRef);
+    this.loggedInUser = docSnap.data();
+
+    // console.log(this.loggedInUser);
+  }
+
+  async loadFirebaseUser(userId) {
+    let userName: any;
+    const docRef = doc(this.firebase, `users/${userId}`);
+    const docSnap = await getDoc(docRef);
+    userName = docSnap.data();
+
+    console.log(userName);
 
   }
 

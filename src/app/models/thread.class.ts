@@ -15,7 +15,7 @@ export class Thread {
   }
 
 
-  public toJSON(): any {
+  public toJson(): any {
     return {
       threadFirstMessage: this.threadFirstMessage,
       timestamp: this.timestamp,

@@ -19,12 +19,23 @@ export class WriteThreadComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+
   async saveThreadInFirestore() {
+    this.thread.threadFirstMessage = this.threadValue;
+    this.thread.usersId = this.store.loggedInUserId;
+    this.thread.channelId = this.store.currentChannelId;
+
     let collChannel = collection(this.firestore, `channel/${this.store.currentChannelId}/thread`);
-    let docRef = await addDoc(collChannel, { message: this.threadValue })
+    let docRef = await addDoc(collChannel, { thread: this.thread.toJson() })
     console.log("Thread written with ID: ", docRef.id);
     await updateDoc(doc(collChannel, docRef.id), { threadId: docRef.id });
   }
+
+
+
+
 
 
 

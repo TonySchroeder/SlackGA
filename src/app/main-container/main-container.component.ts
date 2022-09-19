@@ -24,29 +24,11 @@ export class MainContainerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.collChannel = collection(this.firebase, `channel`, `${this.firestore.currentChannelId}`);
-    // this.channel$ = collectionData(this.collChannel);
-    // this.loadChannels();
-
-    // console.log('id', this.firestore.currentChannelId);
 
   }
 
 
   async loadChannels() {
-    // this.channel$.subscribe((newChannel) => {
-    //   this.channels = newChannel;
-    // });
-
-
-    // if (this.firestore.currentChannelId) {
-
-    //   const docRef = doc(this.firebase, `channel/${this.firestore.currentChannelId}`);
-    //   const querySnapshot = await getDoc(docRef);
-    //   this.channels = querySnapshot.data();
-
-    //   console.log(this.channels);
-    // }
 
   }
 

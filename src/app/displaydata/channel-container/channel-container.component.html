@@ -12,8 +12,8 @@
       <mat-card class="message_card">
         <mat-card-header>
           <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
-          <mat-card-title><h3>Jürgen Rogozin</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
-          <mat-card-subtitle>{{ thread.message }}</mat-card-subtitle>
+          <mat-card-title><h3>{{ loadThreadUser(thread.thread.usersId) ? loadThreadUser(thread.thread.usersId) : 'loading...'}}</h3><span class="time">{{ thread.thread.timestamp | date: 'shortTime' }}</span></mat-card-title>
+          <mat-card-subtitle>{{ thread.thread.threadFirstMessage }}</mat-card-subtitle>
         </mat-card-header>
 
       </mat-card>

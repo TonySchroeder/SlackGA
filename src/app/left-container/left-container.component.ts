@@ -36,6 +36,7 @@ export class LeftContainerComponent implements OnInit {
     this.firestore.currentChannelName = channelName;
     this.firestore.currentUserMessageId = undefined;
     this.firestore.loadCurrentChannel();
+    this.firestore.loadloggedInUser();
   }
 
   setUserlId(userId: string) {
