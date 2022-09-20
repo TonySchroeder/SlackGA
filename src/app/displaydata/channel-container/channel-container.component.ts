@@ -21,12 +21,13 @@ export class ChannelContainerComponent implements OnInit {
 
   }
 
-  loadThreadUser(userId: string) {
-
-    // let userName: any;
-    // const docRef = doc(this.firebase, `users/${userId}`);
-    // const docSnap = await getDoc(docRef);
-    // userName = docSnap.data();
+ async loadThreadUser(userId: string) {
+    let userName: any;
+    let userData:any;
+    const docRef = doc(this.firebase, `users/${userId}`);
+    const docSnap = await getDoc(docRef);
+    userData = docSnap.data();
+    userName = userData.userName;
 
     // console.log(userName);
 
