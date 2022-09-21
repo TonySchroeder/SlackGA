@@ -40,7 +40,7 @@ export class WriteThreadComponent implements OnInit {
 
 
   autoGrowTextZone(e) {
-    // e.target.style.height = "0px";
-    // e.target.style.height = (e.target.scrollHeight + 15)+"px";
+    e.target.style.height = "0px";
+    e.target.style.height = (e.target.scrollHeight + 15)+"px";
   }
 }

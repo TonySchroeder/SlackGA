@@ -90,7 +90,7 @@
           <li *ngFor="let user of firestore.users" (click)="setUserlId( user.userId )" class="user-row">
 
             <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
-            <span>{{ user.username }}</span>
+            <span>{{ user.userName }}</span>
           </li>
 
         </ul>

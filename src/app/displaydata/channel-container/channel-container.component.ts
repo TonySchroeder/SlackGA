@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { collection, doc, getDoc } from 'firebase/firestore';
+import { filter } from 'rxjs';
 import { FirebaseService } from 'src/app/service/firebase.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 export class ChannelContainerComponent implements OnInit {
 
   threadUser: string;
+  users = this.firestore.users
+  thisUser: any;
 
 
   constructor(public firestore: FirebaseService, public firebase: Firestore) {
@@ -19,30 +22,22 @@ export class ChannelContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
-
- async loadThreadUser(userId: string) {
-    let userName: any;
-    let userData:any;
-    const docRef = doc(this.firebase, `users/${userId}`);
-    const docSnap = await getDoc(docRef);
-    userData = docSnap.data();
-    userName = userData.userName;
-
-    // console.log(userName);
-
-
-    return userId;
-
-    // const querySnapshot = await getDoc(docRef);
-    // this.selectedUser = querySnapshot.data();
-    // this.user = new User(this.selectedUser.user);
-
-
-
+    // this.loadUser('e1ryqoWxpbFiYNHAyvZ9')
+    // console.log(this.thisUser);
   }
 
 
+  loadUser(UserId: string) {
+    this.thisUser = this.filterData(UserId);
+    return this.thisUser = this.thisUser[0].userName;
+  }
+
+
+  filterData(userId: string) {
+    return this.users.filter(object => {
+      return object['userId'] == userId;
+    });
+  }
 
 
 }

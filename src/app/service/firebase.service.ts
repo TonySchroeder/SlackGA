@@ -83,14 +83,6 @@ export class FirebaseService {
     // console.log(this.loggedInUser);
   }
 
-  async loadFirebaseUser(userId) {
-    let userName: any;
-    const docRef = doc(this.firebase, `users/${userId}`);
-    const docSnap = await getDoc(docRef);
-    userName = docSnap.data();
 
-    console.log(userName);
-
-  }
 
 }

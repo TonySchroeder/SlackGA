@@ -1,38 +1,56 @@
 <div class="center">
   <div class="widht3000">
 
-    <div *ngIf="firestore.currentChannelId" class="headline">
-      <mat-divider></mat-divider>
-      <h2 class="thread_name">{{ firestore.currentChannelName }}</h2>
-    </div>
 
- <app-all-channel-container *ngIf="!firestore.currentChannelId && !firestore.currentUserMessageId">
+
+    <app-all-channel-container *ngIf="!firestore.currentChannelId && !firestore.currentUserMessageId">
     </app-all-channel-container>
 
-    <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 150px))' }" class="message_content">
 
-      <mat-divider></mat-divider>
+    <div *ngIf="firestore.currentChannelId">
 
-      <div *ngIf="firestore.currentUserMessageId">
-      <app-message-container></app-message-container>
+      <div class="headline">
+        <mat-divider></mat-divider>
+        <h2 class="thread_name">{{ firestore.currentChannelName }}</h2>
       </div>
 
-      <div *ngIf="firestore.currentChannelId">
-        <app-channel-container></app-channel-container>
+      <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 150px))' }" class="message_content">
+
+        <mat-divider></mat-divider>
+
+        <div>
+          <app-channel-container></app-channel-container>
+        </div>
+
       </div>
 
+      <div #myIdentifier class="write_message_container">
+        <app-write-thread></app-write-thread>
+      </div>
 
     </div>
 
 
+    <div *ngIf="firestore.currentUserMessageId">
 
-    <div *ngIf="firestore.currentChannelId" #myIdentifier class="write_message_container">
-      <app-write-thread></app-write-thread>
+
+      <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 150px))' }" class="message_content">
+
+        <mat-divider></mat-divider>
+
+        <div>
+          <app-message-container></app-message-container>
+        </div>
+
+      </div>
+
+      <div #myIdentifier2 class="write_message_container">
+        <app-write-message></app-write-message>
+      </div>
+
     </div>
 
-    <div *ngIf="firestore.currentUserMessageId" #myIdentifier class="write_message_container">
-      <app-write-message></app-write-message>
-    </div>
+
 
   </div>
 </div>

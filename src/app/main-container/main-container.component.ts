@@ -28,9 +28,9 @@ export class MainContainerComponent implements OnInit {
   }
 
 
-  async loadChannels() {
 
-  }
+
+
 
 
   // ngAfterViewInit() {

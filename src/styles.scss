@@ -20,7 +20,13 @@ body {
   }
 }
 
+.d-none{
+  display: none;
+}
 
+.d-block{
+  display: block;
+}
 
 /* width */
 ::-webkit-scrollbar {
