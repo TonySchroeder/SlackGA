@@ -10,13 +10,14 @@
     <div *ngIf="firestore.currentChannelId">
 
       <div class="headline">
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
         <h2 class="thread_name">{{ firestore.currentChannelName }}</h2>
       </div>
 
-      <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 150px))' }" class="message_content">
+      <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 150px))' }"
+      class="message_content">
 
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
 
         <div>
           <app-channel-container></app-channel-container>
@@ -34,9 +35,10 @@
     <div *ngIf="firestore.currentUserMessageId">
 
 
-      <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 150px))' }" class="message_content">
+      <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 150px))' }"
+      class="message_content">
 
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
 
         <div>
           <app-message-container></app-message-container>

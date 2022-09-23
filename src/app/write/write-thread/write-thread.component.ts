@@ -24,6 +24,7 @@ export class WriteThreadComponent implements OnInit {
 
   async saveThreadInFirestore() {
     this.thread.threadFirstMessage = this.threadValue;
+    this.threadValue = '';
     this.thread.usersId = this.store.loggedInUserId;
     this.thread.channelId = this.store.currentChannelId;
 

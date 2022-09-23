@@ -3,10 +3,12 @@
 
 }
 
+.headline{
+  border-bottom: 0.05px solid #DFDFDF;
+}
+
 .thread_name {
   margin-left: 16px;
-  display: flex;
-  align-items: center;
 }
 
 
@@ -17,4 +19,23 @@
 
 .write_message_container {
 height: 150px;
+}
+
+
+.closeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  // top: auto;
+  right: 14px;
+  transition: 125ms;
+
+  &:hover {
+    background-color: #DDDDDD;
+    transition: 125ms;
+  }
 }

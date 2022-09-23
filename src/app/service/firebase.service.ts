@@ -10,6 +10,7 @@ export class FirebaseService {
 
   loggedInUserId: string = 'e1ryqoWxpbFiYNHAyvZ9';
   loggedInUser:any;
+  openRightNav: boolean = false;
 
   collUser: any;
   user$: Observable<any>;
@@ -22,6 +23,9 @@ export class FirebaseService {
   currentChannelId: string = '';
   currentChannelName: string = '';
 
+  currentThreadId: string = '';
+  currentThreadName: string = '';
+
 
   currentUserMessageId: string = '';
 
@@ -33,7 +37,7 @@ export class FirebaseService {
 
 
   constructor(public firebase: Firestore) {
-    this.collUser = collection(firebase, 'users'), { idField: 'id' };
+    this.collUser = collection(firebase, 'users');
     this.user$ = collectionData(this.collUser);
 
     this.collChannel = collection(firebase, 'channel');
@@ -60,7 +64,6 @@ export class FirebaseService {
 
   async loadCurrentChannel() {
 
-
     if (this.currentChannelId) {
 
       let collChannel = collection(this.firebase, `channel/${this.currentChannelId}/thread`);
@@ -71,8 +74,8 @@ export class FirebaseService {
         // console.log(this.currentChannel);
       });
     }
-
   }
+
 
   async loadloggedInUser() {
 
@@ -83,6 +86,12 @@ export class FirebaseService {
     // console.log(this.loggedInUser);
   }
 
+
+
+  async loggedUserLoadSideBar() {
+    await this.loadloggedInUser();
+    this.openRightNav = this.loggedInUser.openSideBar;
+  }
 
 
 }

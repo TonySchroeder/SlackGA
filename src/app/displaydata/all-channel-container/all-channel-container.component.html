@@ -1,4 +1,4 @@
-<mat-list-item *ngFor="let fire of firebase.channels">
+<mat-list-item *ngFor="let fire of firestore.channels" class="cursor_pointer"  (click)="setChannelId( fire.channelId, fire.channel.channelName )">
 
   <mat-card class="message_card">
     <mat-card-header>

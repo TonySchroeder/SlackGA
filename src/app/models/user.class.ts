@@ -3,12 +3,14 @@ export class User {
     lastName: string;
     email: string;
     password: string;
+    openSideBar: boolean;
 
     constructor(obj?: any) {
         this.firstName = obj ? obj.firstName : '';
         this.lastName = obj ? obj.lastName : '';
         this.email = obj ? obj.email : '';
         this.password = obj ? obj.password : '';
+        this.openSideBar = obj ? obj.openSideBar : false;
     }
 
     public toJson() {
@@ -16,7 +18,8 @@ export class User {
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,
-            password: this.password
+            password: this.password,
+            openSideBar: this.openSideBar
         }
     }
 }

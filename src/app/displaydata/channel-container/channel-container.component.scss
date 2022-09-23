@@ -9,10 +9,10 @@
 }
 
 .headline {
-position: sticky;
-top: 0;
-background-color: #FFF;
-z-index: 2;
+// position: sticky;
+// top: 0;
+// background-color: #FFF;
+// z-index: 2;
 border-bottom: 0.05px solid #DFDFDF;
 }
 
@@ -68,4 +68,10 @@ mat-card-title {
   }
 
 
+}
+
+
+.blue_answer{
+  font-weight: 500;
+  color: #1264A3;
 }

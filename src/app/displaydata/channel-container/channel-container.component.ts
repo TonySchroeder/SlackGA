@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { Firestore, updateDoc } from '@angular/fire/firestore';
+import { doc } from 'firebase/firestore';
 import { filter } from 'rxjs';
 import { FirebaseService } from 'src/app/service/firebase.service';
 
@@ -27,9 +27,24 @@ export class ChannelContainerComponent implements OnInit {
   }
 
 
-  loadUser(UserId: string) {
+  loadUserName(UserId: string) {
     this.thisUser = this.filterData(UserId);
     return this.thisUser = this.thisUser[0].userName;
+  }
+
+  docRef() {
+    return doc(this.firebase, `users/${this.firestore.loggedInUserId}`);
+  }
+
+
+
+  setThreadId() {
+    const loadUserSideBar = doc(
+      this.firebase,
+      `users/${this.firestore.loggedInUserId}`
+    );
+    updateDoc(loadUserSideBar, { openSideBar: true });
+    this.firestore.loggedUserLoadSideBar();
   }
 
 
