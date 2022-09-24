@@ -38,14 +38,28 @@ export class ChannelContainerComponent implements OnInit {
 
 
 
-  setThreadId() {
-    const loadUserSideBar = doc(
-      this.firebase,
-      `users/${this.firestore.loggedInUserId}`
-    );
-    updateDoc(loadUserSideBar, { openSideBar: true });
-    this.firestore.loggedUserLoadSideBar();
+  setThreadId(threadId: string) {
+    this.firestore.currentThreadId = threadId;
+    this.firestore.currentThreadName = this.firestore.currentChannelName;
+    this.firestore.loadCurrentThread();
+    this.firestore.loadThreadFirstMessage();
+
+    this.openSideBar();
   }
+
+
+  openSideBar() {
+    if (!this.firestore.openRightNav) {
+      const loadUserSideBar = doc(
+        this.firebase,
+        `users/${this.firestore.loggedInUserId}`
+      );
+      updateDoc(loadUserSideBar, { openSideBar: true });
+      this.firestore.loggedUserLoadSideBar();
+    }
+  }
+
+
 
 
   filterData(userId: string) {

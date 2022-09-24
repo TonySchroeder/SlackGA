@@ -25,11 +25,14 @@ export class FirebaseService {
 
   currentThreadId: string = '';
   currentThreadName: string = '';
+  currentThreadFirstMessage: any;
+
 
 
   currentUserMessageId: string = '';
 
   currentChannel: any;
+  currentThread: any;
 
   messageValue = '';
 
@@ -77,6 +80,30 @@ export class FirebaseService {
   }
 
 
+  async loadCurrentThread() {
+
+    if (this.currentThreadId) {
+      let collThread = collection(this.firebase, `channel/${this.currentChannelId}/thread/${this.currentThreadId}/answers`);
+      let thread$ = collectionData(collThread);
+
+      thread$.subscribe((loadthread) => {
+        this.currentThread = loadthread;
+        // console.log('antworten: ', this.currentThread);
+      });
+    }
+  }
+
+
+  async loadThreadFirstMessage() {
+
+    const docRef = doc(this.firebase, `channel/${this.currentChannelId}/thread/${this.currentThreadId}`);
+    const docSnap = await getDoc(docRef);
+    this.currentThreadFirstMessage = docSnap.data();
+    this.currentThreadFirstMessage = this.currentThreadFirstMessage.thread.threadFirstMessage;
+    // console.log(this.currentThreadFirstMessage);
+  }
+
+
   async loadloggedInUser() {
 
     const docRef = doc(this.firebase, `users/${this.loggedInUserId}`);
@@ -85,7 +112,6 @@ export class FirebaseService {
 
     // console.log(this.loggedInUser);
   }
-
 
 
   async loggedUserLoadSideBar() {

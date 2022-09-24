@@ -2,7 +2,7 @@
 
   <div class="headline">
     <!-- <mat-divider></mat-divider> -->
-    <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span># angular</span>
+    <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ firestore.currentThreadName }}</span>
 
     <button (click)="closeSideBar()" class="closeBtn">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
@@ -11,19 +11,14 @@
 
   <div class="message_container">
 
-
     <div [ngStyle]="{'height': 'calc(100vh - (64px + 48px + 150px))'}" class="message_content">
 
-
-      <app-message-container></app-message-container>
-
+      <app-thread-container></app-thread-container>
 
     </div>
 
-
-
     <div #myIdentifier class="write_message_container">
-      <app-write-message></app-write-message>
+      <app-write-answer></app-write-answer>
     </div>
   </div>
 

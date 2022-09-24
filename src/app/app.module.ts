@@ -40,6 +40,7 @@ import { WriteThreadComponent } from './write/write-thread/write-thread.componen
 import { ThreadContainerComponent } from './displaydata/thread-container/thread-container.component';
 import { ChannelContainerComponent } from './displaydata/channel-container/channel-container.component';
 import { AllChannelContainerComponent } from './displaydata/all-channel-container/all-channel-container.component';
+import { WriteAnswerComponent } from './write/write-answer/write-answer.component';
 
 
 
@@ -61,6 +62,7 @@ import { AllChannelContainerComponent } from './displaydata/all-channel-containe
     ThreadContainerComponent,
     ChannelContainerComponent,
     AllChannelContainerComponent,
+    WriteAnswerComponent,
   ],
   imports: [
     BrowserModule,

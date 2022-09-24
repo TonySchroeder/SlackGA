@@ -1,0 +1,16 @@
+.center{
+  padding: 0 16px 16px 16px;
+
+}
+
+mat-card{
+  min-height: 114px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  textarea{
+       background: aqua;
+  }
+}
+

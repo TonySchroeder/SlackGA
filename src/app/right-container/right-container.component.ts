@@ -28,4 +28,5 @@ export class RightContainerComponent implements OnInit {
 
   }
 
+
 }
