@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { FirebaseService } from './service/firebase.service';
 
@@ -7,7 +7,7 @@ import { FirebaseService } from './service/firebase.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   serachThing = '';
   sideMode: MatDrawerMode = 'side';
@@ -15,11 +15,17 @@ export class AppComponent {
   openLeftNav: boolean = true;
 
 
-  constructor(public firestore: FirebaseService) {
+  constructor(public store: FirebaseService) {
 
-    this.firestore.loggedUserLoadSideBar();
   }
 
+
+  async ngOnInit() {
+    this.store.loggedUserLoadChannelId();
+    this.store.loadChannels();
+    this.store.loadUser();
+    this.store.loggedUserLoadSideBar();
+  }
 
   onKeyDownEvent(event: any) {
     this.screenWidth = window.innerWidth;

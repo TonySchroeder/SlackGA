@@ -1,9 +1,9 @@
-<mat-list-item *ngFor="let fire of firestore.channels" class="cursor_pointer"  (click)="setChannelId( fire.channelId, fire.channel.channelName )">
+<mat-list-item *ngFor="let channel of store.channels" class="cursor_pointer"  (click)="setChannelId( channel.channelId, channel.channel.channelName )">
 
   <mat-card class="message_card">
     <mat-card-header>
-      <mat-card-title><h3>{{ fire.channel.channelName }}</h3></mat-card-title>
-      <mat-card-subtitle><span>179 members</span>&nbsp;&nbsp;·&nbsp;&nbsp;<span>{{ fire.channel.ChannelDescription }}</span></mat-card-subtitle>
+      <mat-card-title><h3>{{ channel.channel.channelName }}</h3></mat-card-title>
+      <mat-card-subtitle><span>179 members</span>&nbsp;&nbsp;·&nbsp;&nbsp;<span>{{ channel.channel.ChannelDescription }}</span></mat-card-subtitle>
     </mat-card-header>
 
   </mat-card>

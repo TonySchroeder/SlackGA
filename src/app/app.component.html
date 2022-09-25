@@ -13,12 +13,6 @@
     <!-- <button (click)="searchSamething()" mat-stroked-button>search</button>s -->
   </div>
 
-  <!-- <div class="button_right_sidenav">
-    <button type="button" mat-button (click)="drawerRight.toggle()">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
-    </button>
-  </div> -->
-
 </mat-toolbar>
 
 <mat-drawer-container class="main_container" autosize>
@@ -28,7 +22,7 @@
     <app-left-container></app-left-container>
 
   </mat-drawer>
-<!-- main container -->
+  <!-- main container -->
   <div class="content">
 
     <div class="message_container">
@@ -36,8 +30,8 @@
     </div>
 
   </div>
-<!-- right container -->
-  <mat-drawer #drawerRight class="right_sidenav" position="end"  [opened]="firestore.openRightNav" [mode]="sideMode">
+  <!-- right container -->
+  <mat-drawer #drawerRight class="right_sidenav" position="end" [opened]="store.openRightNav" [mode]="sideMode">
 
     <app-right-container></app-right-container>
 

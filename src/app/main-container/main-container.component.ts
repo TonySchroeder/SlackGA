@@ -12,24 +12,33 @@ import { collection, doc, getDoc } from 'firebase/firestore';
 export class MainContainerComponent implements OnInit {
 
   writeContainerHeight: number;
-  collChannel: any;
-  channel$: Observable<any>;
-  channels: any;
+  ChannelName: any;
 
 
 
 
 
-  constructor(public firestore: FirebaseService, public firebase: Firestore) { }
+  constructor(public store: FirebaseService, public firebase: Firestore) { }
 
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
   }
 
 
+  loadChannelName(channelId: string) {
+    if(channelId){
+      this.ChannelName = this.filterData(channelId);
+      return this.ChannelName = this.ChannelName[0].channel.channelName;
+    }
+  }
 
 
+  filterData(channelId: string) {
+    return this.store.channels.filter(object => {
+      return object['channelId'] == channelId;
+    });
+  }
 
 
 

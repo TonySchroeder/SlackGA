@@ -61,8 +61,8 @@
         </mat-expansion-panel-header>
 
         <ul>
-          <li *ngFor="let fire of firestore.channels" (click)="setChannelId( fire.channelId, fire.channel.channelName )">
-            {{ fire.channel.channelName }}
+          <li *ngFor="let channel of store.channels" (click)="setChannelId( channel.channelId, channel.channel.channelName )">
+            {{ channel.channel.channelName }}
           </li>
         </ul>
 
@@ -88,7 +88,7 @@
 
         <ul>
 
-          <li *ngFor="let user of firestore.users" (click)="setUserlId( user.userId )" class="user-row">
+          <li *ngFor="let user of store.users" (click)="setMessageId( user.userId )" class="user-row">
 
             <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
             <span>{{ user.userName }}</span>

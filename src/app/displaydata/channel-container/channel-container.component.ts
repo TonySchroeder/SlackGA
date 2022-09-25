@@ -11,9 +11,8 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class ChannelContainerComponent implements OnInit {
 
-  threadUser: string;
-  users = this.firestore.users
-  thisUser: any;
+  threadUser: any;
+  userName: any;
 
 
   constructor(public firestore: FirebaseService, public firebase: Firestore) {
@@ -22,21 +21,21 @@ export class ChannelContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.loadUser('e1ryqoWxpbFiYNHAyvZ9')
-    // console.log(this.thisUser);
+
   }
 
 
-  loadUserName(UserId: string) {
-    this.thisUser = this.filterData(UserId);
-    return this.thisUser = this.thisUser[0].userName;
-  }
-
-  docRef() {
-    return doc(this.firebase, `users/${this.firestore.loggedInUserId}`);
+  loadUserName(userId: string) {
+    this.userName = this.filterData(userId);
+    return this.userName = this.userName[0].userName;
   }
 
 
+  filterData(userId: string) {
+    return this.firestore.users.filter(object => {
+      return object['userId'] == userId;
+    });
+  }
 
   setThreadId(threadId: string) {
     this.firestore.currentThreadId = threadId;
@@ -61,12 +60,6 @@ export class ChannelContainerComponent implements OnInit {
 
 
 
-
-  filterData(userId: string) {
-    return this.users.filter(object => {
-      return object['userId'] == userId;
-    });
-  }
 
 
 }

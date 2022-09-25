@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { doc, updateDoc } from 'firebase/firestore';
 import { DialogAddChannelComponent } from '../dialog/dialog-add-channel/dialog-add-channel.component';
 import { FirebaseService } from '../service/firebase.service';
 
@@ -15,13 +17,13 @@ export class LeftContainerComponent implements OnInit {
   displayDirectMessage = false;
 
 
-  constructor(public dialog: MatDialog, public firestore: FirebaseService) {
+  constructor(public dialog: MatDialog, public store: FirebaseService, public firebase: Firestore) {
 
   }
 
   ngOnInit(): void {
-    this.firestore.loadChannels();
-    this.firestore.loadUser();
+    // this.store.loadChannels();
+    // this.store.loadUser();
   }
 
   openDialog(): void {
@@ -31,17 +33,32 @@ export class LeftContainerComponent implements OnInit {
     });
   }
 
-  setChannelId(channelId: string, channelName) {
-    this.firestore.currentChannelId = channelId;
-    this.firestore.currentChannelName = channelName;
-    this.firestore.currentUserMessageId = undefined;
-    this.firestore.loadCurrentChannel();
-    this.firestore.loadloggedInUser();
+  setChannelId(channelId: string, channelName: string) {
+    this.setUserIds(channelId);
+    this.store.currentUserMessageId = undefined;
+
   }
 
-  setUserlId(userId: string) {
-    this.firestore.currentUserMessageId = userId;
-    this.firestore.currentChannelId = undefined;
+
+
+
+
+  setMessageId(userId: string) {
+    this.store.currentUserMessageId = userId;
+    this.store.currentChannelId = undefined;
+  }
+
+
+
+  setUserIds(channelId: string) {
+
+    const loadUser = doc(
+      this.firebase,
+      `users/${this.store.loggedInUserId}`
+    );
+    updateDoc(loadUser, { currentChannelId: channelId });
+    this.store.loggedUserLoadChannelId();
+
   }
 
 }
