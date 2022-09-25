@@ -2,7 +2,7 @@
 
   <div class="headline">
     <!-- <mat-divider></mat-divider> -->
-    <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ firestore.currentThreadName }}</span>
+    <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ loadChannelName(store.currentChannelIdForThread) }}</span>
 
     <button (click)="closeSideBar()" class="closeBtn">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>

@@ -6,7 +6,7 @@
         <mat-card-header>
           <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
           <mat-card-title><h3>Jürgen Rogozin</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
-          <mat-card-subtitle>{{ firestore.currentThreadFirstMessage }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ loadFirstMessage() }}</mat-card-subtitle>
         </mat-card-header>
 
       </mat-card>
@@ -15,7 +15,7 @@
 
     <mat-divider></mat-divider>
 
-    <mat-list-item *ngFor="let answer of firestore.currentThread" >
+    <mat-list-item *ngFor="let answer of store.currentThread" >
 
       <mat-card class="message_card">
         <mat-card-header>

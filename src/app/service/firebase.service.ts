@@ -13,7 +13,9 @@ export class FirebaseService {
   loggedInUser: any;
   openRightNav: boolean = false;
   currentChannelId: string = '';
+  currentChannelIdForThread: string = '';
   currentThreadId: string = '';
+
 
 
 
@@ -29,7 +31,6 @@ export class FirebaseService {
   channels: any;
 
   // selected channel variable
-  currentChannelIdforName: string = '';
   currentChannelName: string = '';
 
   // selected thread variable
@@ -108,7 +109,8 @@ export class FirebaseService {
   async loadCurrentThread() {
 
     if (this.currentThreadId) {
-      let collThread = collection(this.firebase, `channel/${this.currentChannelId}/thread/${this.currentThreadId}/answers`);
+
+      let collThread = collection(this.firebase, `channel/${this.currentChannelIdForThread}/thread/${this.currentThreadId}/answers`);
       let thread$ = collectionData(collThread);
 
       thread$.subscribe((loadthread) => {
@@ -124,7 +126,7 @@ export class FirebaseService {
    */
   async loadThreadFirstMessage() {
 
-    const docRef = doc(this.firebase, `channel/${this.currentChannelId}/thread/${this.currentThreadId}`);
+    const docRef = doc(this.firebase, `channel/${this.currentChannelIdForThread}/thread/${this.currentThreadId}`);
     const docSnap = await getDoc(docRef);
     this.currentThreadFirstMessage = docSnap.data();
     this.currentThreadFirstMessage = this.currentThreadFirstMessage.thread.threadFirstMessage;
@@ -160,9 +162,11 @@ export class FirebaseService {
    */
   async loggedUserLoadChannelId() {
     await this.loadloggedInUser();
-    // this.currentChannelIdforName = this.loggedInUser.currentChannelId;
     this.currentChannelId = this.loggedInUser.currentChannelId;
+    this.currentChannelIdForThread = this.loggedInUser.currentChannelIdForThread;
+    this.currentThreadId = this.loggedInUser.currentThreadId;
     await this.loadCurrentChannel(this.loggedInUser.currentChannelId);
+    await this.loadCurrentThread();
   }
 
 

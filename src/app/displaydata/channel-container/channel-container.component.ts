@@ -15,7 +15,7 @@ export class ChannelContainerComponent implements OnInit {
   userName: any;
 
 
-  constructor(public firestore: FirebaseService, public firebase: Firestore) {
+  constructor(public store: FirebaseService, public firebase: Firestore) {
 
   }
 
@@ -26,35 +26,44 @@ export class ChannelContainerComponent implements OnInit {
 
 
   loadUserName(userId: string) {
-    this.userName = this.filterData(userId);
-    return this.userName = this.userName[0].userName;
+    if(this.store.users){
+      this.userName = this.filterData(userId);
+      return this.userName = this.userName[0].userName;
+    }
   }
 
 
   filterData(userId: string) {
-    return this.firestore.users.filter(object => {
+    return this.store.users.filter(object => {
       return object['userId'] == userId;
     });
   }
 
-  setThreadId(threadId: string) {
-    this.firestore.currentThreadId = threadId;
-    this.firestore.currentThreadName = this.firestore.currentChannelName;
-    this.firestore.loadCurrentThread();
-    this.firestore.loadThreadFirstMessage();
+  setThreadId(threadId: string, channelId: string) {
+
+    const loadUser = doc(
+      this.firebase,
+      `users/${this.store.loggedInUserId}`
+      );
+      updateDoc(loadUser, { currentChannelIdForThread: channelId });
+      updateDoc(loadUser, { currentThreadId: threadId });
+      this.store.loggedUserLoadChannelId();
+
+      this.store.loadThreadFirstMessage();
 
     this.openSideBar();
   }
 
 
+
   openSideBar() {
-    if (!this.firestore.openRightNav) {
+    if (!this.store.openRightNav) {
       const loadUserSideBar = doc(
         this.firebase,
-        `users/${this.firestore.loggedInUserId}`
+        `users/${this.store.loggedInUserId}`
       );
       updateDoc(loadUserSideBar, { openSideBar: true });
-      this.firestore.loggedUserLoadSideBar();
+      this.store.loggedUserLoadSideBar();
     }
   }
 

@@ -2,14 +2,21 @@
 
   <mat-list>
 
-    <mat-list-item *ngFor="let thread of firestore.currentChannel">
+    <mat-list-item *ngFor="let thread of store.currentChannel">
 
       <mat-card class="message_card">
         <mat-card-header>
           <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
           <mat-card-title><h3>{{ loadUserName(thread.thread.usersId) }}</h3><span class="time">{{ thread.thread.timestamp | date: 'EEEE, MMMM d, h:mm a' }}</span></mat-card-title>
           <mat-card-subtitle>{{ thread.thread.threadFirstMessage }}</mat-card-subtitle>
-          <mat-card-subtitle><span (click)="setThreadId(thread.threadId)" class="blue_answer cursor_pointer">2 Answers</span>&nbsp;&nbsp;<span>Last answer 2 hours ago</span></mat-card-subtitle>
+          <mat-card-subtitle>
+            <span (click)="setThreadId(thread.threadId, thread.thread.channelId)"
+            class="blue_answer cursor_pointer">
+            2 Answers
+          </span>
+          &nbsp;&nbsp;
+          <span>Last answer 2 hours ago</span>
+        </mat-card-subtitle>
         </mat-card-header>
 
       </mat-card>
@@ -22,4 +29,4 @@
 
   </mat-list>
 
-  <!-- {{ loadUserName(thread.thread.usersId) }} -->
+

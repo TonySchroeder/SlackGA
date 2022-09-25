@@ -12,7 +12,7 @@ import { collection, doc, getDoc } from 'firebase/firestore';
 export class MainContainerComponent implements OnInit {
 
   writeContainerHeight: number;
-  ChannelName: any;
+  channelName: any;
 
 
 
@@ -27,9 +27,9 @@ export class MainContainerComponent implements OnInit {
 
 
   loadChannelName(channelId: string) {
-    if(channelId){
-      this.ChannelName = this.filterData(channelId);
-      return this.ChannelName = this.ChannelName[0].channel.channelName;
+    if(this.store.channels){
+      this.channelName = this.filterData(channelId);
+      return this.channelName = this.channelName[0].channel.channelName;
     }
   }
 

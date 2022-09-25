@@ -10,21 +10,40 @@ import { FirebaseService } from '../service/firebase.service';
 })
 export class RightContainerComponent implements OnInit {
 
-  constructor(public firestore: FirebaseService, public firebase: Firestore) { }
+  channelName: any;
+
+
+  constructor(public store: FirebaseService, public firebase: Firestore) { }
 
   ngOnInit(): void {
   }
 
 
 
-  closeSideBar(){
+  loadChannelName(channelId: string) {
+    if(this.store.channels){
+      this.channelName = this.filterData(channelId);
+      return this.channelName = this.channelName[0].channel.channelName;
+    }
+  }
+
+
+  filterData(channelId: string) {
+    return this.store.channels.filter(object => {
+      return object['channelId'] == channelId;
+    });
+  }
+
+
+
+  closeSideBar() {
 
     const loadUserSideBar = doc(
       this.firebase,
-        `users/${this.firestore.loggedInUserId}`
-      );
-      updateDoc(loadUserSideBar, { openSideBar: false });
-      this.firestore.loggedUserLoadSideBar();
+      `users/${this.store.loggedInUserId}`
+    );
+    updateDoc(loadUserSideBar, { openSideBar: false });
+    this.store.loggedUserLoadSideBar();
 
   }
 
