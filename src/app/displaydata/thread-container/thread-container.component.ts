@@ -9,30 +9,32 @@ import { FirebaseService } from '../../service/firebase.service';
 export class ThreadContainerComponent implements OnInit {
 
   firstMessage: any;
-
+  currentChannel: any;
 
   constructor(public store: FirebaseService) { }
 
   ngOnInit(): void {
 
+
   }
 
   loadFirstMessage() {
-    if (this.store.currentChannel) {
-      this.firstMessage = this.filterData(this.store.currentThreadId);
-      if (this.firstMessage.lenght > 0) {
-        console.log(this.firstMessage);
+    // if (this.store.channels) {
 
-        return this.firstMessage = this.firstMessage[0].thread.threadFirstMessage;
-      }
+      this.currentChannel = this.filterData(this.store.currentChannelIdForThread);
+console.log(this.currentChannel);
 
-    }
+      // return this.firstMessage = this.firstMessage[0].channel.channelName;
+      // this.firstMessage = this.filterData(this.store.currentChannelIdForThread);
+
+      return this.store.currentChannelIdForThread;
+    // }
   }
 
 
-  filterData(threadId: string) {
-    return this.store.currentChannel.filter(object => {
-      return object['threadId'] == threadId;
+  filterData(channelId: string) {
+    return this.store.channels.filter(object => {
+      return object['channelId'] == channelId;
     });
   }
 

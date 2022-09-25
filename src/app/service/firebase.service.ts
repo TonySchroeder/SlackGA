@@ -117,6 +117,7 @@ export class FirebaseService {
         this.currentThread = loadthread;
         // console.log('antworten: ', this.currentThread);
       });
+      this.loadThreadFirstMessage();
     }
   }
 

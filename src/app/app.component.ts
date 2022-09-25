@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     this.store.loadChannels();
     this.store.loadUser();
     this.store.loggedUserLoadSideBar();
+
   }
 
   onKeyDownEvent(event: any) {

@@ -26,7 +26,7 @@ export class ChannelContainerComponent implements OnInit {
 
 
   loadUserName(userId: string) {
-    if(this.store.users){
+    if (this.store.users) {
       this.userName = this.filterData(userId);
       return this.userName = this.userName[0].userName;
     }
@@ -39,17 +39,17 @@ export class ChannelContainerComponent implements OnInit {
     });
   }
 
-  setThreadId(threadId: string, channelId: string) {
+  async setThreadId(threadId: string, channelId: string) {
 
     const loadUser = doc(
       this.firebase,
       `users/${this.store.loggedInUserId}`
-      );
-      updateDoc(loadUser, { currentChannelIdForThread: channelId });
-      updateDoc(loadUser, { currentThreadId: threadId });
-      this.store.loggedUserLoadChannelId();
+    );
+    updateDoc(loadUser, { currentChannelIdForThread: channelId });
+    updateDoc(loadUser, { currentThreadId: threadId });
+    await this.store.loggedUserLoadChannelId();
 
-      this.store.loadThreadFirstMessage();
+    await this.store.loadThreadFirstMessage();
 
     this.openSideBar();
   }
