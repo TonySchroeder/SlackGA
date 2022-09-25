@@ -21,10 +21,15 @@ export class ChannelContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-
   }
 
 
+  /**
+   * loading the name of the creator
+   *
+   * @param userId - creator user id
+   * @returns - name of the creator
+   */
   loadUserName(userId: string) {
     if (this.store.users) {
       this.userName = this.filterData(userId);
@@ -33,11 +38,18 @@ export class ChannelContainerComponent implements OnInit {
   }
 
 
+  /**
+   * user filter by id
+   *
+   * @param userId - creator user id
+   * @returns - user json
+   */
   filterData(userId: string) {
     return this.store.users.filter(object => {
       return object['userId'] == userId;
     });
   }
+
 
   async setThreadId(threadId: string, channelId: string) {
 
@@ -53,7 +65,6 @@ export class ChannelContainerComponent implements OnInit {
 
     this.openSideBar();
   }
-
 
 
   openSideBar() {

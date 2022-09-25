@@ -16,14 +16,23 @@ export class AllChannelContainerComponent implements OnInit {
   }
 
 
-  async setChannelId(channelId: string, channelName: string) {
-    await this.setUserIds(channelId);
+  /**
+   * open selected channel
+   *
+   * @param channelId - id of the selected channel
+   * @param channelName - name of the selected channel
+   */
+  setChannelId(channelId: string, channelName: string) {
+    this.setUserIds(channelId);
     this.store.currentUserMessageId = undefined;
-
   }
 
 
-
+/**
+ * save the id in firebase
+ *
+ * @param channelId - id of the selected channel
+ */
   setUserIds(channelId: string) {
 
     const loadUser = doc(
@@ -33,6 +42,6 @@ export class AllChannelContainerComponent implements OnInit {
     updateDoc(loadUser, { currentChannelId: channelId });
     this.store.loggedUserLoadChannelId();
 
-}
+  }
 
 }
