@@ -11,8 +11,8 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class ChannelContainerComponent implements OnInit {
 
-  threadUser: any;
   userName: any;
+  threadAnswer:any;
 
 
   constructor(public store: FirebaseService, public firebase: Firestore) {
@@ -65,6 +65,17 @@ export class ChannelContainerComponent implements OnInit {
 
     this.openSideBar();
   }
+
+
+loadAnwersNumber(){
+  console.log();
+
+  return 3
+}
+
+
+
+
 
 
   openSideBar() {

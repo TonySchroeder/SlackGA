@@ -36,6 +36,13 @@ export class WriteAnswerComponent implements OnInit {
     await updateDoc(doc(collAnswer, docRef.id), { answerId: docRef.id });
 
 
+    // let number = this.store.selectThreadRightBar.thread.threadAnswers;
+    // number++;
+    // await updateDoc(this.store.selectThreadRightBar, { threadAnswers: number });
+    // await this.store.loadCurrentChannel(this.store.currentChannelId);
+
+    console.log(this.store.selectThreadRightBar.thread.threadAnswers);
+
   }
 
 

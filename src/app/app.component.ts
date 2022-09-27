@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     this.store.loggedUserLoadChannelId();
     this.store.loadChannels();
+    this.store.loadThreads();
     this.store.loadUser();
     this.store.loggedUserLoadSideBar();
 

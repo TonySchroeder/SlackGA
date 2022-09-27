@@ -20,15 +20,20 @@ export class FirebaseService {
 
 
 
-  // user variable
+  // users variable
   collUser: any;
   user$: Observable<any>;
   users: any;
 
-  // channel variable
+  // channels variable
   collChannel: any;
   channel$: Observable<any>;
   channels: any;
+
+   // threads variable
+   collThread: any;
+   thread$: Observable<any>;
+   threads: any;
 
   // selected channel variable
   currentChannelName: string = '';
@@ -37,12 +42,17 @@ export class FirebaseService {
   currentThreadName: string = '';
   currentThreadFirstMessage: any;
 
-
+// user id for message container
   currentUserMessageId: string = '';
 
-
+// threads for main component
   currentChannel: any;
+
+  // answers for right component
   currentThread: any;
+
+  // thread for right component
+ selectThreadRightBar:any;
 
   messageValue = '';
 
@@ -54,12 +64,16 @@ export class FirebaseService {
    * @param firebase import from firebase
    */
   constructor(public firebase: Firestore) {
+
+
     this.collUser = collection(firebase, 'users');
     this.user$ = collectionData(this.collUser);
 
     this.collChannel = collection(firebase, 'channel');
     this.channel$ = collectionData(this.collChannel);
 
+    this.collThread = collection(firebase, 'threads');
+    this.thread$ = collectionData(this.collThread);
   }
 
 
@@ -69,7 +83,7 @@ export class FirebaseService {
   loadUser() {
     this.user$.subscribe((loadUser) => {
       this.users = loadUser;
-      // console.log(this.users);
+      // console.log('users: ', this.users);
     });
   }
 
@@ -80,27 +94,38 @@ export class FirebaseService {
   loadChannels() {
     this.channel$.subscribe((loadChannel) => {
       this.channels = loadChannel;
-      // console.log(this.channels);
+      // console.log('channels: ', this.channels);
     });
   }
 
 
   /**
-   * load current channel
+   * load all threads
    */
-  async loadCurrentChannel(channelId) {
-
-    if (this.currentChannelId) {
-
-      let collChannel = collection(this.firebase, `channel/${channelId}/thread`);
-      let channel$ = collectionData(collChannel);
-
-      channel$.subscribe((loadChannel) => {
-        this.currentChannel = loadChannel;
-        // console.log('currentchannel: ', this.currentChannel);
-      });
-    }
+   loadThreads() {
+    this.thread$.subscribe((loadThread) => {
+      this.threads = loadThread;
+      // console.log('threads: ', this.threads);
+    });
   }
+
+
+  // /**
+  //  * load current channel
+  //  */
+  // async loadCurrentChannel(channelId) {
+
+  //   if (this.currentChannelId) {
+
+  //     let collChannel = collection(this.firebase, `channel/${channelId}/thread`);
+  //     let channel$ = collectionData(collChannel);
+
+  //     channel$.subscribe((loadChannel) => {
+  //       this.currentChannel = loadChannel;
+  //       // console.log('currentchannel: ', this.currentChannel);
+  //     });
+  //   }
+  // }
 
 
   /**
@@ -117,6 +142,7 @@ export class FirebaseService {
         this.currentThread = loadthread;
         // console.log('antworten: ', this.currentThread);
       });
+
       this.loadThreadFirstMessage();
     }
   }
@@ -129,8 +155,8 @@ export class FirebaseService {
 
     const docRef = doc(this.firebase, `channel/${this.currentChannelIdForThread}/thread/${this.currentThreadId}`);
     const docSnap = await getDoc(docRef);
-    this.currentThreadFirstMessage = docSnap.data();
-    this.currentThreadFirstMessage = this.currentThreadFirstMessage.thread.threadFirstMessage;
+    this.selectThreadRightBar = docSnap.data();
+    this.currentThreadFirstMessage = this.selectThreadRightBar.thread.threadFirstMessage;
     // console.log(this.currentThreadFirstMessage);
   }
 
@@ -166,7 +192,7 @@ export class FirebaseService {
     this.currentChannelId = this.loggedInUser.currentChannelId;
     this.currentChannelIdForThread = this.loggedInUser.currentChannelIdForThread;
     this.currentThreadId = this.loggedInUser.currentThreadId;
-    await this.loadCurrentChannel(this.loggedInUser.currentChannelId);
+    // await this.loadCurrentChannel(this.loggedInUser.currentChannelId);
     await this.loadCurrentThread();
   }
 

@@ -41,8 +41,6 @@ export class LeftContainerComponent implements OnInit {
 
 
 
-
-
   setMessageId(userId: string) {
     this.store.currentUserMessageId = userId;
     this.store.currentChannelId = undefined;

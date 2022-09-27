@@ -41,6 +41,7 @@ import { ThreadContainerComponent } from './displaydata/thread-container/thread-
 import { ChannelContainerComponent } from './displaydata/channel-container/channel-container.component';
 import { AllChannelContainerComponent } from './displaydata/all-channel-container/all-channel-container.component';
 import { WriteAnswerComponent } from './write/write-answer/write-answer.component';
+import { FilterChannelsPipe } from './pipe/filter-channels.pipe';
 
 
 
@@ -63,6 +64,7 @@ import { WriteAnswerComponent } from './write/write-answer/write-answer.componen
     ChannelContainerComponent,
     AllChannelContainerComponent,
     WriteAnswerComponent,
+    FilterChannelsPipe,
   ],
   imports: [
     BrowserModule,
