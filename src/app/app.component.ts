@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     this.store.loadChannels();
     this.store.loadThreads();
     this.store.loadUser();
+    this.store.loadAnswers();
     this.store.loggedUserLoadSideBar();
 
   }

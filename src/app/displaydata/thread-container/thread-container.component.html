@@ -5,8 +5,8 @@
       <mat-card class="message_card">
         <mat-card-header>
           <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
-          <mat-card-title><h3>Jürgen Rogozin</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
-          <mat-card-subtitle>{{ this.store.currentThreadFirstMessage }}</mat-card-subtitle>
+          <mat-card-title><h3>Jürgen Rogozin{{ store.users | filterUsers: (store.threads | filterFirstmessageUser: store.currentThreadId) }}</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
+          <mat-card-subtitle>{{ this.store.threads | filterFirstmessage: store.currentThreadId }}</mat-card-subtitle>
         </mat-card-header>
 
       </mat-card>
@@ -15,13 +15,13 @@
 
     <mat-divider></mat-divider>
 
-    <mat-list-item *ngFor="let answer of store.currentThread" >
+    <mat-list-item *ngFor="let answer of store.answers | filterAnswers: store.currentThreadId" >
 
       <mat-card class="message_card">
         <mat-card-header>
           <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
-          <mat-card-title><h3>Tony Schroeder</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
-          <mat-card-subtitle>{{ answer.answer.messagetext }}</mat-card-subtitle>
+          <mat-card-title><h3>{{ store.users | filterUsers:answer.answer.usersId }}</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
+          <mat-card-subtitle>{{ answer.answer.messageText }}</mat-card-subtitle>
         </mat-card-header>
 
       </mat-card>

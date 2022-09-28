@@ -1,6 +1,6 @@
-import { FilterChannelsPipe } from './filter-channels.pipe';
+import { FilterChannelsPipe } from './filter-threads.pipe';
 
-describe('FilterChannelsPipe', () => {
+describe('FilterThreadsPipe', () => {
   it('create an instance', () => {
     const pipe = new FilterChannelsPipe();
     expect(pipe).toBeTruthy();

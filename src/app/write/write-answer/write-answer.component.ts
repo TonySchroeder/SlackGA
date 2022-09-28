@@ -12,7 +12,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 export class WriteAnswerComponent implements OnInit {
 
   message: Message = new Message;
-  messagetext: string = '';
+  messageText: string = '';
 
   constructor(public store: FirebaseService, public firestore: Firestore) { }
 
@@ -20,34 +20,18 @@ export class WriteAnswerComponent implements OnInit {
   }
 
 
-
-
   async saveAnswerInFirestore() {
-
-    this.message.messagetext = this.messagetext;
-    this.messagetext = '';
+    this.message.messageText = this.messageText;
+    this.messageText = '';
     this.message.usersId = this.store.loggedInUserId;
     this.message.channelId = this.store.currentChannelIdForThread;
     this.message.threadId = this.store.currentThreadId;
 
-    let collAnswer = collection(this.firestore, `channel/${this.store.currentChannelIdForThread}/thread/${this.store.currentThreadId}/answers`);
-    let docRef = await addDoc(collAnswer, { answer: this.message.toJson() })
-    console.log("Thread written with ID: ", docRef.id);
-    await updateDoc(doc(collAnswer, docRef.id), { answerId: docRef.id });
-
-
-    // let number = this.store.selectThreadRightBar.thread.threadAnswers;
-    // number++;
-    // await updateDoc(this.store.selectThreadRightBar, { threadAnswers: number });
-    // await this.store.loadCurrentChannel(this.store.currentChannelId);
-
-    console.log(this.store.selectThreadRightBar.thread.threadAnswers);
-
+    let docRef = await addDoc(this.store.collAnswers, { answer: this.message.toJson() })
+    console.log("Answer written with ID: ", docRef.id);
+    await updateDoc(doc(this.store.collAnswers, docRef.id), { threadId: this.store.currentThreadId });
+    await updateDoc(doc(this.store.collAnswers, docRef.id), { currentAnswerId: docRef.id });
   }
-
-
-
-
 
 
 

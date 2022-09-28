@@ -34,10 +34,11 @@ export class DialogAddChannelComponent implements OnInit {
     this.channel.channelName = '# ' + this.channelName;
     this.channel.ChannelDescription = this.ChannelDescription;
     this.channel.creatorUser = this.firebase.loggedInUserId;
+
     let docRef = await addDoc(this.firebase.collChannel, { channel: this.channel.toJson() })
-    this.displayProzessBar = false;
     console.log("Document written with ID: ", docRef.id);
     await updateDoc(doc(this.firebase.collChannel, docRef.id), { channelId: docRef.id });
+    this.displayProzessBar = false;
     this.closeDialog();
   }
 

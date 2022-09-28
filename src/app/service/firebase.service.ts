@@ -17,9 +17,6 @@ export class FirebaseService {
   currentThreadId: string = '';
 
 
-
-
-
   // users variable
   collUser: any;
   user$: Observable<any>;
@@ -30,29 +27,34 @@ export class FirebaseService {
   channel$: Observable<any>;
   channels: any;
 
-   // threads variable
-   collThread: any;
-   thread$: Observable<any>;
-   threads: any;
+  // threads variable
+  collThread: any;
+  thread$: Observable<any>;
+  threads: any;
 
-  // selected channel variable
-  currentChannelName: string = '';
+  // answers variable
+  collAnswers: any;
+  answer$: Observable<any>;
+  answers: any;
 
-  // selected thread variable
-  currentThreadName: string = '';
-  currentThreadFirstMessage: any;
 
-// user id for message container
+  // // selected channel variable
+  // currentChannelName: string = '';
+
+  // // selected thread variable
+  // currentThreadName: string = '';
+  // currentThreadFirstMessage: any;
+
+  // user id for message container
   currentUserMessageId: string = '';
 
-// threads for main component
-  currentChannel: any;
+  // // threads for main component
+  // currentChannel: any;
 
-  // answers for right component
-  currentThread: any;
+  // // answers for right component
+  // currentThread: any;
 
-  // thread for right component
- selectThreadRightBar:any;
+
 
   messageValue = '';
 
@@ -74,6 +76,9 @@ export class FirebaseService {
 
     this.collThread = collection(firebase, 'threads');
     this.thread$ = collectionData(this.collThread);
+
+    this.collAnswers = collection(firebase, 'answers');
+    this.answer$ = collectionData(this.collAnswers);
   }
 
 
@@ -102,7 +107,7 @@ export class FirebaseService {
   /**
    * load all threads
    */
-   loadThreads() {
+  loadThreads() {
     this.thread$.subscribe((loadThread) => {
       this.threads = loadThread;
       // console.log('threads: ', this.threads);
@@ -110,54 +115,14 @@ export class FirebaseService {
   }
 
 
-  // /**
-  //  * load current channel
-  //  */
-  // async loadCurrentChannel(channelId) {
-
-  //   if (this.currentChannelId) {
-
-  //     let collChannel = collection(this.firebase, `channel/${channelId}/thread`);
-  //     let channel$ = collectionData(collChannel);
-
-  //     channel$.subscribe((loadChannel) => {
-  //       this.currentChannel = loadChannel;
-  //       // console.log('currentchannel: ', this.currentChannel);
-  //     });
-  //   }
-  // }
-
-
   /**
-   * load current Thread
+   * load all answers
    */
-  async loadCurrentThread() {
-
-    if (this.currentThreadId) {
-
-      let collThread = collection(this.firebase, `channel/${this.currentChannelIdForThread}/thread/${this.currentThreadId}/answers`);
-      let thread$ = collectionData(collThread);
-
-      thread$.subscribe((loadthread) => {
-        this.currentThread = loadthread;
-        // console.log('antworten: ', this.currentThread);
-      });
-
-      this.loadThreadFirstMessage();
-    }
-  }
-
-
-  /**
-   * load first message of the selected thread
-   */
-  async loadThreadFirstMessage() {
-
-    const docRef = doc(this.firebase, `channel/${this.currentChannelIdForThread}/thread/${this.currentThreadId}`);
-    const docSnap = await getDoc(docRef);
-    this.selectThreadRightBar = docSnap.data();
-    this.currentThreadFirstMessage = this.selectThreadRightBar.thread.threadFirstMessage;
-    // console.log(this.currentThreadFirstMessage);
+   loadAnswers() {
+    this.answer$.subscribe((loadAnswer) => {
+      this.answers = loadAnswer;
+      // console.log('answers: ', this.answers);
+    });
   }
 
 
@@ -192,9 +157,7 @@ export class FirebaseService {
     this.currentChannelId = this.loggedInUser.currentChannelId;
     this.currentChannelIdForThread = this.loggedInUser.currentChannelIdForThread;
     this.currentThreadId = this.loggedInUser.currentThreadId;
-    // await this.loadCurrentChannel(this.loggedInUser.currentChannelId);
-    await this.loadCurrentThread();
-  }
+    }
 
 
 }

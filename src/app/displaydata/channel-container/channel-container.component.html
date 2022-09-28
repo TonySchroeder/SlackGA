@@ -1,42 +1,18 @@
 <mat-list>
 
-  <!-- <mat-list-item *ngFor="let thread of store.currentChannel">
-
-      <mat-card class="message_card">
-        <mat-card-header>
-          <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
-          <mat-card-title><h3>{{ loadUserName(thread.thread.usersId) }}</h3><span class="time">{{ thread.thread.timestamp | date: 'EEEE, MMMM d, h:mm a' }}</span></mat-card-title>
-          <mat-card-subtitle>{{ thread.thread.threadFirstMessage }}</mat-card-subtitle>
-          <mat-card-subtitle>
-            <span (click)="setThreadId(thread.threadId, thread.thread.channelId)"
-            class="blue_answer cursor_pointer">
-            {{ thread.thread.threadAnswers }} Answers
-          </span>
-          &nbsp;&nbsp;
-          <span>Last answer 2 hours ago</span>
-        </mat-card-subtitle>
-        </mat-card-header>
-
-      </mat-card>
-
-      <mat-divider></mat-divider>
-
-    </mat-list-item> -->
-
-
-
-  <mat-list-item *ngFor="let thread of store.threads | filterChannels:this.store.currentChannelId ">
+  <mat-list-item *ngFor="let thread of store.threads | filterThreads:this.store.currentChannelId">
 
     <mat-card class="message_card">
       <mat-card-header>
         <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
         <mat-card-title>
-          <h3>username</h3><span class="time">zeit</span>
+          <h3>{{ store.users | filterUsers:thread.thread.usersId }}</h3><span class="time">{{ thread.thread.timestamp | date: 'EEEE,
+            MMMM d, h:mm a' }}</span>
         </mat-card-title>
         <mat-card-subtitle>{{ thread.thread.firstMessage }}</mat-card-subtitle>
         <mat-card-subtitle>
-          <span (click)="setThreadId(thread.threadId, thread.thread.channelId)" class="blue_answer cursor_pointer">
-            4 Answers
+          <span (click)="setThreadId(thread.currentThreadId, thread.channelId)" class="blue_answer cursor_pointer">
+            2 Answers
           </span>
           &nbsp;&nbsp;
           <span>Last answer 2 hours ago</span>
@@ -48,6 +24,5 @@
     <mat-divider></mat-divider>
 
   </mat-list-item>
-
 
 </mat-list>

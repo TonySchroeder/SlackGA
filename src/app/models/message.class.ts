@@ -1,5 +1,5 @@
 export class Message {
-  messagetext: string;
+  messageText: string;
   timestamp: number;
   usersId: string; // is the firebase document ID from the user who sent the message, for example user 3C651LYhk1HaB8Y0Vsbf
   channelId: string; // is the firebase document ID from the channel, in which message was posted, for example channel 8liMczKcm1Paer7sJbAX
@@ -8,7 +8,7 @@ export class Message {
   // imageUrl?
 
   constructor(obj?: any) {
-    this.messagetext = obj ? obj.messagetext : '';
+    this.messageText = obj ? obj.messageText : '';
     this.timestamp = obj ? obj.timestamp : new Date().getTime();
     this.usersId = obj ? obj.usersId : ''
     this.channelId = obj ? obj.channelId : ''
@@ -18,7 +18,7 @@ export class Message {
 
   public toJson(): any {
     return {
-      messagetext: this.messagetext,
+      messageText: this.messageText,
       timestamp: this.timestamp,
       usersId: this.usersId,
       channelId: this.channelId,
