@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterFirstmessageUser'
+  name: 'filterSelectThread'
 })
-export class FilterFirstmessageUserPipe implements PipeTransform {
+export class FilterSelectThreadPipe implements PipeTransform {
 
   transform(value: any, filterString: any): any {
     if (value && filterString) {
@@ -13,7 +13,7 @@ export class FilterFirstmessageUserPipe implements PipeTransform {
       const threads = [];
       for (const thread of value) {
         if (thread['currentThreadId'] === filterString) {
-          threads.push(thread.thread.usersId)
+          threads.push(thread)
         }
       }
       return threads;

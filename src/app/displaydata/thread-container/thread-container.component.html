@@ -2,11 +2,11 @@
 
     <mat-list-item >
 
-      <mat-card class="message_card">
+      <mat-card *ngFor="let thread of store.threads | filterSelectThread: this.store.currentThreadId" class="message_card">
         <mat-card-header>
           <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
-          <mat-card-title><h3>Jürgen Rogozin{{ store.users | filterUsers: (store.threads | filterFirstmessageUser: store.currentThreadId) }}</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
-          <mat-card-subtitle>{{ this.store.threads | filterFirstmessage: store.currentThreadId }}</mat-card-subtitle>
+          <mat-card-title><h3>{{ store.users | filterUsers: thread.thread.usersId }}</h3><span class="time">{{ thread.thread.timestamp | date: 'EEEE, MMMM d, h:mm a'  }}</span></mat-card-title>
+          <mat-card-subtitle>{{ thread.thread.firstMessage }}</mat-card-subtitle>
         </mat-card-header>
 
       </mat-card>
@@ -20,7 +20,8 @@
       <mat-card class="message_card">
         <mat-card-header>
           <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
-          <mat-card-title><h3>{{ store.users | filterUsers:answer.answer.usersId }}</h3><span class="time">Yesterday at 3:30 pm</span></mat-card-title>
+          <mat-card-title><h3>{{ store.users | filterUsers:answer.answer.usersId }}</h3><span class="time">{{ answer.answer.timestamp |  date: 'EEEE,
+            MMMM d, h:mm a' }}</span></mat-card-title>
           <mat-card-subtitle>{{ answer.answer.messageText }}</mat-card-subtitle>
         </mat-card-header>
 

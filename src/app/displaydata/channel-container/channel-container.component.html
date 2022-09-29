@@ -6,13 +6,12 @@
       <mat-card-header>
         <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
         <mat-card-title>
-          <h3>{{ store.users | filterUsers:thread.thread.usersId }}</h3><span class="time">{{ thread.thread.timestamp | date: 'EEEE,
-            MMMM d, h:mm a' }}</span>
+          <h3>{{ store.users | filterUsers:thread.thread.usersId }}</h3><span class="time">{{ thread.thread.timestamp | date: 'EEEE, MMMM d, h:mm a' }}</span>
         </mat-card-title>
         <mat-card-subtitle>{{ thread.thread.firstMessage }}</mat-card-subtitle>
         <mat-card-subtitle>
           <span (click)="setThreadId(thread.currentThreadId, thread.channelId)" class="blue_answer cursor_pointer">
-            2 Answers
+          {{ store.answers | filterNumberOfAnswers: thread.currentThreadId}} answers
           </span>
           &nbsp;&nbsp;
           <span>Last answer 2 hours ago</span>

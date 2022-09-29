@@ -44,9 +44,9 @@ import { WriteAnswerComponent } from './write/write-answer/write-answer.componen
 import { FilterChannelsPipe } from './pipe/filter-threads.pipe';
 import { FilterThreadsPipe } from './pipe/filter-answers.pipe';
 import { FilterUsersPipe } from './pipe/filter-users.pipe';
-import { FilterFirstmessagePipe } from './pipe/filter-firstmessage.pipe';
 import { FilterChannelnamePipe } from './pipe/filter-channelname.pipe';
-import { FilterFirstmessageUserPipe } from './pipe/filter-firstmessage-user.pipe';
+import { FilterSelectThreadPipe } from './pipe/filter-select-thread.pipe';
+import { FilterNumberOfAnswersPipe } from './pipe/filter-number-of-answers.pipe';
 
 
 
@@ -72,9 +72,9 @@ import { FilterFirstmessageUserPipe } from './pipe/filter-firstmessage-user.pipe
     FilterChannelsPipe,
     FilterThreadsPipe,
     FilterUsersPipe,
-    FilterFirstmessagePipe,
     FilterChannelnamePipe,
-    FilterFirstmessageUserPipe,
+    FilterSelectThreadPipe,
+    FilterNumberOfAnswersPipe,
   ],
   imports: [
     BrowserModule,
