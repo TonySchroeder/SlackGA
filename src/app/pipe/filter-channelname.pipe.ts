@@ -10,13 +10,13 @@ export class FilterChannelnamePipe implements PipeTransform {
       if (filterString.lenght === 0 || filterString === '') {
         return undefined;
       }
-      const threads = [];
+      const channels = [];
       for (const channel of value) {
         if (channel['channelId'] === filterString) {
-          threads.push(channel.channel.channelName)
+          channels.push(channel.channel.channelName)
         }
       }
-      return threads;
+      return channels;
     }
   }
 

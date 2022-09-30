@@ -47,6 +47,7 @@ import { FilterUsersPipe } from './pipe/filter-users.pipe';
 import { FilterChannelnamePipe } from './pipe/filter-channelname.pipe';
 import { FilterSelectThreadPipe } from './pipe/filter-select-thread.pipe';
 import { FilterNumberOfAnswersPipe } from './pipe/filter-number-of-answers.pipe';
+import { FilterSelectChannelPipe } from './pipe/filter-select-channel.pipe';
 
 
 
@@ -75,6 +76,7 @@ import { FilterNumberOfAnswersPipe } from './pipe/filter-number-of-answers.pipe'
     FilterChannelnamePipe,
     FilterSelectThreadPipe,
     FilterNumberOfAnswersPipe,
+    FilterSelectChannelPipe,
   ],
   imports: [
     BrowserModule,

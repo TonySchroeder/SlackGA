@@ -1,7 +1,7 @@
 <div class="center">
   <mat-card>
     <!-- <mat-form-field appearance="standard"> -->
-      <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="messageText" class="textfield" placeholder="Message to Jürgen"  matInput></textarea>
+      <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="messageText" class="textfield" placeholder="reply ..."  matInput></textarea>
     <!-- </mat-form-field> -->
 <button (click)="saveAnswerInFirestore()">Send</button>
   </mat-card>

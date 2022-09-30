@@ -38,21 +38,12 @@ export class FirebaseService {
   answers: any;
 
 
-  // // selected channel variable
-  // currentChannelName: string = '';
 
-  // // selected thread variable
-  // currentThreadName: string = '';
-  // currentThreadFirstMessage: any;
 
   // user id for message container
   currentUserMessageId: string = '';
 
-  // // threads for main component
-  // currentChannel: any;
 
-  // // answers for right component
-  // currentThread: any;
 
 
 
@@ -111,19 +102,31 @@ export class FirebaseService {
     this.thread$.subscribe((loadThread) => {
       this.threads = loadThread;
       // console.log('threads: ', this.threads);
+      this.threads.sort(this.sortFuncThread)
     });
+  }
+
+
+  sortFuncThread(a: any, b: any) {
+     return a.thread.timestamp - b.thread.timestamp
   }
 
 
   /**
    * load all answers
    */
-   loadAnswers() {
+  loadAnswers() {
     this.answer$.subscribe((loadAnswer) => {
       this.answers = loadAnswer;
       // console.log('answers: ', this.answers);
+      this.answers.sort(this.sortFuncAnswer)
     });
   }
+
+
+  sortFuncAnswer(a: any, b: any) {
+    return a.answer.timestamp - b.answer.timestamp
+ }
 
 
   /**
@@ -157,7 +160,7 @@ export class FirebaseService {
     this.currentChannelId = this.loggedInUser.currentChannelId;
     this.currentChannelIdForThread = this.loggedInUser.currentChannelIdForThread;
     this.currentThreadId = this.loggedInUser.currentThreadId;
-    }
+  }
 
 
 }

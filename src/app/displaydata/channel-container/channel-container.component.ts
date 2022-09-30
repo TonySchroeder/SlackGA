@@ -11,9 +11,6 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class ChannelContainerComponent implements OnInit {
 
-  userName: any;
-  threadAnswer: any;
-
 
   constructor(public store: FirebaseService, public firebase: Firestore) {
 

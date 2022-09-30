@@ -1,8 +1,13 @@
 <div class="center">
+
   <mat-card>
+
     <!-- <mat-form-field appearance="standard"> -->
-      <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="threadValue" class="textfield" placeholder="Message to Jürgen"  matInput></textarea>
+    <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="threadValue" class="textfield"
+      placeholder="Message to {{ store.channels | filterChannelname: store.currentChannelId }}" matInput></textarea>
     <!-- </mat-form-field> -->
-<button (click)="saveThreadInFirestore()">Send</button>
+    <button (click)="saveThreadInFirestore()">Send</button>
+
   </mat-card>
+
 </div>
