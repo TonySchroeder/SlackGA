@@ -27,7 +27,7 @@
 
 
 .search_container {
-
+  max-width: 732px;
   width: 100%;
   padding: 0 264px;
 
@@ -80,11 +80,12 @@
 
 .content {
 
-box-sizing: border-box;
-.message_container {
-  height: calc(100vh - (64px));
-  overflow-y: auto;
   box-sizing: border-box;
+
+  .message_container {
+    height: calc(100vh - (64px));
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   // .write_message_container {

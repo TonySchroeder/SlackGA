@@ -61,6 +61,17 @@ body {
 }
 
 
+.avatar_image {
+  height: 36px;
+  width: 36px;
+  background-color: #435A64;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+
 /* poppins-100 - latin */
 @font-face {
   font-family: 'Poppins';

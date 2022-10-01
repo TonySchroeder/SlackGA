@@ -28,14 +28,10 @@ export class WriteThreadComponent implements OnInit {
     this.thread.usersId = this.store.loggedInUserId;
 
     let docRef = await addDoc(this.store.collThread, { thread: this.thread.toJson() })
-    console.log("Thread written with ID: ", docRef.id);
+    // console.log("Thread written with ID: ", docRef.id);
     await updateDoc(doc(this.store.collThread, docRef.id), { channelId: this.store.currentChannelId });
     await updateDoc(doc(this.store.collThread, docRef.id), { currentThreadId: docRef.id });
   }
-
-
-
-
 
 
 

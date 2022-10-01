@@ -34,30 +34,44 @@ export class LeftContainerComponent implements OnInit {
   }
 
   setChannelId(channelId: string, channelName: string) {
-    this.setUserIds(channelId);
-    this.store.currentUserMessageId = undefined;
-
+    this.setUserChannelId(channelId);
+    // this.store.currentUserMessageId = undefined;
   }
 
 
 
   setMessageId(userId: string) {
-    this.store.currentUserMessageId = userId;
-    this.store.currentChannelId = undefined;
+    this.setUserMessageId(userId)
+    // this.store.currentChannelId = undefined;
   }
 
 
 
-  setUserIds(channelId: string) {
+  setUserChannelId(channelId: string) {
 
     const loadUser = doc(
       this.firebase,
       `users/${this.store.loggedInUserId}`
     );
     updateDoc(loadUser, { currentChannelId: channelId });
+    updateDoc(loadUser, { currentUserMessageId: '' });
     this.store.loggedUserLoadChannelId();
 
   }
 
+
+
+
+  setUserMessageId(userId: string) {
+
+    const loadUser = doc(
+      this.firebase,
+      `users/${this.store.loggedInUserId}`
+    );
+    updateDoc(loadUser, { currentChannelId: '' });
+    updateDoc(loadUser, { currentUserMessageId: userId });
+    this.store.loggedUserLoadChannelId();
+
+  }
 }
 

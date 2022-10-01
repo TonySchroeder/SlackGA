@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
-import { Message } from 'src/app/models/message.class';
+import { Answer } from 'src/app/models/answer.class';
 import { FirebaseService } from 'src/app/service/firebase.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class WriteAnswerComponent implements OnInit {
 
-  message: Message = new Message;
+  message: Answer = new Answer;
   messageText: string = '';
 
   constructor(public store: FirebaseService, public firestore: Firestore) { }
@@ -28,7 +28,7 @@ export class WriteAnswerComponent implements OnInit {
     this.message.threadId = this.store.currentThreadId;
 
     let docRef = await addDoc(this.store.collAnswers, { answer: this.message.toJson() })
-    console.log("Answer written with ID: ", docRef.id);
+    // console.log("Answer written with ID: ", docRef.id);
     await updateDoc(doc(this.store.collAnswers, docRef.id), { threadId: this.store.currentThreadId });
     await updateDoc(doc(this.store.collAnswers, docRef.id), { currentAnswerId: docRef.id });
   }

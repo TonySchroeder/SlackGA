@@ -4,7 +4,8 @@
 
       <mat-card *ngFor="let thread of store.threads | filterSelectThread: this.store.currentThreadId" class="message_card">
         <mat-card-header>
-          <img src="assets/img/panda.png" mat-card-avatar class="avatar_image">
+          <!-- <img src="assets/img/panda.png" mat-card-avatar class="avatar_image"> -->
+          <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:thread.thread.usersId }}</div>
           <mat-card-title><h3>{{ store.users | filterUsers: thread.thread.usersId }}</h3><span class="time">{{ thread.thread.timestamp | date: 'E, dd MM, h:mm a'  }}</span></mat-card-title>
           <mat-card-subtitle>{{ thread.thread.firstMessage }}</mat-card-subtitle>
         </mat-card-header>
@@ -15,11 +16,12 @@
 
     <mat-divider></mat-divider>
 
-    <mat-list-item *ngFor="let answer of store.answers | filterAnswers: store.currentThreadId" >
+    <mat-list-item *ngFor="let answer of store.answers | filterAnswers: store.currentThreadId; trackBy: store.trackByAnswer">
 
       <mat-card class="message_card">
         <mat-card-header>
-          <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
+          <!-- <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image"> -->
+          <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:answer.answer.usersId }}</div>
           <mat-card-title><h3>{{ store.users | filterUsers:answer.answer.usersId }}</h3><span class="time">{{ answer.answer.timestamp |  date: 'E, dd MM, h:mm a' }}</span></mat-card-title>
           <mat-card-subtitle>{{ answer.answer.messageText }}</mat-card-subtitle>
         </mat-card-header>

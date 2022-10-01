@@ -6,16 +6,17 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FirebaseService {
 
   // logged in user variable
-  loggedInUserId: string = 'e1ryqoWxpbFiYNHAyvZ9';
+  loggedInUserId: string = 'u2d4RMwe59EwJyzzuv60';
   loggedInUser: any;
   openRightNav: boolean = false;
   currentChannelId: string = '';
   currentChannelIdForThread: string = '';
   currentThreadId: string = '';
-
+  currentUserMessageId: string = '';
 
   // users variable
   collUser: any;
@@ -36,15 +37,6 @@ export class FirebaseService {
   collAnswers: any;
   answer$: Observable<any>;
   answers: any;
-
-
-
-
-  // user id for message container
-  currentUserMessageId: string = '';
-
-
-
 
 
   messageValue = '';
@@ -108,7 +100,7 @@ export class FirebaseService {
 
 
   sortFuncThread(a: any, b: any) {
-     return a.thread.timestamp - b.thread.timestamp
+    return a.thread.timestamp - b.thread.timestamp
   }
 
 
@@ -126,7 +118,7 @@ export class FirebaseService {
 
   sortFuncAnswer(a: any, b: any) {
     return a.answer.timestamp - b.answer.timestamp
- }
+  }
 
 
   /**
@@ -160,7 +152,16 @@ export class FirebaseService {
     this.currentChannelId = this.loggedInUser.currentChannelId;
     this.currentChannelIdForThread = this.loggedInUser.currentChannelIdForThread;
     this.currentThreadId = this.loggedInUser.currentThreadId;
+    this.currentUserMessageId = this.loggedInUser.currentUserMessageId;
   }
 
+
+  trackByThread(threads) {
+    return threads.currentThreadId;
+  }
+
+  trackByAnswer(answers) {
+    return answers.currentAnswerId;
+  }
 
 }

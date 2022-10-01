@@ -30,6 +30,11 @@
     <!-- select a direct message -->
     <div *ngIf="store.currentUserMessageId">
 
+      <div class="headline">
+        <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:store.currentUserMessageId }}</div>
+        &nbsp;  &nbsp;
+        <h2 class="thread_name">{{ store.users | filterUsers:store.currentUserMessageId}}</h2>
+      </div>
 
       <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 150px))' }" class="message_content">
 

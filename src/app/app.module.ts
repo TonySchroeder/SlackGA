@@ -35,7 +35,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SignupComponent } from './signup/signup.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
-import { DirectMessageChannelComponent } from './direct-message-channel/direct-message-channel.component';
 import { WriteThreadComponent } from './write/write-thread/write-thread.component';
 import { ThreadContainerComponent } from './displaydata/thread-container/thread-container.component';
 import { ChannelContainerComponent } from './displaydata/channel-container/channel-container.component';
@@ -48,6 +47,7 @@ import { FilterChannelnamePipe } from './pipe/filter-channelname.pipe';
 import { FilterSelectThreadPipe } from './pipe/filter-select-thread.pipe';
 import { FilterNumberOfAnswersPipe } from './pipe/filter-number-of-answers.pipe';
 import { FilterSelectChannelPipe } from './pipe/filter-select-channel.pipe';
+import { FilterInitialenPipe } from './pipe/filter-initialen.pipe';
 
 
 
@@ -64,7 +64,6 @@ import { FilterSelectChannelPipe } from './pipe/filter-select-channel.pipe';
     DialogAddChannelComponent,
     SignupComponent,
     LoginScreenComponent,
-    DirectMessageChannelComponent,
     WriteThreadComponent,
     ThreadContainerComponent,
     ChannelContainerComponent,
@@ -77,6 +76,7 @@ import { FilterSelectChannelPipe } from './pipe/filter-select-channel.pipe';
     FilterSelectThreadPipe,
     FilterNumberOfAnswersPipe,
     FilterSelectChannelPipe,
+    FilterInitialenPipe,
   ],
   imports: [
     BrowserModule,
