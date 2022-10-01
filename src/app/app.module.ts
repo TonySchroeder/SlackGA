@@ -48,6 +48,7 @@ import { FilterSelectThreadPipe } from './pipe/filter-select-thread.pipe';
 import { FilterNumberOfAnswersPipe } from './pipe/filter-number-of-answers.pipe';
 import { FilterSelectChannelPipe } from './pipe/filter-select-channel.pipe';
 import { FilterInitialenPipe } from './pipe/filter-initialen.pipe';
+import { FilterMessageInterlocutorPipe } from './pipe/filter-message-interlocutor.pipe';
 
 
 
@@ -77,6 +78,7 @@ import { FilterInitialenPipe } from './pipe/filter-initialen.pipe';
     FilterNumberOfAnswersPipe,
     FilterSelectChannelPipe,
     FilterInitialenPipe,
+    FilterMessageInterlocutorPipe,
   ],
   imports: [
     BrowserModule,

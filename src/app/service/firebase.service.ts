@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class FirebaseService {
 
   // logged in user variable
-  loggedInUserId: string = 'u2d4RMwe59EwJyzzuv60';
+  loggedInUserId: string = 'e1ryqoWxpbFiYNHAyvZ9';
   loggedInUser: any;
   openRightNav: boolean = false;
   currentChannelId: string = '';
@@ -38,9 +38,10 @@ export class FirebaseService {
   answer$: Observable<any>;
   answers: any;
 
-
-  messageValue = '';
-
+  // messages variable
+  collMessages: any;
+  message$: Observable<any>;
+  messages: any;
 
 
   /**
@@ -49,7 +50,6 @@ export class FirebaseService {
    * @param firebase import from firebase
    */
   constructor(public firebase: Firestore) {
-
 
     this.collUser = collection(firebase, 'users');
     this.user$ = collectionData(this.collUser);
@@ -62,6 +62,9 @@ export class FirebaseService {
 
     this.collAnswers = collection(firebase, 'answers');
     this.answer$ = collectionData(this.collAnswers);
+
+    this.collMessages = collection(firebase, 'messages');
+    this.message$ = collectionData(this.collMessages);
   }
 
 
@@ -74,7 +77,6 @@ export class FirebaseService {
       // console.log('users: ', this.users);
     });
   }
-
 
   /**
    * load all channels
@@ -94,13 +96,13 @@ export class FirebaseService {
     this.thread$.subscribe((loadThread) => {
       this.threads = loadThread;
       // console.log('threads: ', this.threads);
-      this.threads.sort(this.sortFuncThread)
+      this.threads.sort(this.sortFuncThread);
     });
   }
 
 
   sortFuncThread(a: any, b: any) {
-    return a.thread.timestamp - b.thread.timestamp
+    return a.thread.timestamp - b.thread.timestamp;
   }
 
 
@@ -111,13 +113,30 @@ export class FirebaseService {
     this.answer$.subscribe((loadAnswer) => {
       this.answers = loadAnswer;
       // console.log('answers: ', this.answers);
-      this.answers.sort(this.sortFuncAnswer)
+      this.answers.sort(this.sortFuncAnswer);
     });
   }
 
 
   sortFuncAnswer(a: any, b: any) {
-    return a.answer.timestamp - b.answer.timestamp
+    return a.answer.timestamp - b.answer.timestamp;
+  }
+
+
+ /**
+   * load all channels
+   */
+  loadMessages() {
+    this.message$.subscribe((loadMessage) => {
+      this.messages = loadMessage;
+      console.log('messages: ', this.messages);
+      this.messages.sort(this.sortFuncMessage);
+    });
+  }
+
+
+  sortFuncMessage(a: any, b: any) {
+    return a.message.timestamp - b.message.timestamp;
   }
 
 
@@ -162,6 +181,10 @@ export class FirebaseService {
 
   trackByAnswer(answers) {
     return answers.currentAnswerId;
+  }
+
+  trackByMessage(messages) {
+    return messages.currentAnswerId;
   }
 
 }

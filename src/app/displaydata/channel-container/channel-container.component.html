@@ -1,6 +1,6 @@
 <mat-list>
 
-  <mat-list-item *ngFor="let thread of store.threads | filterThreads:this.store.currentChannelId; trackBy: store.trackByThread">
+  <mat-list-item *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread">
 
     <mat-card class="message_card">
       <mat-card-header>

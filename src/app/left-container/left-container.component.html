@@ -88,7 +88,7 @@
 
         <ul>
 
-          <li *ngFor="let user of store.users" (click)="setMessageId( user.userId )" class="user-row">
+          <li *ngFor="let user of store.users" (click)="setMessageId( user.userId )" [class.d-none]="user.userId == store.loggedInUserId" class="user-row">
 
             <img src="assets/img/elephant.png" mat-card-avatar class="avatar_image">
             <span>{{ user.userName }}</span>

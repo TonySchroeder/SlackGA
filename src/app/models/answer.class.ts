@@ -10,9 +10,9 @@ export class Answer {
   constructor(obj?: any) {
     this.messageText = obj ? obj.messageText : '';
     this.timestamp = obj ? obj.timestamp : new Date().getTime();
-    this.usersId = obj ? obj.usersId : ''
-    this.channelId = obj ? obj.channelId : ''
-    this.threadId = obj ? obj.threadId : ''
+    this.usersId = obj ? obj.usersId : '';
+    this.channelId = obj ? obj.channelId : '';
+    this.threadId = obj ? obj.threadId : '';
     this.textStyle = obj ? obj.textStyle : '';
   }
 

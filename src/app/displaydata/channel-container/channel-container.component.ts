@@ -13,11 +13,9 @@ export class ChannelContainerComponent implements OnInit {
 
 
   constructor(public store: FirebaseService, public firebase: Firestore) {
-
   }
 
   ngOnInit(): void {
-
   }
 
 

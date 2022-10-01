@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
     this.store.loadThreads();
     this.store.loadUser();
     this.store.loadAnswers();
+    this.store.loadMessages();
     this.store.loggedUserLoadSideBar();
 
   }

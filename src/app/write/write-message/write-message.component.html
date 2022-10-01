@@ -1,8 +1,10 @@
 <div class="center">
   <mat-card>
     <!-- <mat-form-field appearance="standard"> -->
-      <textarea [(ngModel)]="store.messageValue" class="textfield" placeholder="Message to Jürgen"  matInput></textarea>
+    <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="messageText" class="textfield"
+    placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
+      matInput></textarea>
     <!-- </mat-form-field> -->
-    <span>hier entsteht: <br> {{ store.messageValue }}</span>
+    <button (click)="saveAnswerInFirestore()">Send</button>
   </mat-card>
 </div>

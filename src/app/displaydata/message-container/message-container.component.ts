@@ -1,4 +1,3 @@
-import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../service/firebase.service';
 
@@ -9,20 +8,12 @@ import { FirebaseService } from '../../service/firebase.service';
 })
 export class MessageContainerComponent implements OnInit {
 
-  constructor(public store: FirebaseService, private scroller: ViewportScroller) {
+  constructor(public store: FirebaseService) {
   }
 
   ngOnInit(): void {
-    // this.goToBottom();
-    // this.scroller.scrollToAnchor("anger");
+
   }
 
-
-  // goToBottom(){
-  //   setTimeout(() => {
-  //     window.scrollTo(0, document.body.scrollHeight);
-  //   }, 500);
-
-  // }
 
 }
