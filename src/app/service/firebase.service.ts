@@ -45,7 +45,7 @@ export class FirebaseService {
 
 
   /**
-   * load channels and users from firebase
+   * load users, channels, threads, answers and messages from firebase
    *
    * @param firebase import from firebase
    */
@@ -78,6 +78,7 @@ export class FirebaseService {
     });
   }
 
+
   /**
    * load all channels
    */
@@ -101,8 +102,16 @@ export class FirebaseService {
   }
 
 
+  /**
+   * sort the threads by timestamp
+   *
+   * @param a - first timestamp of the array
+   * @param b - next timestamp of the array
+   * @returns - sorted thread
+   */
   sortFuncThread(a: any, b: any) {
     return a.thread.timestamp - b.thread.timestamp;
+    // return (a < b ? -1 : 1);
   }
 
 
@@ -118,23 +127,37 @@ export class FirebaseService {
   }
 
 
+  /**
+   * sort the answers by timestamp
+   *
+   * @param a - first timestamp of the array
+   * @param b - next timestamp of the array
+   * @returns - sorted answers
+   */
   sortFuncAnswer(a: any, b: any) {
     return a.answer.timestamp - b.answer.timestamp;
   }
 
 
- /**
-   * load all channels
-   */
+  /**
+    * load all channels
+    */
   loadMessages() {
     this.message$.subscribe((loadMessage) => {
       this.messages = loadMessage;
-      console.log('messages: ', this.messages);
+      // console.log('messages: ', this.messages);
       this.messages.sort(this.sortFuncMessage);
     });
   }
 
 
+  /**
+   * sort the messages by timestamp
+   *
+   * @param a - first timestamp of the array
+   * @param b - next timestamp of the array
+   * @returns - sorted messages
+   */
   sortFuncMessage(a: any, b: any) {
     return a.message.timestamp - b.message.timestamp;
   }
@@ -144,11 +167,9 @@ export class FirebaseService {
    * load the logged in user
    */
   async loadloggedInUser() {
-
     const docRef = doc(this.firebase, `users/${this.loggedInUserId}`);
     const docSnap = await getDoc(docRef);
     this.loggedInUser = docSnap.data();
-
     // console.log('user: ', this.loggedInUser);
   }
 
@@ -159,12 +180,11 @@ export class FirebaseService {
   async loggedUserLoadSideBar() {
     await this.loadloggedInUser();
     this.openRightNav = this.loggedInUser.openSideBar;
-
   }
 
 
   /**
-   * check the channel to load
+   * check the channel and thread or message to load
    */
   async loggedUserLoadChannelId() {
     await this.loadloggedInUser();
@@ -175,14 +195,34 @@ export class FirebaseService {
   }
 
 
+  /**
+   *prevents reloading of all threads already loaded
+   *
+   * @param threads - all threads array
+   * @returns - new threads
+   */
   trackByThread(threads) {
     return threads.currentThreadId;
   }
 
+
+  /**
+   *prevents reloading of all answers already loaded
+   *
+   * @param answers - all answers array
+   * @returns - new answers
+   */
   trackByAnswer(answers) {
     return answers.currentAnswerId;
   }
 
+
+  /**
+   *prevents reloading of all messages already loaded
+   *
+   * @param messages - all messages array
+   * @returns - new messages
+   */
   trackByMessage(messages) {
     return messages.currentAnswerId;
   }

@@ -1,12 +1,23 @@
 <mat-list>
 
-  <mat-list-item *ngFor="let message of store.messages | filterMessageInterlocutor:store.currentUserMessageId :store.loggedInUserId; trackBy: store.trackByMessage">
+  <mat-list-item
+    *ngFor="let message of store.messages | filterMessageInterlocutor:store.currentUserMessageId :store.loggedInUserId; trackBy: store.trackByMessage; let i = index">
+
+    <button mat-button [matMenuTriggerFor]="afterMenu" class="edit_message">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
+    </button>
+
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+      <button (click)="openDialog(message.currentMessageId)" mat-menu-item>delete message</button>
+      <button mat-menu-item>edit message</button>
+    </mat-menu>
 
     <mat-card class="message_card">
       <mat-card-header>
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:message.autorUser }}</div>
         <mat-card-title>
-          <h3>{{ store.users | filterUsers:message.autorUser }}</h3><span class="time">{{ message.message.timestamp | date: 'E, dd MM, h:mm a'  }}</span>
+          <h3>{{ store.users | filterUsers:message.autorUser }}</h3><span class="time">{{ message.message.timestamp |
+            date: 'E, dd MM, h:mm a' }}</span>
         </mat-card-title>
         <mat-card-subtitle>{{ message.message.messageText }}</mat-card-subtitle>
       </mat-card-header>
@@ -14,9 +25,5 @@
     </mat-card>
 
   </mat-list-item>
-
-
-
-
 
 </mat-list>

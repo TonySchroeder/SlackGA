@@ -18,13 +18,12 @@ export class LeftContainerComponent implements OnInit {
 
 
   constructor(public dialog: MatDialog, public store: FirebaseService, public firebase: Firestore) {
-
   }
 
   ngOnInit(): void {
-    // this.store.loadChannels();
-    // this.store.loadUser();
   }
+
+
 
   openDialog(): void {
     event.stopPropagation();
@@ -33,45 +32,15 @@ export class LeftContainerComponent implements OnInit {
     });
   }
 
-  setChannelId(channelId: string, channelName: string) {
-    this.setUserChannelId(channelId);
-    // this.store.currentUserMessageId = undefined;
-  }
 
 
-
-  setMessageId(userId: string) {
-    this.setUserMessageId(userId)
-    // this.store.currentChannelId = undefined;
-  }
-
-
-
-  setUserChannelId(channelId: string) {
-
+  displayChannelsThreadsOrMessages(channelId, messageId) {
     const loadUser = doc(
       this.firebase,
       `users/${this.store.loggedInUserId}`
     );
     updateDoc(loadUser, { currentChannelId: channelId });
-    updateDoc(loadUser, { currentUserMessageId: '' });
+    updateDoc(loadUser, { currentUserMessageId: messageId });
     this.store.loggedUserLoadChannelId();
-
-  }
-
-
-
-
-  setUserMessageId(userId: string) {
-
-    const loadUser = doc(
-      this.firebase,
-      `users/${this.store.loggedInUserId}`
-    );
-    updateDoc(loadUser, { currentChannelId: '' });
-    updateDoc(loadUser, { currentUserMessageId: userId });
-    this.store.loggedUserLoadChannelId();
-
   }
 }
-

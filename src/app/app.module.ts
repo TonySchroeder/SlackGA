@@ -49,6 +49,9 @@ import { FilterNumberOfAnswersPipe } from './pipe/filter-number-of-answers.pipe'
 import { FilterSelectChannelPipe } from './pipe/filter-select-channel.pipe';
 import { FilterInitialenPipe } from './pipe/filter-initialen.pipe';
 import { FilterMessageInterlocutorPipe } from './pipe/filter-message-interlocutor.pipe';
+import { MatMenuModule } from '@angular/material/menu';
+import { DialogDeleteMessageComponent } from './dialog/dialog-delete-message/dialog-delete-message.component';
+import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
 
 
 
@@ -79,6 +82,8 @@ import { FilterMessageInterlocutorPipe } from './pipe/filter-message-interlocuto
     FilterSelectChannelPipe,
     FilterInitialenPipe,
     FilterMessageInterlocutorPipe,
+    DialogDeleteMessageComponent,
+    FilterMessageIdPipe,
   ],
   imports: [
     BrowserModule,
@@ -99,6 +104,7 @@ import { FilterMessageInterlocutorPipe } from './pipe/filter-message-interlocuto
     MatCardModule,
     HttpClientModule,
     MatDialogModule,
+    MatMenuModule,
     TextFieldModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
