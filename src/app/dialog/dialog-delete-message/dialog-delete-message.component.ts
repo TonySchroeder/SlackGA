@@ -18,13 +18,11 @@ export class DialogDeleteMessageComponent implements OnInit {
     public firebase: Firestore) { }
 
   ngOnInit(): void {
-    console.log(this.messageId);
-
   }
 
 
   deleteConfirm() {
-        this.dialogRef.close();
     deleteDoc(doc(this.store.collMessages, this.messageId));
+    this.dialogRef.close();
   }
 }

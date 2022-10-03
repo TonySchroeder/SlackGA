@@ -16,8 +16,6 @@ export class FilterMessageIdPipe implements PipeTransform {
           messages.push(message)
         }
       }
-      console.log(messages);
-
       return messages;
     }
   }

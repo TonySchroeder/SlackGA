@@ -1,28 +1,54 @@
 <mat-list>
 
-  <mat-list-item
-    *ngFor="let message of store.messages | filterMessageInterlocutor:store.currentUserMessageId :store.loggedInUserId; trackBy: store.trackByMessage; let i = index">
+  <mat-list-item *ngFor="let message of store.messages | filterMessageInterlocutor:store.currentUserMessageId :store.loggedInUserId;
+    trackBy: store.trackByMessage;
+     let i = index" (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
 
-    <button mat-button [matMenuTriggerFor]="afterMenu" class="edit_message">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
-    </button>
+    <!-- menu -->
+    <div [class.opacity1]="displayEditMenu == i" class="edit_message">
+      <button mat-button [matMenuTriggerFor]="afterMenu">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
+      </button>
+    </div>
 
     <mat-menu #afterMenu="matMenu" xPosition="after">
-      <button (click)="openDialog(message.currentMessageId)" mat-menu-item>delete message</button>
-      <button mat-menu-item>edit message</button>
+      <button class="afterMenu_button" (click)="editMessage(i)" mat-menu-item>
+        edit message
+      </button>
+      <button class="afterMenu_button" (click)="openDialog(message.currentMessageId)" mat-button color="warn">
+        delete message
+      </button>
     </mat-menu>
 
+    <!-- display message -->
     <mat-card class="message_card">
+
       <mat-card-header>
+
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:message.autorUser }}</div>
-        <mat-card-title>
+
+        <mat-card-title *ngIf="messageToEdit !== i">
           <h3>{{ store.users | filterUsers:message.autorUser }}</h3><span class="time">{{ message.message.timestamp |
             date: 'E, dd MM, h:mm a' }}</span>
         </mat-card-title>
-        <mat-card-subtitle>{{ message.message.messageText }}</mat-card-subtitle>
+        <mat-card-subtitle  *ngIf="messageToEdit !== i">{{ message.message.messageText }}</mat-card-subtitle>
+
+
+        <mat-card-title *ngIf="messageToEdit === i" class="edit_message_container">
+          <mat-card class="edit_message_field">
+            <textarea class="textfield" [(ngModel)]="message.message.messageText" matInput></textarea>
+            <button (click)="editMessage('')">Cancel</button>
+            <button>Send</button>
+          </mat-card>
+        </mat-card-title>
+
+
+
       </mat-card-header>
 
     </mat-card>
+
+
 
   </mat-list-item>
 

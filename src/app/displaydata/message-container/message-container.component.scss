@@ -12,16 +12,29 @@
   top: 0;
 }
 
+.afterMenu_button {
+  &:hover {
+    background-color: #1164A3;
+    color: #FFFFFF;
+  }
+}
+
+.opacity1 {
+  opacity: 1 !important;
+}
+
 mat-list-item {
   position: relative;
 
   &:hover {
     background-color: #F8F8F8;
+
   }
 
   .edit_message {
+    // opacity: 0; // todo
     position: absolute;
-    top: -12px;
+    top: 0px;
     right: 5px;
     display: flex;
     justify-content: center;
@@ -29,26 +42,8 @@ mat-list-item {
     background-color: #FFFFFF;
     border: 1px solid #DDDDDD;
     border-radius: 5px;
-    box-shadow:  0 1px 10px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 10px 1px rgba(0, 0, 0, .05);
 
-    .edit_container {
-      z-index: 2;
-      position: absolute;
-      top: -12px;
-      right: 100%;
-      display: flex;
-      flex-direction: column;
-      background-color: #F8F8F8;
-      padding: 12px 0;
-      border: 1px solid #DDDDDD;
-      border-radius: 5px;
-      box-shadow:  0 4px 10px 1px rgba(0, 0, 0, .2);
-      span{
-        padding: 2px 12px;
-        white-space: nowrap;
-        background-color: #1164A3;
-      }
-    }
   }
 }
 
@@ -100,4 +95,23 @@ mat-card-title {
 
 
 
+}
+
+
+.edit_message_container {
+  background-color: purple;
+}
+
+.edit_message_field {
+
+  height: 114px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+
+    background: aqua;
+  }
 }
