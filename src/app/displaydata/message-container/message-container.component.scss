@@ -91,20 +91,23 @@ mat-card-title {
   padding: 0;
   padding-top: 16px;
   margin: 0;
-
-
-
-
 }
 
 
-.edit_message_container {
-  background-color: purple;
+.button_container {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+
+  button {
+    min-width: 78px;
+  }
 }
+
 
 .edit_message_field {
 
-  height: 114px;
+  min-height: 114px;
   box-sizing: border-box;
   border-radius: 8px;
   display: flex;
