@@ -7,10 +7,7 @@ export class FilterChannelnamePipe implements PipeTransform {
 
   transform(value: any, filterString: any): any {
     if (value && filterString) {
-      if (filterString.lenght === 0 || filterString === '') {
-        return undefined;
-      }
-      const channels = [];
+           const channels = [];
       for (const channel of value) {
         if (channel['channelId'] === filterString) {
           channels.push(channel.channel.channelName)

@@ -1,0 +1,28 @@
+<mat-dialog-content>
+
+  <h2>Delete message</h2>
+  <p>Are you sure you want to delete this message? This cannot be undone.</p>
+
+  <mat-card *ngFor="let thread of store.threads | filterSelectThread:threadId" class="message_card">
+    <mat-card-header>
+      <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:thread.thread.usersId }}</div>
+      <mat-card-title>
+
+        <h3>{{ store.users | filterUsers:thread.thread.usersId }}</h3>
+        <span class="time">{{ thread.thread.timestamp | date: 'E, dd MM, h:mm a' }}</span>
+
+      </mat-card-title>
+      <mat-card-subtitle>{{ thread.thread.firstMessage }}</mat-card-subtitle>
+    </mat-card-header>
+
+  </mat-card>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="button_container">
+
+  <button mat-raised-button mat-dialog-close>cancel</button>
+  <button mat-raised-button (click)="deleteConfirm()" color="warn">delete</button>
+
+</mat-dialog-actions>
+

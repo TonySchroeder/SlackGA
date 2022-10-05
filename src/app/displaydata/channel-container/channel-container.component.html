@@ -1,23 +1,49 @@
 <mat-list>
 
-  <mat-list-item *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread">
+  <mat-list-item
+    *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread; let i = index">
+
+    <!-- menu -->
+    <div class="edit_message">
+      <button mat-button [matMenuTriggerFor]="afterMenu">
+        <mat-icon fontIcon="more_vert"></mat-icon>
+      </button>
+    </div>
+
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+      <button class="afterMenu_button" (click)="editMessage(i)" mat-menu-item>
+        edit message
+      </button>
+      <button class="afterMenu_button" (click)="openDialog(thread.currentThreadId)" mat-button color="warn">
+        delete message
+      </button>
+    </mat-menu>
 
     <mat-card class="message_card">
+
       <mat-card-header>
-        <!-- <img src="assets/img/panda.png" mat-card-avatar class="avatar_image"> -->
+
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:thread.thread.usersId }}</div>
+
         <mat-card-title>
+
           <h3>{{ store.users | filterUsers:thread.thread.usersId }}</h3>
           <span class="time">{{ thread.thread.timestamp | date: 'EE, dd MM, h:mm a' }}</span>
+
         </mat-card-title>
+
         <mat-card-subtitle>{{ thread.thread.firstMessage }}</mat-card-subtitle>
+
         <mat-card-subtitle>
+
           <span (click)="setThreadId(thread.currentThreadId, thread.channelId)" class="blue_answer cursor_pointer">
-          {{ store.answers | filterNumberOfAnswers: thread.currentThreadId}} answers
+            {{ store.answers | filterNumberOfAnswers: thread.currentThreadId}} answers
           </span>
           &nbsp;&nbsp;
           <span>Last answer 2 hours ago</span>
+
         </mat-card-subtitle>
+
       </mat-card-header>
 
     </mat-card>

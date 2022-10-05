@@ -5,20 +5,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterMessageInterlocutorPipe implements PipeTransform {
 
-  transform(value: any, filterString: any, filterString2: any): any {
-    if (value && filterString && filterString2) {
-      // if (filterString.lenght === 0 || filterString === '') {
-      //   return undefined;
-      // }
+  transform(messagesArray: any, firstInterlocutorId: any, secoundInterlocutorId: any): any {
+    if (messagesArray && firstInterlocutorId && secoundInterlocutorId) {
       const firstFiltration = [];
       const messages = [];
-      for (const message of value) {
-        if (message['interlocutor'].includes(filterString)) {
+      for (const message of messagesArray) {
+        if (message['interlocutor'].includes(firstInterlocutorId)) {
           firstFiltration.push(message)
         }
       }
       for (const message of firstFiltration) {
-        if (message['interlocutor'].includes(filterString2)) {
+        if (message['interlocutor'].includes(secoundInterlocutorId)) {
           messages.push(message)
         }
       }

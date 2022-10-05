@@ -7,10 +7,7 @@ export class FilterSelectThreadPipe implements PipeTransform {
 
   transform(value: any, filterString: any): any {
     if (value && filterString) {
-      if (filterString.lenght === 0 || filterString === '') {
-        return undefined;
-      }
-      const threads = [];
+           const threads = [];
       for (const thread of value) {
         if (thread['currentThreadId'] === filterString) {
           threads.push(thread)

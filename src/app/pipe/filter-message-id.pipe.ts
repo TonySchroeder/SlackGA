@@ -7,10 +7,7 @@ export class FilterMessageIdPipe implements PipeTransform {
 
   transform(value: any, filterString: any): any {
     if (value && filterString) {
-      if (filterString.lenght === 0 || filterString === '') {
-        return undefined;
-      }
-      const messages = [];
+           const messages = [];
       for (const message of value) {
         if (message['currentMessageId'] === filterString) {
           messages.push(message)

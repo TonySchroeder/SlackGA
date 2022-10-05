@@ -16,10 +16,10 @@
   border-bottom: 0.05px solid #DFDFDF;
 }
 
-.mat-button {
-  padding: 0;
-  min-width: 24px;
-}
+// .mat-button {
+//   padding: 0;
+//   min-width: 24px;
+// }
 
 mat-card-title {
   display: flex;
@@ -66,8 +66,6 @@ mat-card-title {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-
-
 }
 
 
@@ -76,3 +74,61 @@ mat-card-title {
   color: #1264A3;
 }
 
+
+.message_card {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 0;
+  padding-top: 16px;
+  margin: 0;
+}
+
+
+.button_container {
+  display: flex;
+  // justify-content: end;
+  gap: 16px;
+
+  button {
+    min-width: 78px;
+  }
+}
+
+mat-card {
+  width: 100% !important;
+}
+
+.mat-card-header-text {
+  width: 100% !important;
+}
+
+.edit_message_field {
+
+  min-height: 114px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+
+    background: aqua;
+  }
+}
+
+.edit_message {
+  // opacity: 0; // todo
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+  box-shadow: 0 1px 10px 1px rgba(0, 0, 0, .05);
+
+}

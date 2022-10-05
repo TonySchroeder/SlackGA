@@ -7,10 +7,7 @@ export class FilterNumberOfAnswersPipe implements PipeTransform {
 
   transform(value: any, filterString: any): any {
     if (value && filterString) {
-      if (filterString.length === 0 || filterString === '') {
-        return undefined;
-      }
-      const threads = [];
+         const threads = [];
       // let answersLength;
       for (const answer of value) {
         if (answer['threadId'] === filterString) {

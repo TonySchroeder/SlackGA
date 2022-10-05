@@ -52,6 +52,7 @@ import { FilterMessageInterlocutorPipe } from './pipe/filter-message-interlocuto
 import { MatMenuModule } from '@angular/material/menu';
 import { DialogDeleteMessageComponent } from './dialog/dialog-delete-message/dialog-delete-message.component';
 import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
+import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialog-delete-thread.component';
 
 
 
@@ -84,6 +85,7 @@ import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
     FilterMessageInterlocutorPipe,
     DialogDeleteMessageComponent,
     FilterMessageIdPipe,
+    DialogDeleteThreadComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,25 +1,44 @@
 <div class="width280">
 
-  <div class="headline">
-    <!-- <mat-divider></mat-divider> -->
-    <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ store.channels | filterChannelname: store.currentChannelId }}</span>
+  <div>
 
-    <button (click)="closeSideBar()" class="closeBtn">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
-    </button>
-  </div>
+    <div class="headline">
+      <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ store.channels | filterChannelname: store.currentChannelId
+        }}</span>
 
-  <div class="message_container">
-
-    <div [ngStyle]="{'height': 'calc(100vh - (64px + 48px + 150px))'}" class="message_content">
-
-      <app-thread-container></app-thread-container>
-
+      <button (click)="closeSideBar()" class="closeBtn">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
+      </button>
     </div>
 
-    <div #myIdentifier class="write_message_container">
-      <app-write-answer></app-write-answer>
+    <div class="message_container">
+
+      <div [ngStyle]="{'height': 'calc(100vh - (64px + 48px + 150px))'}" class="message_content">
+
+        <app-thread-container></app-thread-container>
+
+      </div>
+
+      <div #myIdentifier class="write_message_container">
+        <app-write-answer></app-write-answer>
+      </div>
     </div>
+
   </div>
+
+  <!-- <div>
+
+    <div class="headline">
+      <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ store.channels | filterChannelname: store.currentChannelId
+        }}</span>
+
+      <button (click)="closeSideBar()" class="closeBtn">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
+      </button>
+    </div>
+
+user details
+
+  </div> -->
 
 </div>

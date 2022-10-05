@@ -19,14 +19,14 @@ export class MessageContainerComponent implements OnInit {
   public displayEditMenu;
   messageToEdit: any;
 
-  constructor(public store: FirebaseService,
+  constructor(
+    public store: FirebaseService,
     public dialog: MatDialog,
     public firebase: Firestore
   ) {
   }
 
   ngOnInit(): void {
-
   }
 
 
