@@ -24,8 +24,28 @@ export class DialogDeleteThreadComponent implements OnInit {
   }
 
 
-  deleteConfirm() {
-    deleteDoc(doc(this.store.collThread, this.threadId));
-    this.dialogRef.close();
+  async deleteConfirm() {
+    // await deleteDoc(doc(this.store.collThread, this.threadId));
+    // await this.deleteThreadAnswers()
+    // this.dialogRef.close();
   }
+
+  async deleteThreadAnswers() {
+    for (const answer of await this.getAllThreadAnswers()) {
+      await deleteDoc(doc(this.store.collAnswers, answer['currentAnswerId']));
+    }
+  }
+
+
+  getAllThreadAnswers() {
+    const answers = [];
+    for (const answer of this.store.answers) {
+      if (answer['threadId'] === this.threadId) {
+        answers.push(answer)
+      }
+    }
+    return answers;
+  }
+
+
 }

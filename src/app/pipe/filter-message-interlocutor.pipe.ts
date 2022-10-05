@@ -10,8 +10,10 @@ export class FilterMessageInterlocutorPipe implements PipeTransform {
       const firstFiltration = [];
       const messages = [];
       for (const message of messagesArray) {
-        if (message['interlocutor'].includes(firstInterlocutorId)) {
-          firstFiltration.push(message)
+        if (message['interlocutor']) {
+          if (message['interlocutor'].includes(firstInterlocutorId)) {
+            firstFiltration.push(message)
+          }
         }
       }
       for (const message of firstFiltration) {
