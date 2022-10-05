@@ -7,7 +7,7 @@
     <!-- menu -->
     <div [class.opacity1]="displayEditMenu == i" class="edit_message">
       <button mat-button [matMenuTriggerFor]="afterMenu">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="more_vert"></mat-icon>
+        <mat-icon fontIcon="more_vert"></mat-icon>
       </button>
     </div>
 
@@ -28,31 +28,35 @@
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:message.autorUser }}</div>
 
         <mat-card-title *ngIf="messageToEdit !== i">
+
           <h3>{{ store.users | filterUsers:message.autorUser }}</h3><span class="time">{{ message.message.timestamp |
             date: 'E, dd MM, h:mm a' }}</span>
+
         </mat-card-title>
-        <mat-card-subtitle  *ngIf="messageToEdit !== i">{{ message.message.messageText }}</mat-card-subtitle>
 
+        <mat-card-subtitle *ngIf="messageToEdit !== i">{{ message.message.messageText }}</mat-card-subtitle>
 
+        <!-- edit message -->
         <mat-card-title *ngIf="messageToEdit === i" class="edit_message_container">
+
           <mat-card class="edit_message_field">
+
             <textarea class="textfield" [(ngModel)]="message.message.messageText" matInput></textarea>
             <div class="button_container">
 
               <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-              <button mat-stroked-button (click)="saveEditMessage(message.currentMessageId)" color="primary">Save</button>
+              <button mat-stroked-button (click)="saveEditMessage(message.currentMessageId)"
+                color="primary">Save</button>
 
             </div>
+
           </mat-card>
+
         </mat-card-title>
-
-
 
       </mat-card-header>
 
     </mat-card>
-
-
 
   </mat-list-item>
 

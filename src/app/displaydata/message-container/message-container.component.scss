@@ -33,6 +33,7 @@ mat-list-item {
 
   .edit_message {
     // opacity: 0; // todo
+    z-index: 2;
     position: absolute;
     top: 0px;
     right: 5px;
@@ -96,7 +97,7 @@ mat-card-title {
 
 .button_container {
   display: flex;
-  justify-content: end;
+  // justify-content: end;
   gap: 16px;
 
   button {
@@ -104,6 +105,13 @@ mat-card-title {
   }
 }
 
+mat-card {
+  width: 100% !important;
+}
+
+.mat-card-header-text {
+  width: 100% !important;
+}
 
 .edit_message_field {
 
