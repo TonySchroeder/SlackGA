@@ -50,9 +50,6 @@ export class MessageContainerComponent implements OnInit {
 
   transform(value: any, filterString: any): any {
     if (value && filterString) {
-      if (filterString.lenght === 0 || filterString === '') {
-        return undefined;
-      }
       let currentMessages;
       for (const message of value) {
         if (message['currentMessageId'] === filterString) {

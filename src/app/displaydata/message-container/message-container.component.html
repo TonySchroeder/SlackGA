@@ -37,22 +37,24 @@
         <mat-card-subtitle *ngIf="messageToEdit !== i">{{ message.message.messageText }}</mat-card-subtitle>
 
         <!-- edit message -->
-        <mat-card-title *ngIf="messageToEdit === i" class="edit_message_container">
+        <div class="width">
+          <mat-card-title *ngIf="messageToEdit === i" class="edit_message_container">
 
-          <mat-card class="edit_message_field">
+            <mat-card class="edit_message_field">
 
-            <textarea class="textfield" [(ngModel)]="message.message.messageText" matInput></textarea>
-            <div class="button_container">
+              <textarea class="textfield" [(ngModel)]="message.message.messageText" matInput></textarea>
+              <div class="button_container">
 
-              <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-              <button mat-stroked-button (click)="saveEditMessage(message.currentMessageId)"
+                <button mat-stroked-button (click)="editMessage('')">Cancel</button>
+                <button mat-stroked-button (click)="saveEditMessage(message.currentMessageId)"
                 color="primary">Save</button>
 
-            </div>
+              </div>
 
-          </mat-card>
+            </mat-card>
 
-        </mat-card-title>
+          </mat-card-title>
+        </div>
 
       </mat-card-header>
 

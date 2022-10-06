@@ -19,16 +19,18 @@ export class DialogDeleteThreadComponent implements OnInit {
     public store: FirebaseService,
     public firebase: Firestore) { }
 
+
   ngOnInit(): void {
 
   }
 
 
   async deleteConfirm() {
-    // await deleteDoc(doc(this.store.collThread, this.threadId));
-    // await this.deleteThreadAnswers()
-    // this.dialogRef.close();
+    await this.deleteThreadAnswers()
+    await deleteDoc(doc(this.store.collThread, this.threadId));
+    this.dialogRef.close();
   }
+
 
   async deleteThreadAnswers() {
     for (const answer of await this.getAllThreadAnswers()) {
