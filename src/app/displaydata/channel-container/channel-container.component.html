@@ -20,22 +20,23 @@
       </button>
     </mat-menu>
 
+ <!-- display message -->
     <mat-card class="message_card">
 
       <mat-card-header>
 
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:thread.thread.usersId }}</div>
 
-        <mat-card-title>
+        <mat-card-title *ngIf="messageToEdit !== i">
 
           <h3>{{ store.users | filterUsers:thread.thread.usersId }}</h3>
           <span class="time">{{ thread.thread.timestamp | date: 'EE, dd MM, h:mm a' }}</span>
 
         </mat-card-title>
 
-        <mat-card-subtitle>{{ thread.thread.firstMessage }}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="messageToEdit !== i">{{ thread.thread.firstMessage }}</mat-card-subtitle>
 
-        <mat-card-subtitle>
+        <mat-card-subtitle *ngIf="messageToEdit !== i">
 
           <span (click)="setThreadId(thread.currentThreadId, thread.channelId)" class="blue_answer cursor_pointer">
             {{ store.answers | filterNumberOfAnswers: thread.currentThreadId}} answers
@@ -44,6 +45,29 @@
           <span>Last answer 2 hours ago</span>
 
         </mat-card-subtitle>
+
+
+        <!-- edit message -->
+        <div class="width">
+          <mat-card-title *ngIf="messageToEdit === i" class="edit_message_container">
+
+            <mat-card class="edit_message_field">
+
+              <textarea class="textfield" [(ngModel)]="thread.thread.firstMessage" matInput></textarea>
+              <div class="button_container">
+
+                <button mat-stroked-button (click)="editMessage('')">Cancel</button>
+                <button mat-stroked-button (click)="saveEditMessage(thread.currentThreadId)"
+                  color="primary">Save</button>
+
+              </div>
+
+            </mat-card>
+
+          </mat-card-title>
+        </div>
+
+
 
       </mat-card-header>
 

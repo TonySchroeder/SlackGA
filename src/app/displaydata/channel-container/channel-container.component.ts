@@ -57,14 +57,15 @@ export class ChannelContainerComponent implements OnInit {
   }
 
 
-  async saveEditMessage(currentMessageId: string) {
+  async saveEditMessage(currentThreadId: string) {
+
     const loadMessage = doc(
       this.firebase,
-      `messages/${currentMessageId}`
+      `threads/${currentThreadId}`
     );
-    let editMessage = this.transform(this.store.messages, currentMessageId)
-    await updateDoc(loadMessage, { message: editMessage });
-    await this.store.loadMessages();
+    let editMessage = this.transform(this.store.threads, currentThreadId)
+    await updateDoc(loadMessage, { thread: editMessage });
+    await this.store.loadThreads();
     this.messageToEdit = '';
   }
 
@@ -72,13 +73,10 @@ export class ChannelContainerComponent implements OnInit {
 
   transform(value: any, filterString: any): any {
     if (value && filterString) {
-      if (filterString.lenght === 0 || filterString === '') {
-        return undefined;
-      }
       let currentMessages;
-      for (const message of value) {
-        if (message['currentMessageId'] === filterString) {
-          currentMessages = message.message
+      for (const thread of value) {
+        if (thread['currentThreadId'] === filterString) {
+          currentMessages = thread.thread
         }
       }
       return currentMessages;
