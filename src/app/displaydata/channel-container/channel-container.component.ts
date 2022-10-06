@@ -12,6 +12,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class ChannelContainerComponent implements OnInit {
 
+  public displayEditMenu;
   messageToEdit: any;
 
   constructor(

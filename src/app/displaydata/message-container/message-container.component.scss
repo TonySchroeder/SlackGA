@@ -32,7 +32,7 @@ mat-list-item {
   }
 
   .edit_message {
-    // opacity: 0; // todo
+    opacity: 0;
     z-index: 2;
     position: absolute;
     top: 0px;
@@ -44,7 +44,10 @@ mat-list-item {
     border: 1px solid #DDDDDD;
     border-radius: 5px;
     box-shadow: 0 1px 10px 1px rgba(0, 0, 0, .05);
-
+    
+      &:hover {
+        opacity: 1;
+      }
   }
 }
 

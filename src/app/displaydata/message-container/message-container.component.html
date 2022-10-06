@@ -42,12 +42,10 @@
           <mat-card class="edit_message_field">
 
             <textarea class="textfield" [(ngModel)]="message.message.messageText" matInput></textarea>
+
             <div class="button_container">
-
               <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-              <button mat-stroked-button (click)="saveEditMessage(message.currentMessageId)"
-                color="primary">Save</button>
-
+              <button mat-stroked-button (click)="saveEditMessage(message.currentMessageId)" color="primary">Save</button>
             </div>
 
           </mat-card>

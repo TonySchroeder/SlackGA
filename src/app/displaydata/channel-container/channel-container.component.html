@@ -1,10 +1,11 @@
 <mat-list>
 
   <mat-list-item
-    *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread; let i = index">
+    *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread; let i = index"
+   (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
 
     <!-- menu -->
-    <div class="edit_message">
+    <div [class.opacity1]="displayEditMenu == i" class="edit_message">
       <button mat-button [matMenuTriggerFor]="afterMenu">
         <mat-icon fontIcon="more_vert"></mat-icon>
       </button>
