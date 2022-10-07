@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
+// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 
 @Component({
   selector: 'app-chat-input',
@@ -9,13 +9,13 @@ import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 })
 export class ChatInputComponent implements OnInit {
 
-  public Editor = ClassicEditor;
+  // public Editor = ClassicEditor;
 
 
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
 

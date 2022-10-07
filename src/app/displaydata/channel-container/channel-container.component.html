@@ -2,7 +2,7 @@
 
   <mat-list-item
     *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread; let i = index"
-   (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
+    (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
 
     <!-- menu -->
     <div [class.opacity1]="displayEditMenu == i" class="edit_message">
@@ -20,7 +20,7 @@
       </button>
     </mat-menu>
 
- <!-- display message -->
+    <!-- display message -->
     <mat-card class="message_card">
 
       <mat-card-header>
