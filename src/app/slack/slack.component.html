@@ -1,0 +1,40 @@
+<!-- header -->
+<mat-toolbar class="header" color="primary">
+
+  <div class="button_left_sidenav">
+    <button type="button" mat-button (click)="drawerLeft.toggle()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
+    </button>
+  </div>
+
+  <div class="search_container">
+    <input class="search_input" matInput [(ngModel)]="serachThing" placeholder="search workspace" type="search"
+      (keydown.enter)="onKeyDownEvent($event)" />
+    <!-- <button (click)="searchSamething()" mat-stroked-button>search</button>s -->
+  </div>
+
+</mat-toolbar>
+
+<mat-drawer-container class="main_container" autosize>
+  <!-- left container -->
+  <mat-drawer #drawerLeft class="left_sidenav" position="start" [opened]="openLeftNav" [mode]="sideMode">
+
+    <app-left-container></app-left-container>
+
+  </mat-drawer>
+  <!-- main container -->
+  <div class="content">
+
+    <div class="message_container">
+      <app-main-container></app-main-container>
+    </div>
+
+  </div>
+  <!-- right container -->
+  <mat-drawer #drawerRight class="right_sidenav" position="end" [opened]="store.openRightNav" [mode]="sideMode">
+
+    <app-right-container></app-right-container>
+
+  </mat-drawer>
+
+</mat-drawer-container>

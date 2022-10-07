@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { collectionData } from '@angular/fire/firestore';
+import { MatDrawerMode } from '@angular/material/sidenav';
 import { collection, Firestore } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { FirebaseService } from '../service/firebase.service';
 
 @Component({
   selector: 'app-slack',
@@ -12,29 +14,29 @@ export class SlackComponent implements OnInit {
 
 
   serachThing = '';
-  coll$: Observable<any>;
-  message: any = '';
+  sideMode: MatDrawerMode = 'side';
+  screenWidth: any;
+  openLeftNav: boolean = true;
 
 
+  constructor(public store: FirebaseService) {
 
-
-  constructor(firestore: Firestore) {
-    const coll = collection(firestore, 'user');
-    this.coll$ = collectionData(coll);
-
-    this.coll$.subscribe((newMessage) => {
-      this.message = newMessage;
-      console.log(this.message);
-    });
-  }
-
-  ngOnInit(): void {
   }
 
 
+  async ngOnInit() {
+    this.store.loggedUserLoadChannelId();
+    this.store.loadChannels();
+    this.store.loadThreads();
+    this.store.loadUser();
+    this.store.loadAnswers();
+    this.store.loadMessages();
+    this.store.loggedUserLoadSideBar();
 
+  }
 
   onKeyDownEvent(event: any) {
+    this.screenWidth = window.innerWidth;
     this.searchSamething();
   }
 
@@ -42,4 +44,20 @@ export class SlackComponent implements OnInit {
 
   }
 
+
+
+  /**
+  * determine the window width
+  */
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth >= 799) {
+      this.sideMode = 'side';
+      this.openLeftNav = true;
+    } else if (this.screenWidth < 799) {
+      this.sideMode = 'over';
+      this.openLeftNav = false;
+    }
+  }
 }

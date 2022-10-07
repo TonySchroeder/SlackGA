@@ -12,7 +12,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 export class DialogDeleteAnswerComponent implements OnInit {
 
   answerId: string = '';
-
+answer:any;
 
 
   constructor(public dialogRef: MatDialogRef<DialogDeleteAnswerComponent>,
@@ -31,4 +31,15 @@ export class DialogDeleteAnswerComponent implements OnInit {
   }
 
 
+  // transform() {
+  //   if (this.store.answers && filterString) {
+  //          const threads = [];
+  //     for (const answer of value) {
+  //       if (answer['threadId'] === filterString) {
+  //         threads.push(answer)
+  //       }
+  //     }
+  //     return threads;
+  //   }
+  // }
 }
