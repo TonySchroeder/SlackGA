@@ -54,7 +54,7 @@ import { DialogDeleteMessageComponent } from './dialog/dialog-delete-message/dia
 import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
 import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialog-delete-thread.component';
 import { ChatInputComponent } from './chat-input/chat-input.component';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   declarations: [
@@ -113,7 +113,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    CKEditorModule
+    QuillModule.forRoot()
   ],
   providers: [
 

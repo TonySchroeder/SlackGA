@@ -3,6 +3,13 @@ import { Firestore } from '@angular/fire/firestore';
 import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import { Message } from 'src/app/models/message.class';
 import { FirebaseService } from '../../service/firebase.service';
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill'
+import 'quill-emoji/dist/quill-emoji.js'
+
+import Quill from 'quill'
+import BlotFormatter from 'quill-blot-formatter/dist/BlotFormatter';
+
+Quill.register('modules/blotFormatter', BlotFormatter);
 
 @Component({
   selector: 'app-write-message',
@@ -14,12 +21,27 @@ export class WriteMessageComponent implements OnInit {
   message: Message = new Message;
   messageText: string = '';
   // interlocutor: string[] = [this.store.currentUserMessageId, this.store.loggedInUserId];
+  modules = {};
 
-  constructor(public store: FirebaseService, public firestore: Firestore) { }
+  constructor(public store: FirebaseService, public firestore: Firestore) { 
+    
+    this.modules = {
+      blotFormatter: {
+        // empty object for default behaviour.
+      },
+      'toolbar': {
+        container: [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+          ['image', 'video'],                         // link and image, video
+        ],
+      },
+      
+    }
+  }
 
   ngOnInit(): void {
   }
-
 
   async saveAnswerInFirestore() {
     this.message.messageText = this.messageText;

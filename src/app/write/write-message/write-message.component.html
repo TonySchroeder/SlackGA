@@ -1,10 +1,23 @@
+<!--
 <div class="center">
   <mat-card>
-    <!-- <mat-form-field appearance="standard"> -->
+     <mat-form-field appearance="standard">
     <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="messageText" class="textfield"
     placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
       matInput></textarea>
-    <!-- </mat-form-field> -->
+  </mat-form-field> 
     <button (click)="saveAnswerInFirestore()">Send</button>
   </mat-card>
 </div>
+-->
+
+<div class="center">
+<quill-editor [styles]="{height: '150px'}"
+ 
+    [modules]="modules" (keyup)="autoGrowTextZone($event)" [(ngModel)]="messageText" class="textfield"
+    placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
+      matInput>
+ 
+  </quill-editor>
+  <footer>  <button (click)="saveAnswerInFirestore()">Send</button></footer>
+  </div>

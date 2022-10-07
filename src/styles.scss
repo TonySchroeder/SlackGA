@@ -431,3 +431,8 @@ body {
     url('../fonts/poppins-v20-latin-900italic.svg#Poppins') format('svg');
   /* Legacy iOS */
 }
+
+
+.ql-editor {
+  width: calc(100% + 20vw); 
+}

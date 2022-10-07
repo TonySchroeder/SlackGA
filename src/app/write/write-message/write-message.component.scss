@@ -14,3 +14,14 @@ mat-card{
   }
 }
 
+footer {
+  box-sizing: border-box;
+ width: 100%;
+ border: 1px solid lightgray;
+ display: flex;
+ justify-content: flex-end;
+}
+
+.ql-container {
+  height: calc(100% - 42px); 
+}
