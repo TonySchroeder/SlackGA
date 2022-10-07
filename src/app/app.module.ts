@@ -53,8 +53,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DialogDeleteMessageComponent } from './dialog/dialog-delete-message/dialog-delete-message.component';
 import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
 import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialog-delete-thread.component';
-
-
+import { ChatInputComponent } from './chat-input/chat-input.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -86,6 +86,7 @@ import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialo
     DialogDeleteMessageComponent,
     FilterMessageIdPipe,
     DialogDeleteThreadComponent,
+    ChatInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,7 +112,8 @@ import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialo
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    CKEditorModule
   ],
   providers: [
 
