@@ -18,10 +18,12 @@ Quill.register('modules/blotFormatter', BlotFormatter);
 })
 export class WriteMessageComponent implements OnInit {
 
+  editor: Quill = new Quill;
   message: Message = new Message;
   messageText: string = '';
   // interlocutor: string[] = [this.store.currentUserMessageId, this.store.loggedInUserId];
   modules = {};
+  
 
   constructor(public store: FirebaseService, public firestore: Firestore) { 
     
@@ -41,6 +43,30 @@ export class WriteMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let toolbarOptions = [
+      ['bold', 'italic'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link', 'underline', 'blockquote', 'code-block'],
+      ['image', 'video'],  
+    ];
+  
+    // Quill configuration
+    let options = {
+      modules: {
+        toolbar: toolbarOptions
+      },
+      placeholder: "Insert your message here...",
+      readOnly: false,
+      theme: 'snow'
+    };
+    
+    // The quill instance
+    let editor = new Quill('#editor', options);
+    
+    $(document).on('click', '#submit', function() {
+      $('#editorContent').html(editor.root.innerHTML);
+    });
+
   }
 
   async saveAnswerInFirestore() {
