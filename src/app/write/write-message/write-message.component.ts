@@ -18,7 +18,8 @@ Quill.register('modules/blotFormatter', BlotFormatter);
 })
 export class WriteMessageComponent implements OnInit {
 
-  editor: Quill = new Quill;
+  editor: Quill = new Quill('#editor');
+  
   message: Message = new Message;
   messageText: string = '';
   // interlocutor: string[] = [this.store.currentUserMessageId, this.store.loggedInUserId];
@@ -40,7 +41,7 @@ export class WriteMessageComponent implements OnInit {
       },
       
     }
-  }
+}
 
   ngOnInit(): void {
     let toolbarOptions = [
@@ -53,6 +54,9 @@ export class WriteMessageComponent implements OnInit {
     // Quill configuration
     let options = {
       modules: {
+        blotFormatter: {
+          // empty object for default behaviour.
+        },
         toolbar: toolbarOptions
       },
       placeholder: "Insert your message here...",
@@ -62,15 +66,15 @@ export class WriteMessageComponent implements OnInit {
     
     // The quill instance
     let editor = new Quill('#editor', options);
-    
+  
     $(document).on('click', '#submit', function() {
-      $('#editorContent').html(editor.root.innerHTML);
+      $(this.message.messageText).html(editor.root.innerHTML);
     });
-
   }
 
   async saveAnswerInFirestore() {
     this.message.messageText = this.messageText;
+    
     this.messageText = '';
 
     let docRef = await addDoc(this.store.collMessages, { message: this.message.toJson() })

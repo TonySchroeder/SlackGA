@@ -9,24 +9,29 @@
     <button (click)="saveAnswerInFirestore()">Send</button>
   </mat-card>
 </div>
+-->
 
 
-<div class="center">
-  <quill-editor [styles]="{height: '150px'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
+<div class="center editor">
+  <quill-editor #editor [styles]="{height: '150px'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
     [(ngModel)]="messageText" class="textfield"
     placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}" matInput>
 
   </quill-editor>
-  <footer> <button (click)="saveAnswerInFirestore()">Send</button></footer>
+  <div class="footer">
+    <button (click)="saveAnswerInFirestore()" id="submit" mat-icon-button>
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
 </div>
--->
 
 <div class="center editor">
-  <div id="editor"  >
-    <input type="text"  placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}" matInput >
+  <div id="editor" [(ngModel)]="messageText">
+
   </div>
-  <div class="footer" [(ngModel)]="messageText">
-    <button (click)="saveAnswerInFirestore()" id="submit" mat-icon-button><mat-icon>send</mat-icon></button>
+  <div class="footer">
+    <button (click)="saveAnswerInFirestore()" id="submit" mat-icon-button>
+      <mat-icon>send</mat-icon>
+    </button>
   </div>
-  <div id="editorContent"></div>
 </div>

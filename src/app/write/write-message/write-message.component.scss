@@ -22,6 +22,14 @@ mat-card{
  justify-content: flex-end;
 }
 
+.editor {
+  width: 850px;
+}
+
 .ql-container {
   height: calc(100% - 42px); 
+}
+
+.ql-editor {
+  height: 300px;
 }
