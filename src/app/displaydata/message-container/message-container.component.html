@@ -1,5 +1,5 @@
-<mat-list>
 
+<mat-list>
   <mat-list-item *ngFor="let message of store.messages | filterMessageInterlocutor:store.currentUserMessageId :store.loggedInUserId;
     trackBy: store.trackByMessage;
      let i = index" (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">

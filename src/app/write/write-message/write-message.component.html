@@ -11,10 +11,10 @@
 </div>
 -->
 
-
+<div class="flex">
 <div class="center editor">
-  <quill-editor #editor [styles]="{height: '150px'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
-    [(ngModel)]="messageText" class="textfield"
+  <quill-editor [styles]="{width: '70vw'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
+    [(ngModel)]="messageText"
     placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}" matInput>
 
   </quill-editor>
@@ -24,7 +24,9 @@
     </button>
   </div>
 </div>
+</div>
 
+<!--
 <div class="center editor">
   <div id="editor" [(ngModel)]="messageText">
 
@@ -35,3 +37,4 @@
     </button>
   </div>
 </div>
+-->

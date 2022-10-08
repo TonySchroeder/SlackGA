@@ -3,8 +3,8 @@ import { Firestore } from '@angular/fire/firestore';
 import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import { Message } from 'src/app/models/message.class';
 import { FirebaseService } from '../../service/firebase.service';
-import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill'
-import 'quill-emoji/dist/quill-emoji.js'
+//import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill'
+// import 'quill-emoji/dist/quill-emoji.js'
 
 import Quill from 'quill'
 import BlotFormatter from 'quill-blot-formatter/dist/BlotFormatter';
@@ -36,7 +36,7 @@ export class WriteMessageComponent implements OnInit {
         container: [
           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
           ['blockquote', 'code-block'],
-          ['image', 'video'],                         // link and image, video
+          ['image'],                         // link and image, video
         ],
       },
       
@@ -44,6 +44,7 @@ export class WriteMessageComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    /*
     let toolbarOptions = [
       ['bold', 'italic'],
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -69,7 +70,7 @@ export class WriteMessageComponent implements OnInit {
   
     $(document).on('click', '#submit', function() {
       $(this.message.messageText).html(editor.root.innerHTML);
-    });
+    });*/
   }
 
   async saveAnswerInFirestore() {
