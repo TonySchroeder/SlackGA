@@ -12,18 +12,18 @@
 -->
 
 <div class="flex">
-<div class="center editor">
-  <quill-editor [styles]="{width: '70vw'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
-    [(ngModel)]="messageText"
-    placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}" matInput>
+  <div class="center editor">
+    <quill-editor [styles]="{width: '70vw'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
+      [(ngModel)]="messageText" placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
+      matInput>
 
-  </quill-editor>
-  <div class="footer">
-    <button (click)="saveAnswerInFirestore()" id="submit" mat-icon-button>
-      <mat-icon>send</mat-icon>
-    </button>
+    </quill-editor>
+    <div class="footer">
+      <button (click)="saveAnswerInFirestore()" id="submit" mat-icon-button>
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
   </div>
-</div>
 </div>
 
 <!--

@@ -3,6 +3,9 @@ import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { Thread } from '../../models/thread.class';
 import { FirebaseService } from '../../service/firebase.service';
+import Quill from 'quill'
+import BlotFormatter from 'quill-blot-formatter/dist/BlotFormatter';
+Quill.register('modules/blotFormatter', BlotFormatter);
 
 @Component({
   selector: 'app-write-thread',
@@ -13,8 +16,23 @@ export class WriteThreadComponent implements OnInit {
 
   thread: Thread = new Thread;
   threadValue: string = '';
+  modules = {};
 
-  constructor(public store: FirebaseService, public firestore: Firestore) { }
+  constructor(public store: FirebaseService, public firestore: Firestore) { 
+    this.modules = {
+      blotFormatter: {
+        // empty object for default behaviour.
+      },
+      'toolbar': {
+        container: [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+          ['image'],                         // link and image, video
+        ],
+      },
+      
+    }
+  }
 
   ngOnInit(): void {
   }

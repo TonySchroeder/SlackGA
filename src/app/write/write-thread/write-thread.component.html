@@ -1,13 +1,29 @@
+<!--
 <div class="center">
 
   <mat-card>
 
-    <!-- <mat-form-field appearance="standard"> -->
+     <mat-form-field appearance="standard"> 
     <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="threadValue" class="textfield"
       placeholder="Message to {{ store.channels | filterChannelname: store.currentChannelId }}" matInput></textarea>
-    <!-- </mat-form-field> -->
+     </mat-form-field> 
     <button (click)="saveThreadInFirestore()">Send</button>
 
   </mat-card>
 
+</div>
+-->
+
+<div class="flex">
+  <div class="center editor">
+    <quill-editor [styles]="{width: '70vw'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
+    [(ngModel)]="threadValue" placeholder="Message to {{ store.channels | filterChannelname: store.currentChannelId }}"
+      matInput>
+    </quill-editor>
+    <div class="footer">
+      <button (click)="saveThreadInFirestore()" id="submit" mat-icon-button>
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

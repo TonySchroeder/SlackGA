@@ -34,7 +34,7 @@
 
         </mat-card-title>
 
-        <mat-card-subtitle *ngIf="messageToEdit !== i">{{ thread.thread.firstMessage }}</mat-card-subtitle>
+        <mat-card-subtitle [innerHTML]="thread.thread.firstMessage" *ngIf="messageToEdit !== i">{{ thread.thread.firstMessage }}</mat-card-subtitle>
 
         <mat-card-subtitle *ngIf="messageToEdit !== i">
 

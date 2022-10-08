@@ -18,7 +18,7 @@ Quill.register('modules/blotFormatter', BlotFormatter);
 })
 export class WriteMessageComponent implements OnInit {
 
-  editor: Quill = new Quill('#editor');
+  //editor: Quill = new Quill('#editor');
   
   message: Message = new Message;
   messageText: string = '';
@@ -75,7 +75,6 @@ export class WriteMessageComponent implements OnInit {
 
   async saveAnswerInFirestore() {
     this.message.messageText = this.messageText;
-    
     this.messageText = '';
 
     let docRef = await addDoc(this.store.collMessages, { message: this.message.toJson() })
