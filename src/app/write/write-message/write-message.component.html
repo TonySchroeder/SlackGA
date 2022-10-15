@@ -1,15 +1,3 @@
-<!--
-<div class="center">
-  <mat-card>
-     <mat-form-field appearance="standard">
-    <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="messageText" class="textfield"
-    placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
-      matInput></textarea>
-  </mat-form-field>
-    <button (click)="saveAnswerInFirestore()">Send</button>
-  </mat-card>
-</div>
--->
 
 <div class="flex">
   <div class="center editor">
@@ -25,16 +13,3 @@
     </div>
   </div>
 </div>
-
-<!--
-<div class="center editor">
-  <div id="editor" [(ngModel)]="messageText">
-
-  </div>
-  <div class="footer">
-    <button (click)="saveAnswerInFirestore()" id="submit" mat-icon-button>
-      <mat-icon>send</mat-icon>
-    </button>
-  </div>
-</div>
--->
