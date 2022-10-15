@@ -13,14 +13,13 @@
 
     <div class="message_container">
 
-      <div [ngStyle]="{'height': 'calc(100vh - (64px + 48px + 150px))'}" class="message_content">
+      <div [ngStyle]="{'height': 'calc(100vh - (64px + 48px + 200px))'}" class="message_content">
 
         <app-thread-container></app-thread-container>
 
       </div>
 
       <div #myIdentifier class="write_message_container">
-        <!-- <app-write-answer (newItemEvent)="addItem($event)"></app-write-answer> -->
         <app-write-message (newItemEvent)="addItem($event)"></app-write-message>
       </div>
     </div>

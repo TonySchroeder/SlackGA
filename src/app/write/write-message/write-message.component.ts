@@ -76,14 +76,6 @@ export class WriteMessageComponent implements OnInit {
   async saveAnswerInFirestore() {
     this.newItemEvent.emit(this.messageText);
     this.messageText = '';
-
-
-    // this.message.messageText = this.messageText;
-    // this.messageText = '';
-    // let docRef = await addDoc(this.store.collMessages, { message: this.message.toJson() })
-    // await updateDoc(doc(this.store.collMessages, docRef.id), { currentMessageId: docRef.id });
-    // await updateDoc(doc(this.store.collMessages, docRef.id), { autorUser: this.store.loggedInUserId });
-    // await updateDoc(doc(this.store.collMessages, docRef.id), { interlocutor: [this.store.currentUserMessageId, this.store.loggedInUserId]});
   }
 
 

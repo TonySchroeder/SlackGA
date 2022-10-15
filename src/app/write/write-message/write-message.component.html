@@ -13,7 +13,7 @@
 
 <div class="flex">
   <div class="center editor">
-    <quill-editor [modules]="modules" (keyup)="autoGrowTextZone($event)"
+    <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules" (keyup)="autoGrowTextZone($event)"
       [(ngModel)]="messageText" placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
       matInput>
 

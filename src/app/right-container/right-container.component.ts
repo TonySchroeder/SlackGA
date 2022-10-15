@@ -42,14 +42,9 @@ export class RightContainerComponent implements OnInit {
     this.message.messageText = this.messageText;
     this.messageText = '';
     this.message.usersId = this.store.loggedInUserId;
-    // this.message.channelId = this.store.currentChannelIdForThread;
-    // this.message.threadId = this.store.currentThreadId;
-
     let docRef = await addDoc(this.store.collAnswers, { answer: this.message.toJson() })
-    // console.log("Answer written with ID: ", docRef.id);
     await updateDoc(doc(this.store.collAnswers, docRef.id), { threadId: this.store.currentThreadId });
     await updateDoc(doc(this.store.collAnswers, docRef.id), { currentAnswerId: docRef.id });
-
   }
 
 }
