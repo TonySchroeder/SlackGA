@@ -6,6 +6,8 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { delay, timeout } from 'rxjs';
 import { DialogDeleteMessageComponent } from 'src/app/dialog/dialog-delete-message/dialog-delete-message.component';
 import { FirebaseService } from '../../service/firebase.service';
+import Quill from 'quill'
+import BlotFormatter from 'quill-blot-formatter/dist/BlotFormatter';
 
 @Component({
   selector: 'app-message-container',
@@ -15,7 +17,7 @@ import { FirebaseService } from '../../service/firebase.service';
 export class MessageContainerComponent implements OnInit {
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
-
+  modules = {};
   public displayEditMenu;
   messageToEdit: any;
 
@@ -23,7 +25,19 @@ export class MessageContainerComponent implements OnInit {
     public store: FirebaseService,
     public dialog: MatDialog,
     public firebase: Firestore
-  ) {
+  ) { this.modules = {
+    blotFormatter: {
+      // empty object for default behaviour.
+    },
+    'toolbar': {
+      container: [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+        ['image'],                         // link and image, video
+      ],
+    },
+
+  }
   }
 
   ngOnInit(): void {

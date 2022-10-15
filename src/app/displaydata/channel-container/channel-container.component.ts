@@ -4,6 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { doc } from 'firebase/firestore';
 import { DialogDeleteThreadComponent } from 'src/app/dialog/dialog-delete-thread/dialog-delete-thread.component';
 import { FirebaseService } from 'src/app/service/firebase.service';
+import Quill from 'quill'
+import BlotFormatter from 'quill-blot-formatter/dist/BlotFormatter';
+
+Quill.register('modules/blotFormatter', BlotFormatter);
 
 @Component({
   selector: 'app-channel-container',
@@ -14,11 +18,26 @@ export class ChannelContainerComponent implements OnInit {
 
   public displayEditMenu;
   messageToEdit: any;
-
+  modules = {};
   constructor(
     public dialog: MatDialog,
     public store: FirebaseService,
     public firebase: Firestore) {
+
+      
+    this.modules = {
+      blotFormatter: {
+        // empty object for default behaviour.
+      },
+      'toolbar': {
+        container: [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+          ['image'],                         // link and image, video
+        ],
+      },
+
+    }
   }
 
   ngOnInit(): void {
