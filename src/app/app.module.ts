@@ -53,7 +53,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DialogDeleteMessageComponent } from './dialog/dialog-delete-message/dialog-delete-message.component';
 import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
 import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialog-delete-thread.component';
-import { ChatInputComponent } from './chat-input/chat-input.component';
 import { DialogDeleteAnswerComponent } from './dialog/dialog-delete-answer/dialog-delete-answer.component';
 import { QuillModule } from 'ngx-quill'
 
@@ -87,7 +86,6 @@ import { QuillModule } from 'ngx-quill'
     DialogDeleteMessageComponent,
     FilterMessageIdPipe,
     DialogDeleteThreadComponent,
-    ChatInputComponent,
     DialogDeleteAnswerComponent,
   ],
   imports: [

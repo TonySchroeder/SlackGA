@@ -9,6 +9,7 @@ import { collection, doc, getDoc } from 'firebase/firestore';
   templateUrl: './main-container.component.html',
   styleUrls: ['./main-container.component.scss']
 })
+
 export class MainContainerComponent implements OnInit {
 
   writeContainerHeight: number;
