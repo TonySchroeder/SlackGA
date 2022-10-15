@@ -20,7 +20,8 @@
       </div>
 
       <div #myIdentifier class="write_message_container">
-        <app-write-answer></app-write-answer>
+        <!-- <app-write-answer (newItemEvent)="addItem($event)"></app-write-answer> -->
+        <app-write-message (newItemEvent)="addItem($event)"></app-write-message>
       </div>
     </div>
 

@@ -10,7 +10,7 @@ export class ChatInputComponent implements OnInit {
 
 
   modules = {};
-  
+
   constructor() {
     this.modules = {
       'toolbar': {
@@ -26,6 +26,6 @@ export class ChatInputComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
+
 
 }

@@ -4,7 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { SlackComponent } from './slack/slack.component';
 
 const routes: Routes = [
-  { path: '' ,component: LoginComponent},
+  // { path: '' ,component: LoginComponent},
+  { path: '' ,component: SlackComponent},
   { path: 'home' ,component: SlackComponent},
 ];
 

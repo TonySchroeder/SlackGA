@@ -5,7 +5,7 @@ import { Message } from 'src/app/models/message.class';
 import { FirebaseService } from '../../service/firebase.service';
 //import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill'
 // import 'quill-emoji/dist/quill-emoji.js'
-
+import { Output, EventEmitter } from '@angular/core';
 import Quill from 'quill'
 import BlotFormatter from 'quill-blot-formatter/dist/BlotFormatter';
 
@@ -19,15 +19,15 @@ Quill.register('modules/blotFormatter', BlotFormatter);
 export class WriteMessageComponent implements OnInit {
 
   //editor: Quill = new Quill('#editor');
-  
-  message: Message = new Message;
+
+  @Output() newItemEvent = new EventEmitter<string>();
   messageText: string = '';
   // interlocutor: string[] = [this.store.currentUserMessageId, this.store.loggedInUserId];
   modules = {};
-  
 
-  constructor(public store: FirebaseService, public firestore: Firestore) { 
-    
+
+  constructor(public store: FirebaseService, public firestore: Firestore) {
+
     this.modules = {
       blotFormatter: {
         // empty object for default behaviour.
@@ -39,7 +39,7 @@ export class WriteMessageComponent implements OnInit {
           ['image'],                         // link and image, video
         ],
       },
-      
+
     }
 }
 
@@ -49,9 +49,9 @@ export class WriteMessageComponent implements OnInit {
       ['bold', 'italic'],
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
       ['link', 'underline', 'blockquote', 'code-block'],
-      ['image', 'video'],  
+      ['image', 'video'],
     ];
-  
+
     // Quill configuration
     let options = {
       modules: {
@@ -64,24 +64,26 @@ export class WriteMessageComponent implements OnInit {
       readOnly: false,
       theme: 'snow'
     };
-    
+
     // The quill instance
     let editor = new Quill('#editor', options);
-  
+
     $(document).on('click', '#submit', function() {
       $(this.message.messageText).html(editor.root.innerHTML);
     });*/
   }
 
   async saveAnswerInFirestore() {
-    this.message.messageText = this.messageText;
+    this.newItemEvent.emit(this.messageText);
     this.messageText = '';
 
-    let docRef = await addDoc(this.store.collMessages, { message: this.message.toJson() })
-    // console.log("Answer written with ID: ", docRef.id);
-    await updateDoc(doc(this.store.collMessages, docRef.id), { currentMessageId: docRef.id });
-    await updateDoc(doc(this.store.collMessages, docRef.id), { autorUser: this.store.loggedInUserId });
-    await updateDoc(doc(this.store.collMessages, docRef.id), { interlocutor: [this.store.currentUserMessageId, this.store.loggedInUserId]});
+
+    // this.message.messageText = this.messageText;
+    // this.messageText = '';
+    // let docRef = await addDoc(this.store.collMessages, { message: this.message.toJson() })
+    // await updateDoc(doc(this.store.collMessages, docRef.id), { currentMessageId: docRef.id });
+    // await updateDoc(doc(this.store.collMessages, docRef.id), { autorUser: this.store.loggedInUserId });
+    // await updateDoc(doc(this.store.collMessages, docRef.id), { interlocutor: [this.store.currentUserMessageId, this.store.loggedInUserId]});
   }
 
 
