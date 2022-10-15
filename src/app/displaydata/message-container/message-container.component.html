@@ -24,45 +24,19 @@
     <mat-card class="message_card">
 
       <mat-card-header>
-
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:message.autorUser }}</div>
-
         <mat-card-title *ngIf="messageToEdit !== i">
-
           <h3>{{ store.users | filterUsers:message.autorUser }}</h3><span class="time">{{ message.message.timestamp |
             date: 'E, dd MM, h:mm a' }}</span>
-
         </mat-card-title>
-
         <mat-card-subtitle [innerHTML]="message.message.messageText"  *ngIf="messageToEdit !== i">{{ message.message.messageText }}</mat-card-subtitle>
 
         <!-- edit message -->
-        <!-- 
-        <div class="width">
-          <mat-card-title *ngIf="messageToEdit === i" class="edit_message_container">
 
-            <mat-card class="edit_message_field">
-
-              <textarea class="textfield" [innerHTML]="message.message.messageText" [(ngModel)]="message.message.messageText" matInput>{{ message.message.messageText }}</textarea>
-              <div class="button_container">
-
-                <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-                <button mat-stroked-button (click)="saveEditMessage(message.currentMessageId)"
-                color="primary">Save</button>
-
-              </div>
-
-            </mat-card>
-
-          </mat-card-title>
-        </div>
--->
-        
         <div class="flex">
           <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
             <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="message.message.messageText"placeholder="{{ message.message.messageText }}"
               matInput>
-        
             </quill-editor>
             <div class="footer">
               <button mat-stroked-button (click)="editMessage('')">Cancel</button>

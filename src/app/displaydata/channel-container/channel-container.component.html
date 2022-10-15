@@ -48,28 +48,6 @@
 
 
         <!-- edit message -->
-        <!--
-        <div class="width">
-          <mat-card-title *ngIf="messageToEdit === i" class="edit_message_container">
-
-            <mat-card class="edit_message_field">
-
-              <textarea class="textfield" [innerHTML]="thread.thread.messageText" [(ngModel)]="thread.thread.messageText" matInput></textarea>
-              <div class="button_container">
-
-                <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-                <button mat-stroked-button (click)="saveEditMessage(thread.currentThreadId)"
-                  color="primary">Save</button>
-
-              </div>
-
-            </mat-card>
-
-          </mat-card-title>
-        </div> 
-      -->
-        
-
         <div class="flex">
           <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
             <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText" placeholder="{{ thread.thread.messageText }}"
