@@ -35,11 +35,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SignupComponent } from './signup/signup.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
-import { WriteThreadComponent } from './write/write-thread/write-thread.component';
 import { ThreadContainerComponent } from './displaydata/thread-container/thread-container.component';
 import { ChannelContainerComponent } from './displaydata/channel-container/channel-container.component';
 import { AllChannelContainerComponent } from './displaydata/all-channel-container/all-channel-container.component';
-import { WriteAnswerComponent } from './write/write-answer/write-answer.component';
 import { FilterChannelsPipe } from './pipe/filter-threads.pipe';
 import { FilterThreadsPipe } from './pipe/filter-answers.pipe';
 import { FilterUsersPipe } from './pipe/filter-users.pipe';
@@ -69,11 +67,9 @@ import { QuillModule } from 'ngx-quill'
     DialogAddChannelComponent,
     SignupComponent,
     LoginScreenComponent,
-    WriteThreadComponent,
     ThreadContainerComponent,
     ChannelContainerComponent,
     AllChannelContainerComponent,
-    WriteAnswerComponent,
     FilterChannelsPipe,
     FilterThreadsPipe,
     FilterUsersPipe,

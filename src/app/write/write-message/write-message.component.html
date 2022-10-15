@@ -5,7 +5,7 @@
     <textarea (keyup)="autoGrowTextZone($event)" [(ngModel)]="messageText" class="textfield"
     placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
       matInput></textarea>
-  </mat-form-field> 
+  </mat-form-field>
     <button (click)="saveAnswerInFirestore()">Send</button>
   </mat-card>
 </div>
@@ -13,7 +13,7 @@
 
 <div class="flex">
   <div class="center editor">
-    <quill-editor [styles]="{width: '70vw'}" [modules]="modules" (keyup)="autoGrowTextZone($event)"
+    <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules" (keyup)="autoGrowTextZone($event)"
       [(ngModel)]="messageText" placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
       matInput>
 

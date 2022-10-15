@@ -28,7 +28,7 @@
           <h3>{{ store.users | filterUsers: thread.thread.usersId }}</h3><span class="time">{{ thread.thread.timestamp |
             date: 'E, dd MM, h:mm a' }}</span>
         </mat-card-title>
-        <mat-card-subtitle [innerHTML]="thread.thread.firstMessage"> {{ thread.thread.firstMessage }}</mat-card-subtitle>
+        <mat-card-subtitle [innerHTML]="thread.thread.messageText"> {{ thread.thread.messageText }}</mat-card-subtitle>
 
       </mat-card-header>
 

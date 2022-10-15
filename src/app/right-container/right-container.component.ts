@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore, updateDoc } from '@angular/fire/firestore';
-import { doc } from 'firebase/firestore';
+import { addDoc, doc } from 'firebase/firestore';
+import { Message } from '../models/message.class';
 import { FirebaseService } from '../service/firebase.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { FirebaseService } from '../service/firebase.service';
 })
 export class RightContainerComponent implements OnInit {
 
+  message: Message = new Message;
+  messageText: string = '';
 
   constructor(public store: FirebaseService, public firebase: Firestore) { }
 
@@ -28,5 +31,20 @@ export class RightContainerComponent implements OnInit {
 
   }
 
+  addItem(newItem: string) {
+    this.messageText = newItem;
+    this.saveAnswerInFirestore();
+  }
+
+
+
+  async saveAnswerInFirestore() {
+    this.message.messageText = this.messageText;
+    this.messageText = '';
+    this.message.usersId = this.store.loggedInUserId;
+    let docRef = await addDoc(this.store.collAnswers, { answer: this.message.toJson() })
+    await updateDoc(doc(this.store.collAnswers, docRef.id), { threadId: this.store.currentThreadId });
+    await updateDoc(doc(this.store.collAnswers, docRef.id), { currentAnswerId: docRef.id });
+  }
 
 }

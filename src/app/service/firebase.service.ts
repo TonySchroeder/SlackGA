@@ -44,6 +44,9 @@ export class FirebaseService {
   messages: any;
 
 
+  messageValue:string;
+
+
   /**
    * load users, channels, threads, answers and messages from firebase
    *
