@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class FirebaseService {
 
   // logged in user variable
-  loggedInUserId: string = 'e1ryqoWxpbFiYNHAyvZ9';
+  loggedInUserId: string = 'a1qZMELqRqFh1YsVoIgN';
   loggedInUser: any;
   openRightNav: boolean = false;
   currentChannelId: string = '';

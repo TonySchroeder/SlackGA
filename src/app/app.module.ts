@@ -53,6 +53,8 @@ import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
 import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialog-delete-thread.component';
 import { DialogDeleteAnswerComponent } from './dialog/dialog-delete-answer/dialog-delete-answer.component';
 import { QuillModule } from 'ngx-quill';
+import { DateAgoPipe } from './pipe/date-ago.pipe';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { QuillModule } from 'ngx-quill';
     FilterMessageIdPipe,
     DialogDeleteThreadComponent,
     DialogDeleteAnswerComponent,
+    DateAgoPipe,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

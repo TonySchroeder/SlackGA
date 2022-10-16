@@ -50,21 +50,21 @@ export class ChannelContainerComponent implements OnInit {
       this.firebase,
       `users/${this.store.loggedInUserId}`
     );
-    updateDoc(loadUser, { currentChannelIdForThread: channelId });
-    updateDoc(loadUser, { currentThreadId: threadId });
+    await updateDoc(loadUser, { currentChannelIdForThread: channelId });
+    await updateDoc(loadUser, { currentThreadId: threadId });
     await this.store.loggedUserLoadChannelId();
 
     this.openSideBar();
   }
 
 
-  openSideBar() {
+  async openSideBar() {
     if (!this.store.openRightNav) {
       const loadUserSideBar = doc(
         this.firebase,
         `users/${this.store.loggedInUserId}`
       );
-      updateDoc(loadUserSideBar, { openSideBar: true });
+      await updateDoc(loadUserSideBar, { openSideBar: true });
       this.store.loggedUserLoadSideBar();
     }
   }
@@ -87,6 +87,7 @@ export class ChannelContainerComponent implements OnInit {
     );
     let editMessage = this.transform(this.store.threads, currentThreadId)
     await updateDoc(loadMessage, { thread: editMessage });
+    await updateDoc(loadMessage, { messageEdit: ' (edited)' });
     await this.store.loadThreads();
     this.messageToEdit = '';
   }

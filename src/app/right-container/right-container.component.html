@@ -1,6 +1,7 @@
 <div class="width400">
 
-  <div>
+  <!-- thread with answer -->
+  <div *ngIf="store.currentThreadId">
 
     <div class="headline">
       <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ store.channels | filterChannelname: store.currentChannelIdForThread
@@ -26,18 +27,18 @@
 
   </div>
 
+  <!-- user details -->
   <!-- <div>
 
     <div class="headline">
-      <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ store.channels | filterChannelname: store.currentChannelId
-        }}</span>
+      <h2 class="thread_name">Profile</h2>
 
       <button (click)="closeSideBar()" class="closeBtn">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
       </button>
     </div>
 
-user details
+    <app-user-details></app-user-details>
 
   </div> -->
 

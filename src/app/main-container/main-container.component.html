@@ -36,7 +36,7 @@
         <h2 class="thread_name">{{ store.users | filterUsers:store.currentUserMessageId}}</h2>
       </div>
 
-      <div #mycontent [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 210px))' }" class="message_content">
+      <div #mycontent2 [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 210px))' }" class="message_content">
 
         <div>
           <app-message-container></app-message-container>

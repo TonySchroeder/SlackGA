@@ -34,7 +34,9 @@
 
         </mat-card-title>
 
-        <mat-card-subtitle [innerHTML]="thread.thread.messageText" *ngIf="messageToEdit !== i">{{ thread.thread.messageText }}</mat-card-subtitle>
+        <mat-card-subtitle [innerHTML]="thread.thread.messageText" *ngIf="messageToEdit !== i">{{
+          thread.thread.messageText }} </mat-card-subtitle>
+
 
         <mat-card-subtitle *ngIf="messageToEdit !== i">
 
@@ -42,7 +44,7 @@
             {{ store.answers | filterNumberOfAnswers: thread.currentThreadId}} answers
           </span>
           &nbsp;&nbsp;
-          <span>Last answer 2 hours ago</span>
+          <span>last answer {{ thread.thread.timestamp | dateAgo }}</span>
 
         </mat-card-subtitle>
 
@@ -50,14 +52,13 @@
         <!-- edit message -->
         <div class="flex" [ngStyle]="{ 'width': '100%' }" *ngIf="messageToEdit === i">
           <div class="center editor edit_message_container">
-            <quill-editor [ngStyle]="{ 'width': '100%', 'background': '#FFF' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText"
-              matInput>
+            <quill-editor [ngStyle]="{ 'width': '100%', 'background': '#FFF' }" [modules]="modules"
+              [(ngModel)]="thread.thread.messageText" matInput>
 
             </quill-editor>
             <div class="footer">
               <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-              <button mat-stroked-button (click)="saveEditMessage(thread.currentThreadId)"
-                color="primary">Save</button>
+              <button mat-stroked-button (click)="saveEditMessage(thread.currentThreadId)" color="primary">Save</button>
             </div>
           </div>
         </div>

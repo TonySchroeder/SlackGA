@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { FirebaseService } from '../service/firebase.service';
@@ -11,7 +11,7 @@ import { Message } from '../models/message.class';
   styleUrls: ['./main-container.component.scss']
 })
 
-export class MainContainerComponent implements OnInit {
+export class MainContainerComponent implements OnInit  {
 
   message: Message = new Message;
   messageText: string = '';
@@ -47,8 +47,6 @@ export class MainContainerComponent implements OnInit {
 
   addItem(newItem: string) {
     this.messageText = newItem;
-    console.log(this.messageText);
-
     if (this.store.currentChannelId) {
       this.saveThreadInFirestore();
     } else if (this.store.currentUserMessageId) {
@@ -89,6 +87,17 @@ export class MainContainerComponent implements OnInit {
   //   return heightStyle;
   // }
 
+
+  // @ViewChild('myIdentifier')
+  // myIdentifier: ElementRef;
+
+  // ngAfterViewInit() {
+  //   let width = this.myIdentifier.nativeElement.offsetWidth;
+  //   let height = this.myIdentifier.nativeElement.offsetHeight;
+
+  //   console.log('Width:' + width);
+  //   console.log('Height: ' + height);
+  // }
 
   // @ViewChild('myIdentifier')
   // myIdentifier: ElementRef;

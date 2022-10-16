@@ -44,8 +44,6 @@ export class WriteMessageComponent implements OnInit {
   }
 
   async saveAnswerInFirestore() {
-    console.log(this.messageText);
-
     this.newItemEvent.emit(this.messageText);
     this.messageText = '';
 
