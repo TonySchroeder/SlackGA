@@ -35,7 +35,7 @@
 
         <div class="flex">
           <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
-            <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="message.message.messageText"placeholder="{{ message.message.messageText }}"
+            <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="message.message.messageText" placeholder="{{ message.message.messageText }}"
               matInput>
             </quill-editor>
             <div class="footer">

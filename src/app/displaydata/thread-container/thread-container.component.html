@@ -72,6 +72,22 @@
 
         <mat-card-subtitle [innerHTML]="answer.answer.messageText">{{ answer.answer.messageText }}</mat-card-subtitle>
 
+          <!-- edit message -->
+
+          <div class="flex">
+            <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
+              <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="answer.answer.messageText"
+                matInput>
+              </quill-editor>
+              <div class="footer">
+                <button mat-stroked-button (click)="editMessage('')">Cancel</button>
+                <button mat-stroked-button (click)="saveEditMessage(answer.currentAnswerId)"
+                  color="primary">Save</button>
+              </div>
+            </div>
+          </div>
+
+
       </mat-card-header>
 
     </mat-card>

@@ -8,6 +8,7 @@ import { DialogDeleteMessageComponent } from 'src/app/dialog/dialog-delete-messa
 import { FirebaseService } from '../../service/firebase.service';
 import Quill from 'quill'
 import BlotFormatter from 'quill-blot-formatter/dist/BlotFormatter';
+Quill.register('modules/blotFormatter', BlotFormatter);
 
 @Component({
   selector: 'app-message-container',
