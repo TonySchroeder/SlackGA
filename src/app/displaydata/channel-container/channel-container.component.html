@@ -1,6 +1,6 @@
 <mat-list>
 
-  <mat-list-item
+  <mat-list-item [class.edit_background]="messageToEdit === i"
     *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread; let i = index"
     (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
 
@@ -48,11 +48,11 @@
 
 
         <!-- edit message -->
-        <div class="flex">
-          <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
-            <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText" placeholder="{{ thread.thread.messageText }}"
+        <div class="flex" [ngStyle]="{ 'width': '100%' }" *ngIf="messageToEdit === i">
+          <div class="center editor" class="edit_message_container">
+            <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText"
               matInput>
-        
+
             </quill-editor>
             <div class="footer">
               <button mat-stroked-button (click)="editMessage('')">Cancel</button>

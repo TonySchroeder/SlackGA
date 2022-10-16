@@ -1,13 +1,12 @@
-
 <div class="flex">
   <div class="center editor">
-    <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules" (keyup)="autoGrowTextZone($event)"
-      [(ngModel)]="messageText" placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}"
-      matInput>
+    <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules" [(ngModel)]="messageText"
+      placeholder="Message to {{ store.users | filterUsers: store.currentUserMessageId }}" matInput>
 
     </quill-editor>
     <div class="footer">
-      <button (click)="saveAnswerInFirestore()" id="submit" mat-icon-button>
+      <button [disabled]="!messageText" (click)="saveAnswerInFirestore()" id="submit" [class.send_button]="messageText"
+        mat-icon-button>
         <mat-icon>send</mat-icon>
       </button>
     </div>

@@ -4,13 +4,24 @@ margin: 0 16px 16px 16px;
 }
 
 mat-card{
-  height: 164px;
+  height: 174px;
   box-sizing: border-box;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   textarea{
        background: aqua;
+  }
+}
+
+.send_button{
+  background: #007A5A;
+  border-radius: 5px;
+    &:hover{
+      background: rgba(0, 122, 90, 0.8);
+    }
+  mat-icon{
+    color: #FFF;
   }
 }
 

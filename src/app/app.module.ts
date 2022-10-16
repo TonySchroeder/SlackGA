@@ -52,7 +52,8 @@ import { DialogDeleteMessageComponent } from './dialog/dialog-delete-message/dia
 import { FilterMessageIdPipe } from './pipe/filter-message-id.pipe';
 import { DialogDeleteThreadComponent } from './dialog/dialog-delete-thread/dialog-delete-thread.component';
 import { DialogDeleteAnswerComponent } from './dialog/dialog-delete-answer/dialog-delete-answer.component';
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { EditMessageComponent } from './edit-message/edit-message.component'
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { QuillModule } from 'ngx-quill'
     FilterMessageIdPipe,
     DialogDeleteThreadComponent,
     DialogDeleteAnswerComponent,
+    EditMessageComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,19 +40,16 @@ export class WriteMessageComponent implements OnInit {
 }
 
   ngOnInit(): void {
-  
+
   }
 
   async saveAnswerInFirestore() {
+    console.log(this.messageText);
+
     this.newItemEvent.emit(this.messageText);
     this.messageText = '';
+
   }
 
-
-
-  autoGrowTextZone(e) {
-    e.target.style.height = "0px";
-    e.target.style.height = (e.target.scrollHeight + 15) + "px";
-  }
 
 }

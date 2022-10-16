@@ -47,6 +47,8 @@ export class MainContainerComponent implements OnInit {
 
   addItem(newItem: string) {
     this.messageText = newItem;
+    console.log(this.messageText);
+
     if (this.store.currentChannelId) {
       this.saveThreadInFirestore();
     } else if (this.store.currentUserMessageId) {
