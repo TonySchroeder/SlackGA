@@ -15,7 +15,7 @@
         </div>
 
         <mat-menu #afterMenu="matMenu" xPosition="after">
-          <button class="afterMenu_button" (click)="editMessage('editThread')" mat-menu-item>
+          <button class="afterMenu_button" (click)="editMessage(i)" mat-menu-item>
             edit message
           </button>
           <button class="afterMenu_button" (click)="openThreadDialog(thread.currentThreadId)" mat-button color="warn">
@@ -30,6 +30,21 @@
         </mat-card-title>
         <mat-card-subtitle [innerHTML]="thread.thread.messageText"> {{ thread.thread.messageText }}</mat-card-subtitle>
 
+              <!-- edit message -->
+
+              <div class="flex">
+                <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
+                  <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText"
+                    matInput>
+                  </quill-editor>
+                  <div class="footer">
+                    <button mat-stroked-button (click)="editMessage('')">Cancel</button>
+                    <button mat-stroked-button (click)="saveEditMessage(thread.currentAnswerId)"
+                      color="primary">Save</button>
+                  </div>
+                </div>
+              </div>
+    
       </mat-card-header>
 
     </mat-card>

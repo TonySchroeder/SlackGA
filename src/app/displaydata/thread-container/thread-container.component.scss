@@ -105,22 +105,32 @@ mat-card {
   }
 }
 
-.edit_message {
-  opacity: 0;
-  z-index: 2;
-  position: absolute;
-  top: 0px;
-  right: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid #DDDDDD;
-  border-radius: 5px;
-  box-shadow: 0 1px 10px 1px rgba(0, 0, 0, .05);
-    &:hover {
-      opacity: 1;
-    }
+mat-list-item {
+  position: relative;
+
+  &:hover {
+    background-color: #F8F8F8;
+
+  }
+
+  .edit_message {
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    box-shadow: 0 1px 10px 1px rgba(0, 0, 0, .05);
+    
+      &:hover {
+        opacity: 1;
+      }
+  }
 }
 
 .opacity1 {
