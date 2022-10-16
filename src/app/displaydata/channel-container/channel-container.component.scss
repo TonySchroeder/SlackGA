@@ -140,6 +140,11 @@ mat-card {
   opacity: 1 !important;
 }
 
+.hover_background {
+  &:hover {
+    background-color: #F8F8F8;
+  }
+}
 
 .edit_background {
   background: #FCF4DA;
@@ -151,4 +156,7 @@ mat-card {
   gap: 5px;
   justify-content: flex-end;
   padding-bottom: 5px;
+  button{
+    background-color: #FFF;
+  }
 }

@@ -16,14 +16,16 @@ Quill.register('modules/blotFormatter', BlotFormatter);
 })
 export class ThreadContainerComponent implements OnInit {
 
-  public displayEditMenu;
+  displayEditMenu;
+  displayAnswerEditMenu;
   messageToEdit: any;
+  answerToEdit: any;
   modules = {};
 
   constructor(
     public dialog: MatDialog,
     public store: FirebaseService,
-    public firebase: Firestore) { 
+    public firebase: Firestore) {
       this.modules = {
         blotFormatter: {
           // empty object for default behaviour.
@@ -35,7 +37,7 @@ export class ThreadContainerComponent implements OnInit {
             ['image'],                         // link and image, video
           ],
         },
-    
+
       }
   }
 
@@ -45,6 +47,19 @@ export class ThreadContainerComponent implements OnInit {
 
   editMessage(index) {
     this.messageToEdit = index;
+    this.answerToEdit = '';
+    if (!index) {
+      this.store.loadThreads();
+    }
+  }
+
+
+  editAnswerMessage(index) {
+    this.answerToEdit = index;
+    this.messageToEdit = '';
+    if (!index) {
+      this.store.loadAnswers();
+    }
   }
 
 
@@ -74,6 +89,32 @@ export class ThreadContainerComponent implements OnInit {
     }
   }
 
+
+  async saveEditAnswer(currentAnswerId: string) {
+
+    const loadMessage = doc(
+      this.firebase,
+      `answers/${currentAnswerId}`
+    );
+    let editMessage = this.transformAnswer(this.store.answers, currentAnswerId)
+    await updateDoc(loadMessage, { answer: editMessage });
+    await this.store.loadAnswers();
+    this.answerToEdit = '';
+  }
+
+
+
+  transformAnswer(value: any, filterString: any): any {
+    if (value && filterString) {
+      let currentMessages;
+      for (const answer of value) {
+        if (answer['currentAnswerId'] === filterString) {
+          currentMessages = answer.answer
+        }
+      }
+      return currentMessages;
+    }
+  }
 
   openThreadDialog(threadId: string): void {
     // event.stopPropagation();

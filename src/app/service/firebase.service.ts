@@ -44,7 +44,7 @@ export class FirebaseService {
   messages: any;
 
 
-  messageValue:string;
+  messageText:string;
 
 
   /**

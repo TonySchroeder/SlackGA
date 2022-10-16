@@ -24,7 +24,7 @@ export class ChannelContainerComponent implements OnInit {
     public store: FirebaseService,
     public firebase: Firestore) {
 
-      
+
     this.modules = {
       blotFormatter: {
         // empty object for default behaviour.
@@ -73,6 +73,9 @@ export class ChannelContainerComponent implements OnInit {
 
   editMessage(index) {
     this.messageToEdit = index;
+    if (!index) {
+      this.store.loadThreads();
+    }
   }
 
 

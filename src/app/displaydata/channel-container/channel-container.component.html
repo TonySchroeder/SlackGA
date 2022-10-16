@@ -1,11 +1,11 @@
 <mat-list>
 
-  <mat-list-item [class.edit_background]="messageToEdit === i"
+  <mat-list-item [class.edit_background]="messageToEdit === i" [class.hover_background]="messageToEdit !== i"
     *ngFor="let thread of store.threads | filterThreads:store.currentChannelId; trackBy: store.trackByThread; let i = index"
     (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
 
     <!-- menu -->
-    <div [class.opacity1]="displayEditMenu == i" class="edit_message">
+    <div *ngIf="messageToEdit !== i" [class.opacity1]="displayEditMenu == i" class="edit_message">
       <button mat-button [matMenuTriggerFor]="afterMenu">
         <mat-icon fontIcon="more_vert"></mat-icon>
       </button>
@@ -49,8 +49,8 @@
 
         <!-- edit message -->
         <div class="flex" [ngStyle]="{ 'width': '100%' }" *ngIf="messageToEdit === i">
-          <div class="center editor" class="edit_message_container">
-            <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText"
+          <div class="center editor edit_message_container">
+            <quill-editor [ngStyle]="{ 'width': '100%', 'background': '#FFF' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText"
               matInput>
 
             </quill-editor>

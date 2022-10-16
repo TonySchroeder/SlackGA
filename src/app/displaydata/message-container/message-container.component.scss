@@ -26,10 +26,9 @@
 mat-list-item {
   position: relative;
 
-  &:hover {
-    background-color: #F8F8F8;
-
-  }
+  // &:hover {
+  //   background-color: #F8F8F8;
+  // }
 
   .edit_message {
     opacity: 0;
@@ -44,10 +43,10 @@ mat-list-item {
     border: 1px solid #DDDDDD;
     border-radius: 5px;
     box-shadow: 0 1px 10px 1px rgba(0, 0, 0, .05);
-    
-      &:hover {
-        opacity: 1;
-      }
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -127,5 +126,27 @@ mat-card {
   textarea {
 
     background: aqua;
+  }
+}
+
+.hover_background {
+  &:hover {
+    background-color: #F8F8F8;
+  }
+}
+
+.edit_background {
+  background: #FCF4DA;
+}
+
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+
+  button {
+    background-color: #FFF;
   }
 }
