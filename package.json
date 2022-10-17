@@ -26,6 +26,7 @@
     "ngx-quill": "^19.0.1",
     "quill": "^1.3.7",
     "quill-blot-formatter": "^1.0.5",
+    "quill-delta": "^5.0.0",
     "quill-emoji": "^0.2.0",
     "react-firebase-hooks": "^5.0.3",
     "rxjs": "~7.5.0",
