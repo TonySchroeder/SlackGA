@@ -20,7 +20,8 @@ export class MainContainerComponent implements OnInit  {
 
 
   constructor(public store: FirebaseService, public firebase: Firestore) { }
-  @ViewChild('mycontent2') el: ElementRef;
+  @ViewChild('mycontent') el: ElementRef;
+  @ViewChild('mycontent2') el2: ElementRef;
 
   async ngOnInit() {
     this.scrollToBottom();
@@ -28,7 +29,9 @@ export class MainContainerComponent implements OnInit  {
 
   scrollToBottom(){
     const el: HTMLDivElement = this.el.nativeElement;
+    const el2: HTMLDivElement = this.el2.nativeElement;
     el.scrollTop = Math.max(0, el.scrollHeight - el.offsetHeight);
+    el2.scrollTop = Math.max(0, el2.scrollHeight - el2.offsetHeight);
   }
 
 
