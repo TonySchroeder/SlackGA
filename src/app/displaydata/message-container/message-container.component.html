@@ -1,11 +1,12 @@
 
 <mat-list>
-  <mat-list-item *ngFor="let message of store.messages | filterMessageInterlocutor:store.currentUserMessageId :store.loggedInUserId;
+  <mat-list-item [class.edit_background]="messageToEdit === i" [class.hover_background]="messageToEdit !== i"
+  *ngFor="let message of store.messages | filterMessageInterlocutor:store.currentUserMessageId :store.loggedInUserId;
     trackBy: store.trackByMessage;
      let i = index" (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
 
     <!-- menu -->
-    <div [class.opacity1]="displayEditMenu == i" class="edit_message">
+    <div *ngIf="messageToEdit !== i" [class.opacity1]="displayEditMenu == i" class="edit_message">
       <button mat-button [matMenuTriggerFor]="afterMenu">
         <mat-icon fontIcon="more_vert"></mat-icon>
       </button>
@@ -14,7 +15,7 @@
     <mat-menu #afterMenu="matMenu" xPosition="after">
       <button class="afterMenu_button" (click)="editMessage(i)" mat-menu-item>
         edit message
-      </button> 
+      </button>
       <button class="afterMenu_button"  (click)="openDialog(message.currentMessageId)" mat-button color="warn">
         delete message
       </button>
@@ -33,9 +34,9 @@
 
         <!-- edit message -->
 
-        <div class="flex">
-          <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
-            <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="message.message.messageText" placeholder="{{ message.message.messageText }}"
+        <div class="flex" [ngStyle]="{ 'width': '100%' }" *ngIf="messageToEdit === i">
+          <div class="center editor edit_message_container">
+            <quill-editor [ngStyle]="{ 'width': '100%', 'background': '#FFF' }" [modules]="modules"   [(ngModel)]="message.message.messageText" placeholder="{{ message.message.messageText }}"
               matInput>
             </quill-editor>
             <div class="footer">

@@ -47,6 +47,9 @@ export class MessageContainerComponent implements OnInit {
 
   editMessage(index) {
     this.messageToEdit = index;
+    if (!index) {
+      this.store.loadMessages();
+    }
   }
 
 

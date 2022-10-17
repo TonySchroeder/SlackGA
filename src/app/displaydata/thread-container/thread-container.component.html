@@ -1,14 +1,15 @@
 <mat-list>
 
   <!-- firstmessage -->
-  <mat-list-item>
+  <mat-list-item [class.edit_background]="messageToEdit === i" [class.hover_background]="messageToEdit !== i"
+  *ngFor="let thread of store.threads | filterSelectThread: this.store.currentThreadId; let i = index">
 
-    <mat-card *ngFor="let thread of store.threads | filterSelectThread: this.store.currentThreadId; let i = index"
+    <mat-card
       class="message_card" (mouseover)="displayEditMenu = i" (mouseleave)="displayEditMenu = -1">
       <mat-card-header>
 
         <!-- menu -->
-        <div class="edit_message" [class.opacity1]="displayEditMenu == i" >
+        <div class="edit_message" *ngIf="messageToEdit !== i" [class.opacity1]="displayEditMenu == i">
           <button mat-button [matMenuTriggerFor]="afterMenu">
             <mat-icon fontIcon="more_vert"></mat-icon>
           </button>
@@ -23,28 +24,30 @@
           </button>
         </mat-menu>
 
+        <!-- display message -->
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:thread.thread.usersId }}</div>
-        <mat-card-title>
+
+        <mat-card-title *ngIf="messageToEdit !== i">
           <h3>{{ store.users | filterUsers: thread.thread.usersId }}</h3><span class="time">{{ thread.thread.timestamp |
             date: 'E, dd MM, h:mm a' }}</span>
         </mat-card-title>
-        <mat-card-subtitle [innerHTML]="thread.thread.messageText"> {{ thread.thread.messageText }}</mat-card-subtitle>
 
-              <!-- edit message -->
+        <mat-card-subtitle [innerHTML]="thread.thread.messageText" *ngIf="messageToEdit !== i"> {{ thread.thread.messageText }}</mat-card-subtitle>
 
-              <div class="flex">
-                <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
-                  <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="thread.thread.messageText"
-                    matInput>
-                  </quill-editor>
-                  <div class="footer">
-                    <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-                    <button mat-stroked-button (click)="saveEditMessage(thread.currentAnswerId)"
-                      color="primary">Save</button>
-                  </div>
-                </div>
-              </div>
-    
+        <!-- edit message -->
+
+        <div class="flex" [ngStyle]="{ 'width': '100%' }" *ngIf="messageToEdit === i">
+          <div *ngIf="messageToEdit === i" class="center editor edit_message_container">
+            <quill-editor [ngStyle]="{ 'width': '100%', 'background': '#FFF' }" [modules]="modules" [(ngModel)]="thread.thread.messageText"
+              matInput>
+            </quill-editor>
+            <div class="footer">
+              <button mat-stroked-button (click)="editMessage('')">Cancel</button>
+              <button mat-stroked-button (click)="saveEditMessage(thread.currentThreadId)" color="primary">Save</button>
+            </div>
+          </div>
+        </div>
+
       </mat-card-header>
 
     </mat-card>
@@ -54,19 +57,20 @@
   <mat-divider></mat-divider>
 
   <!-- answers -->
-  <mat-list-item
-    *ngFor="let answer of store.answers | filterAnswers: store.currentThreadId; trackBy: store.trackByAnswer; let i = index">
+  <mat-list-item [class.edit_background]="answerToEdit === i" [class.hover_background]="answerToEdit !== i"
+    *ngFor="let answer of store.answers | filterAnswers: store.currentThreadId; trackBy: store.trackByAnswer; let i = index"
+    (mouseover)="displayAnswerEditMenu = i" (mouseleave)="displayAnswerEditMenu = -1">
 
 
     <!-- menu -->
-    <div class="edit_message">
-      <button mat-button [matMenuTriggerFor]="afterMenu">
+    <div class="edit_message" *ngIf="answerToEdit !== i" [class.opacity1]="displayAnswerEditMenu == i">
+      <button mat-button [matMenuTriggerFor]="afterAnswerMenu">
         <mat-icon fontIcon="more_vert"></mat-icon>
       </button>
     </div>
 
-    <mat-menu #afterMenu="matMenu" xPosition="after">
-      <button class="afterMenu_button" (click)="editMessage(i)" mat-menu-item>
+    <mat-menu #afterAnswerMenu="matMenu" xPosition="after">
+      <button class="afterMenu_button" (click)="editAnswerMessage(i)" mat-menu-item>
         edit message
       </button>
       <button class="afterMenu_button" (click)="openAnswerDialog(answer.currentAnswerId)" mat-button color="warn">
@@ -80,27 +84,27 @@
 
         <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:answer.answer.usersId }}</div>
 
-        <mat-card-title>
+        <!-- display message -->
+        <mat-card-title *ngIf="answerToEdit !== i">
           <h3>{{ store.users | filterUsers:answer.answer.usersId }}</h3><span class="time">{{ answer.answer.timestamp |
             date: 'E, dd MM, h:mm a' }}</span>
         </mat-card-title>
 
-        <mat-card-subtitle [innerHTML]="answer.answer.messageText">{{ answer.answer.messageText }}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="answerToEdit !== i" [innerHTML]="answer.answer.messageText">{{ answer.answer.messageText }}</mat-card-subtitle>
 
-          <!-- edit message -->
+        <!-- edit message -->
 
-          <div class="flex">
-            <div class="center editor" *ngIf="messageToEdit === i" class="edit_message_container">
-              <quill-editor [ngStyle]="{ 'width': '100%' }" [modules]="modules"   [(ngModel)]="answer.answer.messageText"
-                matInput>
-              </quill-editor>
-              <div class="footer">
-                <button mat-stroked-button (click)="editMessage('')">Cancel</button>
-                <button mat-stroked-button (click)="saveEditMessage(answer.currentAnswerId)"
-                  color="primary">Save</button>
-              </div>
+        <div class="flex" [ngStyle]="{ 'width': '100%' }" *ngIf="answerToEdit === i">
+          <div *ngIf="answerToEdit === i" class="center editor edit_message_container">
+            <quill-editor [ngStyle]="{ 'width': '100%', 'background': '#FFF' }" [modules]="modules" [(ngModel)]="answer.answer.messageText"
+              matInput>
+            </quill-editor>
+            <div class="footer">
+              <button mat-stroked-button (click)="editAnswerMessage('')">Cancel</button>
+              <button mat-stroked-button (click)="saveEditAnswer(answer.currentAnswerId)" color="primary">Save</button>
             </div>
           </div>
+        </div>
 
 
       </mat-card-header>

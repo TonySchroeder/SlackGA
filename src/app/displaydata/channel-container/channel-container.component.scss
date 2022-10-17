@@ -57,7 +57,7 @@ mat-card-title {
 .message_card {
   border: none;
   box-shadow: none;
-  background-color: transparent;
+  background-color: #FFF;
   padding: 0;
   padding-top: 16px;
   margin: 0;
@@ -118,7 +118,7 @@ mat-card {
 }
 
 .edit_message {
-  opacity: 0; 
+  opacity: 0;
   z-index: 2;
   position: absolute;
   top: 0px;
@@ -130,11 +130,33 @@ mat-card {
   border: 1px solid #DDDDDD;
   border-radius: 5px;
   box-shadow: 0 1px 10px 1px rgba(0, 0, 0, .05);
-    &:hover {
-      opacity: 1;
-    }
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .opacity1 {
   opacity: 1 !important;
+}
+
+.hover_background {
+  &:hover {
+    background-color: #F8F8F8;
+  }
+}
+
+.edit_background {
+  background: #FCF4DA;
+}
+
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+  button{
+    background-color: #FFF;
+  }
 }
