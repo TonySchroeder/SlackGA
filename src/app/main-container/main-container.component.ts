@@ -24,6 +24,10 @@ export class MainContainerComponent implements OnInit  {
   @ViewChild('mycontent2') el2: ElementRef;
 
   async ngOnInit() {
+  
+  }
+
+  ngAfterViewChecked() {
     this.scrollToBottom();
   }
 
