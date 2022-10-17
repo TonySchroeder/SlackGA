@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { Observable } from 'rxjs';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { FirebaseService } from '../service/firebase.service';
@@ -19,14 +19,16 @@ export class MainContainerComponent implements OnInit  {
   channelName: any;
 
 
-
-
-
   constructor(public store: FirebaseService, public firebase: Firestore) { }
-
+  @ViewChild('mycontent2') el: ElementRef;
 
   async ngOnInit() {
+    this.scrollToBottom();
+  }
 
+  scrollToBottom(){
+    const el: HTMLDivElement = this.el.nativeElement;
+    el.scrollTop = Math.max(0, el.scrollHeight - el.offsetHeight);
   }
 
 
