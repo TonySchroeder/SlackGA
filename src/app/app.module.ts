@@ -55,6 +55,8 @@ import { DialogDeleteAnswerComponent } from './dialog/dialog-delete-answer/dialo
 import { QuillModule } from 'ngx-quill';
 import { DateAgoPipe } from './pipe/date-ago.pipe';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserInitialenComponent } from './user-initialen/user-initialen.component';
+import { FilterUserMailPipe } from './pipe/filter-user-mail.pipe';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     DialogDeleteAnswerComponent,
     DateAgoPipe,
     UserDetailsComponent,
+    UserInitialenComponent,
+    FilterUserMailPipe,
   ],
   imports: [
     BrowserModule,

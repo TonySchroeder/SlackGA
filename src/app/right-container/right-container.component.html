@@ -1,7 +1,7 @@
 <div class="width400">
 
   <!-- thread with answer -->
-  <div *ngIf="store.currentThreadId">
+  <div *ngIf="!store.currentSelectUser">
 
     <div class="headline">
       <h2 class="thread_name">Thread</h2>&nbsp;&nbsp;<span>{{ store.channels | filterChannelname: store.currentChannelIdForThread
@@ -28,7 +28,7 @@
   </div>
 
   <!-- user details -->
-  <!-- <div>
+  <!-- <div *ngIf="store.currentSelectUser">
 
     <div class="headline">
       <h2 class="thread_name">Profile</h2>

@@ -1,3 +1,22 @@
-<div class="image_container">
-  <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:store.loggedInUser.currentSelectUser }}</div>
+<div class="over_container">
+  <div class="image_container">
+    <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:store.currentSelectUser }}</div>
+  </div>
+  <span class="name_container">{{ store.users | filterUsers:store.currentSelectUser }}</span>
+  <button mat-stroked-button>
+    <mat-icon fontIcon="chat_bubble_outline"></mat-icon>Message
+  </button>
+</div>
+<mat-divider></mat-divider>
+<div class="over_container">
+  <span class="contact">Contact details</span>
+  <div class="mail_container">
+    <div class="mail">
+      <mat-icon fontIcon="mail_outline"></mat-icon>
+    </div>
+    <div class="link_container">
+      <span class="adress">E-mail address</span>
+     <a href="">{{ store.users | filterUserMail:store.currentSelectUser }}</a>
+    </div>
+  </div>
 </div>

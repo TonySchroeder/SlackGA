@@ -25,7 +25,8 @@
     <mat-card class="message_card">
 
       <mat-card-header>
-        <div mat-card-avatar class="avatar_image">{{ store.users | filterInitialen:message.autorUser }}</div>
+        <div mat-card-avatar (click)="showUserDetails(message.autorUser)" class="avatar_image cursor_pointer">{{ store.users | filterInitialen:message.autorUser }}</div>
+        <!-- <app-user-initialen [userId]="message.autorUser"></app-user-initialen> -->
         <mat-card-title *ngIf="messageToEdit !== i">
           <h3>{{ store.users | filterUsers:message.autorUser }}</h3><span class="time">{{ message.message.timestamp |
             date: 'E, dd MM, h:mm a' }}</span>
