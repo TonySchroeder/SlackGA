@@ -8,7 +8,7 @@ import { FirebaseService } from '../service/firebase.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor(  public store: FirebaseService,) { }
+  constructor(public store: FirebaseService) { }
 
   ngOnInit(): void {
   }

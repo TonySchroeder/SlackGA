@@ -55,6 +55,8 @@ import { DialogDeleteAnswerComponent } from './dialog/dialog-delete-answer/dialo
 import { QuillModule } from 'ngx-quill';
 import { DateAgoPipe } from './pipe/date-ago.pipe';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserInitialenComponent } from './user-initialen/user-initialen.component';
+import { FilterUserMailPipe } from './pipe/filter-user-mail.pipe';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -99,11 +101,16 @@ import { AuthService } from "./shared/services/auth.service";
     DialogDeleteAnswerComponent,
     DateAgoPipe,
     UserDetailsComponent,
+<<<<<<< HEAD
     DashboardComponent,
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+=======
+    UserInitialenComponent,
+    FilterUserMailPipe,
+>>>>>>> d6e965d6c7631d7a46e84617f1997d0c97beb7bc
   ],
   imports: [
     BrowserModule,

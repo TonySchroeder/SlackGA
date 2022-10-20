@@ -17,6 +17,7 @@ export class FirebaseService {
   currentChannelIdForThread: string = '';
   currentThreadId: string = '';
   currentUserMessageId: string = '';
+  currentSelectUser: string = '';
 
   // users variable
   collUser: any;
@@ -195,6 +196,7 @@ export class FirebaseService {
     this.currentChannelIdForThread = this.loggedInUser.currentChannelIdForThread;
     this.currentThreadId = this.loggedInUser.currentThreadId;
     this.currentUserMessageId = this.loggedInUser.currentUserMessageId;
+    this.currentSelectUser = this.loggedInUser.currentSelectUser;
   }
 
 

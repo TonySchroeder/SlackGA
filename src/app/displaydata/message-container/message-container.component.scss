@@ -68,10 +68,9 @@ mat-card-title {
   }
 }
 
-.mat-card-avatar {
-  border-radius: 5px;
-
-}
+// .mat-card-avatar {
+//   border-radius: 5px;
+// }
 
 .mat-list-base {
   padding-top: 0;
@@ -149,4 +148,8 @@ mat-card {
   button {
     background-color: #FFF;
   }
+}
+
+.avatar_image{
+  border-radius: 5px;
 }

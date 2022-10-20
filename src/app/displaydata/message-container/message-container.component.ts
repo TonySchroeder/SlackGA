@@ -26,19 +26,20 @@ export class MessageContainerComponent implements OnInit {
     public store: FirebaseService,
     public dialog: MatDialog,
     public firebase: Firestore
-  ) { this.modules = {
-    blotFormatter: {
-      // empty object for default behaviour.
-    },
-    'toolbar': {
-      container: [
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-        ['blockquote', 'code-block'],
-        ['image'],                         // link and image, video
-      ],
-    },
+  ) {
+    this.modules = {
+      blotFormatter: {
+        // empty object for default behaviour.
+      },
+      'toolbar': {
+        container: [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+          ['image'],                         // link and image, video
+        ],
+      },
 
-  }
+    }
   }
 
   ngOnInit(): void {
@@ -76,6 +77,12 @@ export class MessageContainerComponent implements OnInit {
       }
       return currentMessages;
     }
+  }
+
+
+  showUserDetails(userId) {
+    console.log(userId);
+
   }
 
 
