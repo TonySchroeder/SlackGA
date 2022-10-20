@@ -61,7 +61,8 @@
         </mat-expansion-panel-header>
 
         <ul>
-          <li *ngFor="let channel of store.channels" (click)="displayChannelsThreadsOrMessages( channel.channelId, '' )">
+          <li *ngFor="let channel of store.channels"
+            (click)="displayChannelsThreadsOrMessages( channel.channelId, '' )">
             {{ channel.channel.channelName }}
           </li>
         </ul>
@@ -86,7 +87,11 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <ul>
+        <ul *ngIf="authService.userData as user">
+          <li  *ngFor="let user of users" (click)="displayChannelsThreadsOrMessages( '', user.uid )">
+            <img class="avatar_image"  mat-card-avatar  src="{{(user.photoURL) ? user.photoURL : '/assets/img/profile.png'}}" alt="">
+            <span> {{ user.displayName }} </span>
+          </li>
 
           <li *ngFor="let user of store.users" (click)="displayChannelsThreadsOrMessages( '', user.userId )"
             [class.d-none]="user.userId == store.loggedInUserId" class="user-row">

@@ -1,0 +1,50 @@
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.forgot-password  {
+    font-weight: bold;
+    color: #3D4EAE
+}
+
+.redirect {
+    font-weight: bold;
+    color: #3D4EAE
+}
+
+.card {
+    max-width: 500px;
+    width: 500px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.inputs {
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.form-control {
+    width: auto;
+}
+
+
+.form-group {
+    padding-bottom: 16px;
+}

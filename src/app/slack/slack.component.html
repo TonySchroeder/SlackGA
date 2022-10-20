@@ -13,6 +13,10 @@
     <!-- <button (click)="searchSamething()" mat-stroked-button>search</button>s -->
   </div>
 
+  <div routerLink="/dashboard" class="user-pic" *ngIf="authService.userData as user">
+    <img src="{{(user.photoURL) ? user.photoURL : '/assets/profile.png'}}" alt="">
+  </div>
+
 </mat-toolbar>
 
 <mat-drawer-container class="main_container" autosize>

@@ -56,6 +56,18 @@ import { QuillModule } from 'ngx-quill';
 import { DateAgoPipe } from './pipe/date-ago.pipe';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthService } from "./shared/services/auth.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +99,11 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     DialogDeleteAnswerComponent,
     DateAgoPipe,
     UserDetailsComponent,
+    DashboardComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,9 +130,14 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [
+  providers: [ AuthService
 
   ],
   bootstrap: [AppComponent]

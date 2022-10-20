@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { FirebaseService } from '../service/firebase.service';
@@ -17,25 +17,27 @@ export class MainContainerComponent implements OnInit  {
   messageText: string = '';
   writeContainerHeight: number;
   channelName: any;
+  static: boolean;
 
 
-  constructor(public store: FirebaseService, public firebase: Firestore) { }
-  @ViewChild('mycontent') el: ElementRef;
-  @ViewChild('mycontent2') el2: ElementRef;
+  constructor(public store: FirebaseService, public firebase: Firestore, private cdref: ChangeDetectorRef) { }
+  @ViewChild('mycontent', {static: true}) public el!: ElementRef;
+  @ViewChild('mycontent2', {static: true}) public el2!: ElementRef;
 
   async ngOnInit() {
   
   }
 
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
-
-  scrollToBottom(){
+  ngAfterVewInit() {
     const el: HTMLDivElement = this.el.nativeElement;
     const el2: HTMLDivElement = this.el2.nativeElement;
     el.scrollTop = Math.max(0, el.scrollHeight - el.offsetHeight);
     el2.scrollTop = Math.max(0, el2.scrollHeight - el2.offsetHeight);
+    this.cdref.detectChanges();
+  }
+
+  scrollToBottom(){
+   
   }
 
 

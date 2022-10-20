@@ -4,6 +4,7 @@ import { MatDrawerMode } from '@angular/material/sidenav';
 import { collection, Firestore } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../service/firebase.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-slack',
@@ -19,7 +20,7 @@ export class SlackComponent implements OnInit {
   openLeftNav: boolean = true;
 
 
-  constructor(public store: FirebaseService) {
+  constructor(public store: FirebaseService, public authService: AuthService) {
 
   }
 
