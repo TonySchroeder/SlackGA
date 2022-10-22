@@ -13,7 +13,7 @@
         <h2 class="thread_name">{{ store.channels | filterChannelname: store.currentChannelId }}</h2>
       </div>
 
-      <div #mycontent [scrollTop]="mycontent.scrollHeight" [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 210px))', 'overflow':'auto' }" class="message_content">
+      <div #mycontent #scroll [scrollTop]="scroll.scrollHeight" [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 210px))', 'overflow':'auto' }" class="message_content">
 
         <div>
           <app-channel-container></app-channel-container>
@@ -36,7 +36,7 @@
         <h2 class="thread_name">{{ store.users | filterUsers:store.currentUserMessageId}}</h2>
       </div>
 
-      <div #mycontent2 [scrollTop]="mycontent2.scrollHeight" [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 210px))', 'overflow': 'auto' }" class="message_content">
+      <div #mycontent2 #scroll2 [scrollTop]="scroll2.scrollHeight" [ngStyle]="{ 'height': 'calc(100vh - (64px + 48px + 210px))', 'overflow': 'auto' }" class="message_content">
 
         <div>
           <app-message-container></app-message-container>

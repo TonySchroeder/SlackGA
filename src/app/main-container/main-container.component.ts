@@ -4,6 +4,8 @@ import { collectionData, Firestore } from '@angular/fire/firestore';
 import { FirebaseService } from '../service/firebase.service';
 import { addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { Message } from '../models/message.class';
+import { ScrollToBottomDirective } from '../scroll/scroll-to-bottom.directive';
+
 
 @Component({
   selector: 'app-main-container',
@@ -12,34 +14,26 @@ import { Message } from '../models/message.class';
 })
 
 export class MainContainerComponent implements OnInit  {
-
+  
+  @ViewChild(ScrollToBottomDirective)
+  scroll: ScrollToBottomDirective;
   message: Message = new Message;
   messageText: string = '';
   writeContainerHeight: number;
   channelName: any;
   static: boolean;
-
-
-  constructor(public store: FirebaseService, public firebase: Firestore, private cdref: ChangeDetectorRef) { }
-  @ViewChild('mycontent', {static: true}) public el!: ElementRef;
-  @ViewChild('mycontent2', {static: true}) public el2!: ElementRef;
+ 
+  constructor(public store: FirebaseService, public firebase: Firestore, private ref: ChangeDetectorRef) { }
 
   async ngOnInit() {
-  
   }
 
-  ngAfterVewInit() {
-    const el: HTMLDivElement = this.el.nativeElement;
-    const el2: HTMLDivElement = this.el2.nativeElement;
-    el.scrollTop = Math.max(0, el.scrollHeight - el.offsetHeight);
-    el2.scrollTop = Math.max(0, el2.scrollHeight - el2.offsetHeight);
-    this.cdref.detectChanges();
+  ngAfterViewInit() {
+    this.ref.detach();
+    setInterval(() => {
+      this.ref.detectChanges();
+    });
   }
-
-  scrollToBottom(){
-   
-  }
-
 
   loadChannelName(channelId: string) {
     if (this.store.channels) {
