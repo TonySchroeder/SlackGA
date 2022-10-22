@@ -101,16 +101,13 @@ import { AuthService } from "./shared/services/auth.service";
     DialogDeleteAnswerComponent,
     DateAgoPipe,
     UserDetailsComponent,
-<<<<<<< HEAD
     DashboardComponent,
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-=======
     UserInitialenComponent,
     FilterUserMailPipe,
->>>>>>> d6e965d6c7631d7a46e84617f1997d0c97beb7bc
   ],
   imports: [
     BrowserModule,
